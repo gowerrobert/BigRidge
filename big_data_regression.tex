@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage{colordvi,epsfig,amssymb}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}   % for highlighting table cells
+\usepackage[algosection,linesnumbered, ruled,noend]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{verbatim,tikz}
+\usepackage{mathtools}  % for changes the tik of equation
+\usepackage{caption,subcaption}   % Required for side-by-side figures with individual captions
+\usepackage[maxbibnames=99, maxcitenames=10,doi=false,isbn=false,url=false,backend=bibtex]{biblatex}	
+\graphicspath{{./figures/}}   % Path to figures folder
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-0.5cm}
+\setlength{\textheight}{23.0cm}
+\setlength{\textwidth}{16.4cm}
+\setlength{\topmargin}{-1.0cm}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true}
+\newcommand{\reqnomode}{\tagsleft@false}
+\makeatother
+
+\newcommand{\ignore}[1]{}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\cqd}{\hfill\rule{2mm}{2mm}} % Full little box
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+\providecommand{\colvec}[1]{{\text{\scriptsize $
+\begin{array}{c}
+ #1
+\end{array}$
+}}}
+\newcommand{\eqdef}{\overset{\text{def}}{=}} 
+\providecommand{\proj}[2]{\mbox{proj}_{#1}^{#2}}
+\newcommand{\E}[1]{\mathbf{E}\left[#1\right] } % D^2 f % \mathcal{B}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\dotprod}[1]{\left< #1\right>}
+\newcommand{\Tr}[1]{\mbox{Tr}\left( #1\right)}
+\providecommand{\Null}[1]{\mathbf{Null}\left( #1\right)}
+\providecommand{\Rank}[1]{\mathbf{Rank}\left( #1\right)}
+\providecommand{\Range}[1]{\mathbf{Range}\left( #1\right)}
+\newcommand{\inRed}[1]{{\color{red} {#1}}}
+\def\proof{{\noindent{\bf Proof: }}}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{note}[definition]{Remark}
+
+\usepackage[colorinlistoftodos,bordercolor=orange,backgroundcolor=orange!20,linecolor=orange,textsize=scriptsize]{todonotes}
+
+\newcommand{\rob}[1]{\todo[inline]{\textbf{Robert: }#1}}
+\newcommand{\Ref}[1]{../../jabref/#1}
+\bibliography{\Ref{jabref_library}}
+% Robert: What about the following simple title: 
+\title{Internship: New Stochastic Sketching Methods for Big Data Ridge Regression.} 
+\author{co-supervisors:$\qquad$  Dr. Robert M. Gower\footnote{contact: robert.gower@inria.fr} $\quad$ and $\quad$ Dr. Francis Bach }
+ 
+
+
+%\renewcommand{\baselinestretch}{2.0}
+\linespread{1.2}
+
+
+\begin{document}
+\maketitle
+
+%The rate at which data sets have increased are at odds with the development of algorithms and software. Many of the numerical routines at the core of engineering and data science software used today were developed as far back as the 1950's~\cite{Hestenes1952}, and were not designed with large data sets in mind. With data sets being collected automatically  from internet, text and imaging sources, that go beyond terabytes, there is now a demand from applications in machine learning, signal processing and image analysis  to redevelop the key numerical algorithms to cope with big data sets.
+
+The need to solve linear regression occurs throughout scientific computing, such as ridge regression in machine learning and data assimilation in oceanography, weather forecasting ...etc. The regression problem we will consider in this project is: 
+\begin{equation}\label{eq:ridge}
+ \min_x \frac{1}{2}\norm{Ax-b}_2^2 + \frac{\lambda}{2}\norm{x}_2^2,
+\end{equation}
+where the number of rows and columns of $A  \in \R^{m\times n}$ are in the order of tens of millions.
+ 
+
+%The rate at which data sets have increased are at odds with the development of algorithms and software for solving~\eqref{eq:ridge}.
+With data sets now being collected automatically and electronically, there has been a surge of new stochastic incremental methods that can gracefully scale with the dimensions of the data in~\eqref{eq:ridge}. Yet it is still unclear if the new stochastic methods are capable of outperforming the classic Conjugate Gradients (CG) methods~\cite{Hestenes1952}, even though the CG method was developed in the 1950's! This project aims to put this doubt to rest, by designing and implementing new stochastic methods based on randomized sketching~\cite{Pilanci2015,Pilanci2014} together with iterative projection~\cite{Gower2015} and stochastic preconditioning~\cite{Gower2016} that will significantly outperform the CG method. If successful, the implementation of the methods could become a reference package for solving large scale linear regression.
+
+
+
+\paragraph{Requisites:} The prospective student will have completed a course in  programming, linear algebra and preferably optimization. The student should have an aptitude for coding.
+
+\paragraph{Timeline:} The student will start by reading~\cite{Gower2015,Gower2016} and possibly~\cite{Drineas2006a,Pilanci2014}, followed by a design phase, and finally implementing and testing the new methods. The student will meet the co-supervisor Dr. Gower on a weekly basis to discus the project.
+
+\paragraph{Output:}   The main output of this project will be a software package written in either Python, C, C++ or \smash{\includegraphics[scale=0.04]{Julia.png}}, that will be freely distributed on github or google.code, and a paper detailing the new methods. Depending on the students preference, there will also be an opportunity to analyse the new methods and produce new theory.
+
+
+{ 
+\printbibliography
+}
+
+
+
+\end{document}
