@@ -1,26 +1,30 @@
-function result = hadamards(x,idx)
+function [result] = hadamards(x,idx)
 
 % SHDx for x a vectot and S our sketch matrix
 
-
 n = length(x);
+
 m = floor(n/2);
+
 
 
 if m > 1
     
-idx1 = idx( idx <= m );
-idx2 = idx( idx > m) - m;
-lx = length(idx1);
     x1 = x(1:m);
-    x2 = x(m+1:end);
-    vect1 = hadamards(x1,[idx1;idx2]);
-    vect2 = hadamards(x2,[idx1;idx2]);
-   
+x2 = x(m+1:end);
+
+%idx_new = idx;
+%idx_new(idx > m) = idx(idx > m)-m;
+idx_new = idx.*(idx<=m)+(idx-m).*(idx>m);
+
     
-    result = [vect1(1:lx) + vect2(1:lx); vect1(lx+1:end) - vect2(lx+1:end)];
+       vect1 = hadamards(x1,idx_new);
+     vect2 = hadamards(x2,idx_new);
     
+      % result = (vect1+vect2).*(idx<=m)+(vect1-vect2).*(idx>m) ;
+          result = vect1+vect2 -2*vect2.*(idx>m) ;
+
 else
-    vect = [x(1)+x(2);x(1)-x(2)] ;
-    result = vect(idx);
+    result = x(1) + x(2) - 2*x(2)*(idx-1) ;
 end
+
