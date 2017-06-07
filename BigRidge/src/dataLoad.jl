@@ -20,7 +20,7 @@ using JLD
 
 # this needs to be changed to your personal path.
 #default_path = "/local/rgower/git/online_saga/julia-online-SAGA/data/" #/local/rgower/libsvmdata/"
-default_path = "./data/"; #"/home/robert/git/online_saga/julia-online-SAGA/data/"
+default_path = "../data/"; #"/home/robert/git/online_saga/julia-online-SAGA/data/"
 
 function initDetails() # creates a blank details dictionary
    details = Dict()
