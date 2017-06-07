@@ -7,14 +7,15 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
         println("FAIL: unknown method name:")
         return
     end
-    x0 = zeros(prob.n)
+    x = zeros(prob.n)
+    d = zeros(prob.n)
     println(method.name);
 #     times[1] = toc;
     times= [0];
     if(options.exacterror)
-        initial_error= vecnorm(prob.sol-x0);
+        initial_error= vecnorm(prob.xsol-x);
     end
-    initial_residual= vecnorm(prob.A*x0 -prob.b);
+    initial_residual= vecnorm(prob.A*x -prob.b);
     errors = [1];
     residuals  = [1];
     local tickcounter =1;
@@ -29,14 +30,19 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
     end
     for i = 1:options.maxiter
         tic();
-        x = x+ method.stepmethod(prob,x,options);
+        if(method.name=="CG")
+             method.stepmethod(prob,x,d,options,method);
+        else
+             method.stepmethod(prob,x,d,options);
+        end
+        x = x+d;
         timeaccum= timeaccum +  toq(); # Keeps track of time accumulated at every iteration
     
         if(mod(i,options.skip_error_calculation)==0 )
              if(options.exacterror)
-                    errors= [ errors vecnorm(prob.sol-x0)/initial_error];
+                    errors= [ errors vecnorm(prob.xsol-x)/initial_error];
              end
-             residuals= [residuals vecnorm(prob.A*x0 -prob.b)/initial_residual];
+             residuals= [residuals vecnorm(prob.A*x -prob.b)/initial_residual];
              times = [ times   timeaccum];
              if(options.printiters)
                 ## printing iterations info
@@ -52,7 +58,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
                  break;
             end                
             end
-            if(isnan(sum(M)) || isnan(errors[end]) || errors[end] >1000  )  
+            if(isnan(sum(x)) || isnan(errors[end]) || errors[end] >1000  )  
                  fail = "nan";  iterations = i;
              return;
             end
@@ -60,9 +66,9 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
      if(timeaccum >options.max_time )
          fail ="times_up";  iterations = i;
          if(options.exacterror)
-            errors= [ errors vecnorm(prob.sol-x0)/initial_error];
+            errors= [ errors vecnorm(prob.xsol-x)/initial_error];
          end
-         residuals= [residuals vecnorm(prob.A*x0 -prob.b)/initial_residual];
+         residuals= [residuals vecnorm(prob.A*x -prob.b)/initial_residual];
          times = [ times   timeaccum];
          if(options.printiters)
            @printf "%3.0d  | %3.2f  |  %3.2f  | %3.4f \n" i 100*errors[end] 100*residuals[end] times[end] ;

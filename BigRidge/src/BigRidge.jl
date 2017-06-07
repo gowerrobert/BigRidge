@@ -10,8 +10,6 @@ using Match
 #export plot_outputs_Plots
 
 type MyOptions
-    n::Int
-    m::Int
     sketchsize::Int
     sketch::AbstractString   #Type of sketch
     tol::Float64
@@ -28,6 +26,8 @@ type Prob
     A::Array{Float64}
     b::Array{Float64}
     xsol::Array{Float64}
+    n::Int
+    lambda::Float64
     name::AbstractString
 end
 
@@ -37,6 +37,18 @@ type Method
     stepmethod::Function
     bootmethod::Function
 end
+
+type CGMethod
+    flopsperiter::Int
+    name::AbstractString
+    stepmethod::Function
+    bootmethod::Function
+    p::Array{Float64}
+    r::Array{Float64}
+    rr::Float64
+end
+
+
 
 type Output
     iterations::Int
@@ -51,9 +63,11 @@ end
 include("solveRidge.jl")
 include("boot_method.jl")
 #Including test and problem generating functions
-
-#Including iterative methods for calculating pseudoinverse
-
+include("dataLoad.jl")
+#Including iterative methods
+include("grad.jl")
+include("CD.jl")
+include("CG.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
 
