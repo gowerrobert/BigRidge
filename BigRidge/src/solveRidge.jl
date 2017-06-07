@@ -8,6 +8,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
         return
     end
     x0 = zeros(prob.n)
+    d = zeros(prob.n)
     println(method.name);
 #     times[1] = toc;
     times= [0];
@@ -29,7 +30,8 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
     end
     for i = 1:options.maxiter
         tic();
-        x = x+ method.stepmethod(prob,x,options);
+        method.stepmethod(prob,x,d,options);
+        x = x+d;
         timeaccum= timeaccum +  toq(); # Keeps track of time accumulated at every iteration
     
         if(mod(i,options.skip_error_calculation)==0 )

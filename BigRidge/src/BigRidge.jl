@@ -10,8 +10,6 @@ using Match
 #export plot_outputs_Plots
 
 type MyOptions
-    n::Int
-    m::Int
     sketchsize::Int
     sketch::AbstractString   #Type of sketch
     tol::Float64
@@ -28,6 +26,8 @@ type Prob
     A::Array{Float64}
     b::Array{Float64}
     xsol::Array{Float64}
+    n::Int
+    lambda::Float64
     name::AbstractString
 end
 
@@ -51,7 +51,7 @@ end
 include("solveRidge.jl")
 include("boot_method.jl")
 #Including test and problem generating functions
-
+include("dataLoad.jl")
 #Including iterative methods for calculating pseudoinverse
 
 #Including utilities, plotting, data analysis
