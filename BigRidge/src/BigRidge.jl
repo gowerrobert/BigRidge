@@ -38,6 +38,18 @@ type Method
     bootmethod::Function
 end
 
+type CGMethod
+    flopsperiter::Int
+    name::AbstractString
+    stepmethod::Function
+    bootmethod::Function
+    p::Array{Float64}
+    r::Array{Float64}
+    rr::Float64
+end
+
+
+
 type Output
     iterations::Int
     flopsperiter::Int
@@ -54,6 +66,8 @@ include("boot_method.jl")
 include("dataLoad.jl")
 #Including iterative methods
 include("grad.jl")
+include("CD.jl")
+include("CG.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
 

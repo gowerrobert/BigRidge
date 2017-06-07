@@ -9,7 +9,13 @@ function boot_grad(prob::Prob,options::MyOptions)
 end
 
 function step_grad(prob::Prob, x::Array{Float64}, d::Array{Float64}, options::MyOptions)
-    d = - 0.1*(prob.A*x-prob.b);
+     # Fix this later!
+    #Make this efficient by storing the previous gradient and figuring out how to use it to calculate next grad
+    # e.g. A(x_2-x_1) = \nabla f(x_1) - \nabla f(x_2)
+    g= (prob.A*x-prob.b);
+    alpha = norm(g)^2/dot(g,prob.A*g);
+    d[:] = - alpha*(prob.A*x-prob.b);
+           # println("norm d:  ",norm(d))
 end
         
         
