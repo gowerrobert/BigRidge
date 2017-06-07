@@ -13,7 +13,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
 #     times[1] = toc;
     times= [0];
     if(options.exacterror)
-        initial_error= vecnorm(prob.sol-x0);
+        initial_error= vecnorm(prob.xsol-x0);
     end
     initial_residual= vecnorm(prob.A*x0 -prob.b);
     errors = [1];
@@ -36,7 +36,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
     
         if(mod(i,options.skip_error_calculation)==0 )
              if(options.exacterror)
-                    errors= [ errors vecnorm(prob.sol-x0)/initial_error];
+                    errors= [ errors vecnorm(prob.xsol-x0)/initial_error];
              end
              residuals= [residuals vecnorm(prob.A*x0 -prob.b)/initial_residual];
              times = [ times   timeaccum];
@@ -54,7 +54,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
                  break;
             end                
             end
-            if(isnan(sum(M)) || isnan(errors[end]) || errors[end] >1000  )  
+            if(isnan(sum(x)) || isnan(errors[end]) || errors[end] >1000  )  
                  fail = "nan";  iterations = i;
              return;
             end
@@ -62,7 +62,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
      if(timeaccum >options.max_time )
          fail ="times_up";  iterations = i;
          if(options.exacterror)
-            errors= [ errors vecnorm(prob.sol-x0)/initial_error];
+            errors= [ errors vecnorm(prob.xsol-x0)/initial_error];
          end
          residuals= [residuals vecnorm(prob.A*x0 -prob.b)/initial_residual];
          times = [ times   timeaccum];

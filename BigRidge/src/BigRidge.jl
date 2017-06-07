@@ -52,8 +52,8 @@ include("solveRidge.jl")
 include("boot_method.jl")
 #Including test and problem generating functions
 include("dataLoad.jl")
-#Including iterative methods for calculating pseudoinverse
-
+#Including iterative methods
+include("grad.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
 
