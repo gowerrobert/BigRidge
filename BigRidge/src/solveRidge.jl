@@ -1,5 +1,5 @@
 # A wrapper function for testing and timing iterative methods for
-# solving the ridge regression problem - 2017 - Cheikh Toures and Robert Gower
+# solving the ridge regression problem - 2017 - Cheikh Toure and Robert Gower
 function  solveRidge(prob::Prob, method_name, options::MyOptions )
 
     method = boot_method(method_name,prob,options); 
