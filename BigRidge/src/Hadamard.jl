@@ -1,18 +1,31 @@
+include("hada.jl")
 
 function boot_Hadamard(prob::Prob,options::MyOptions)
-    flopsperiter = (options.sketchsize)^3; # Re-think this
+
     name = "Hadamard";
     stepmethod = step_Hadamard
+    flopsperiter = (options.sketchsize)^3;
+
+
     method = Method(flopsperiter,name,step_Hadamard,boot_Hadamard)
     return method;
 end
 
-function step_Hadamard(prob::Prob, x::Array{Float64}, d::Array{Float64}, options::MyOptions )
+function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions )
 idx = sample(1:prob.n,options.sketchsize,replace=true);
     
-   S = zeros(prob.n,options.sketchsize);
+    # SA(x_k+1 - x_k) = -S(Ax-b)
+        
     
-x[idx] = x[idx] - S*(S'*prob.A*S)\S'*(prob.A*x -prob.b) ;
+    M = [prob.A prob.b];
+    
+    mat = hada(M,idx); # that is S * M
+    sa = mat[:,1:end-1];  # S * A
+    sb = mat[:,end];   # S * b
+    
+   
+    vect = sa*x-sb;
+x[:] = x[:] - sa\vect;
 end
         
         

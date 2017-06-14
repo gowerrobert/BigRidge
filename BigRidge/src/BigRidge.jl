@@ -1,20 +1,19 @@
 #module BigRidge  # Think later about organizing this into a module
-using StatsBase
+#using StatsBase
 using Match
-using Plots
+#using Plots
 
 # The types exported
-export MyOptions, Prob, Method, Output
+#export MyOptions, Prob, Method, Output
 # The exported functions
-export solveRidge
-export plot_outputs_Plots
+#export solveRidge
+#export plot_outputs_Plots
 
 type MyOptions
     sketchsize::Int
     sketch::AbstractString   #Type of sketch
     tol::Float64
-   # restol::Float64
-    restol::Array{Float64}
+    restol::Float64
     maxiter::Int
     skip_error_calculation::Int   #How many iterations should be skipped before computing error
     max_time::Float64
@@ -65,11 +64,13 @@ include("solveRidge.jl")
 include("boot_method.jl")
 #Including test and problem generating functions
 include("dataLoad.jl")
+include("defineProb.jl")
 #Including iterative methods
 include("grad.jl")
 include("CD.jl")
 include("CG.jl")
 include("Hadamard.jl")
+
 include("countmin.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
