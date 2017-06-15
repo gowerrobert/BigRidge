@@ -6,7 +6,7 @@ X,y  = loadDataset(dataset);
 
 prob = Prob([],[],[],0,0,dataset);
 
-n = minimum(size(X));
+    n = minimum(size(X)); #the number of data points is not the minimum dimension of X.
 p = maximum(size(X));
 lambda = 1/p;
 
@@ -14,7 +14,7 @@ if method_name == "Hadamard"
     
     N = Int(2.^(1+floor(log2(n)))); # make the dimension of our problem a power of 2
     mat = eye(N)*lambda;
-    mat[1:n,1:n] = X*X'+eye(n)*lambda;
+    mat[1:n,1:n] = X*X'+eye(n)*lambda; #What about X? This doesn't change the dimensions of X.
     prob.A = mat;
     
     vect = zeros(N);

@@ -12,8 +12,7 @@ function boot_Hadamard(prob::Prob,options::MyOptions)
 end
 
 function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions )
-idx = sample(1:prob.n,options.sketchsize,replace=true);
-    
+    idx = sample(1:prob.n,options.sketchsize,replace=true);
     # SA(x_k+1 - x_k) = -S(Ax-b)
         
     
@@ -25,7 +24,14 @@ idx = sample(1:prob.n,options.sketchsize,replace=true);
     
    
     vect = sa*x-sb;
-x[:] = x[:] - sa\vect;
+    x[:] = x[:] - sa\vect;
+    # I suggest implementing this differently:
+    # x =   x -S(S^TAS)^(-1)(S^TAx-S^Tb).
+    # in other words
+    # first solve a small positive definite linear system
+    # (S^TAS) y = (S^TAx-S^Tb)    
+    # then
+    # x = x - S*y.
 end
         
         
