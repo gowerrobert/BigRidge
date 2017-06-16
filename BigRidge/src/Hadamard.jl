@@ -4,7 +4,8 @@ function boot_Hadamard(prob::Prob,options::MyOptions)
 
     name = "Hadamard";
     stepmethod = step_Hadamard
-    flopsperiter = (options.sketchsize)^3;
+    #              cost of linear solve     #cost of calculating SA                                 #cost of adding x and subtracting Sb.
+    flopsperiter = (options.sketchsize)^3 + prob.n*prob.options.sketchsize*log(options.sketchsize) +2*prob.n ; 
 
 
     method = Method(flopsperiter,name,step_Hadamard,boot_Hadamard)
@@ -12,7 +13,7 @@ function boot_Hadamard(prob::Prob,options::MyOptions)
 end
 
 function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions )
-    idx = sample(1:prob.n,options.sketchsize,replace=true);
+    idx = sample(1:prob.n,options.sketchsize,replace=false);
     # SA(x_k+1 - x_k) = -S(Ax-b)
         
     

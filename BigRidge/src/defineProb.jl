@@ -6,7 +6,7 @@ X,y  = loadDataset(dataset);
 
 prob = Prob([],[],[],0,0,dataset);
 
-    n,p = size(X); 
+n,p = size(X); 
 lambda = 1/p;
 
 # if method_name == "Hadamard"
