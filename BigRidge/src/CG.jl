@@ -13,15 +13,16 @@ method.rr = dot(method.r,method.r);
     return method;
 end
 
-function step_CG(prob::Prob, x::Array{Float64}, d::Array{Float64}, options::MyOptions, method::CGMethod)
+function step_CG(prob::Prob, x::Array{Float64}, options::MyOptions, method::CGMethod)
 Ap = prob.A*method.p;
 alpha = (method.rr)/(dot(method.p,Ap));
-d[:]= alpha*method.p;
+d= alpha*method.p;
 method.r[:] = method.r-alpha*Ap;
 rrnew = dot(method.r,method.r);
 beta = (rrnew)/(method.rr);
 method.rr = rrnew;
 method.p[:] = method.r+beta*method.p;
+    x[:] = x[:]+d;
 #println("r :",method.r)
 #println("p :",method.p)
 #println("rr :",method.rr)   
