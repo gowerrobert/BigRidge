@@ -1,7 +1,8 @@
 
 
 function boot_CD(prob::Prob,options::MyOptions)
-    flopsperiter = (options.sketchsize)^3; # Re-think this
+        #              inverting A[s,s]  +  calculating A[s,:]*x  +      adding x and subtracting prob.b[s]
+    flopsperiter = (options.sketchsize)^3  + prob.n*options.sketchsize + 2*prob.n; # Re-think this
     name = "CD";
     stepmethod = step_CD
     method = Method(flopsperiter,name,step_CD,boot_CD)
