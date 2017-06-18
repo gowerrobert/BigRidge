@@ -2,21 +2,21 @@ function hada(x, idx)
 
 # SHDx for x a matrix and S our sketch matrix
 
-n,p = size(x);
+n  = size(x,1)
+p  = size(x,2)
 s = length(idx);
 
 m = Int(floor(n/2));
 
    # idx_new = idx.*(idx.<=m)+(idx-m).*(idx.>m);
 
-    idx_new = idx - m*(idx .> m); 
+    idx_new = idx - m*(idx .> m); # This only selects elements that constrained to be less than m ! So it will never select parts of the original matrix, and thus never converge
 
     
 if n > 3
     
     x1 = x[1:m,:];
     x2 = x[m+1:end,:];
-    
     
     
     vect1 = hada(x1,idx_new);
@@ -40,8 +40,8 @@ if n > 3
        
     else 
         x1 = reshape(x[1,:],1,p);
-       x2 = reshape(x[2,:],1,p);
-      return repmat(x1+x2,s,1) - 2*repmat(x2,s,1).*repmat(idx-1,1,p);
+        x2 = reshape(x[2,:],1,p);
+        return repmat(x1+x2,s,1) - 2*repmat(x2,s,1).*repmat(idx-1,1,p);
 #       return repmat(x1+x2,s,1) - 2*repmat(x2,s,1).*broadcast(*,ones(1,p),idx-1);
 
 
