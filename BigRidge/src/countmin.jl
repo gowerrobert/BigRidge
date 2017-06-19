@@ -16,7 +16,7 @@ s = options.sketchsize;
     sb = C*prob.b;
     
   vect = sa*x-sb;
-    x[:] = x[:] - sa\vect;
+    x[:] = x[:] -sa\vect;
 end
         
         

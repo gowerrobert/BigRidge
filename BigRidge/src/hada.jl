@@ -12,6 +12,7 @@ m = Int(floor(n/2));
 
     idx_new = idx - m*(idx .> m); # This only selects elements that constrained to be less than m ! So it will never select parts of the original matrix, and thus never converge
 
+  #  sgn = reshape(sample(1:2,p) * 2 - 3, 1,p);
     
 if n > 3
     
@@ -35,6 +36,7 @@ if n > 3
         vect2 = repmat(x3,s,1);
         
         return vect1+vect2 -2*vect2.*repmat((idx .== 3),1,p);
+       
 #         return vect1+vect2 -2*vect2.*broadcast(*,ones(1,p),idx .== 3) ;
 
        

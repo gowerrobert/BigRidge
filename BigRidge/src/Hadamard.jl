@@ -13,10 +13,11 @@ end
 
 function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions )
     idx = sample(1:prob.n,options.sketchsize,replace=false);
+    prob.b = reshape(prob.b,prob.n,1);
         
     #M = [prob.A prob.b];   # <-- too expensive to form a and store this matrix at every iteration
-    sa = hada(A,idx); # mat[:,1:end-1];  # S * A
-    sb = hada(b,idx) # mat[:,end];   # S * b
+    sa = hada(prob.A,idx); # mat[:,1:end-1];  # S * A
+    sb = hada(prob.b,idx) # mat[:,end];   # S * b
     sas = hada(sa',idx);  # SAS^T
     # Implementation of   
     # x =   x -S(S^TAS)^(-1)(S^TAx-S^Tb).
