@@ -14,8 +14,8 @@ end
 
   function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions )
 
-sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n);
-    prob.A = broadcast(*, prob.A, sgn);
+#sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n);
+  #  prob.A = broadcast(*, prob.A, sgn);
     
     s = options.sketchsize;
 
@@ -26,20 +26,21 @@ sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n);
     sa = hada(prob.A,idx); # mat[:,1:end-1];  # S * A
     sb = hada(prob.b,idx) # mat[:,end];   # S * b
     sas = hada(sa',idx);  # SAS^T    
-    S = hada(eye(prob.n),idx);  # NEED a more efficient function for calculating S
+
+    #   S = hada(eye(prob.n),idx);  # NEED a more efficient function for calculating S
   
     vect = sa*x-sb; # 
     y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)    
    
-     STy = S'*y;     # calculating STy 
-    x[:] = x[:] -STy; 
+  #   STy = S'*y;     # calculating STy 
+  #  x[:] = x[:] -STy; 
     
     
     
-# y_n = zeros(prob.n,1);
- #   y_n[idx] = y;
-  #STy =  hada(y_n,1:prob.n);
-   #     x[:] = x[:] -STy; 
+ y_n = zeros(prob.n,1);
+    y_n[idx] = y;
+  STy =  hada(y_n,1:prob.n);
+        x[:] = x[:] -STy; 
     
     
 end
