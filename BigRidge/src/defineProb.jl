@@ -8,27 +8,12 @@ prob = Prob([],[],[],0,0,dataset);
 
 n,p = size(X); 
 lambda = 1/p;
-
-# if method_name == "Hadamard"
-#     
-#     N = Int(2.^(1+floor(log2(n)))); # make the dimension of our problem a power of 2
-#     mat = eye(N)*lambda;
-#     mat[1:n,1:n] = X*X'+eye(n)*lambda; #What about X? This doesn't change the dimensions of X.
-#     prob.A = mat;
-#     
-#     vect = zeros(N);
-#     vect[1:n] = X*y;
-#     prob.b = vect;
-#     
-#     prob.xsol = prob.A\prob.b;
-#     prob.lambda = lambda;
-#     
-#     prob.n = N;
-#     
-#     
-#     
-#     
-# else
+# centering and scaling the data
+     Xmean = mean(X,1);
+     Xstd = std(X,1);  
+     ind = (0.==Xstd);Xstd[ind] =1.0;  #replace 0 in std by 1 incase there is a constant feature
+     X= (X.-Xmean)./Xstd; # Centering and scaling
+    
     
     prob.n=  n;
     lambda = maximum(sum(X.^2,1))/(4.0*p);# This is the dimensionally homogeanous choice for lambda  #1/p ;
