@@ -65,12 +65,13 @@ include("boot_method.jl")
 #Including test and problem generating functions
 include("dataLoad.jl")
 include("defineProb.jl")
+include("get_randProb.jl") # generates a random Gaussian matrix
 #Including iterative methods
 include("grad.jl")
 include("CD.jl")
 include("CG.jl")
 include("Hadamard.jl")
-
+include("rademacher.jl")
 include("countmin.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
