@@ -30,7 +30,7 @@ s = options.sketchsize;
     
     
      vect = as'*x-bs'; # 
-    y = sas\*vect;   # solving (S^TAS) y = (S^TAx-S^Tb)   
+    y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)   
 
     STy = S*y;     # calculating STy 
     x[:] = x[:] -STy; 
