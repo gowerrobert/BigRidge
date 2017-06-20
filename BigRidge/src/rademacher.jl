@@ -11,16 +11,25 @@ end
 function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions )
 
     s = options.sketchsize;
-    rho = convert(Int64,floor(n/s)); #hard coded density of rows
-
-    SA = zeros(s,prob.n); 
-   # ind = sample(1:prob.n,prob.n,replace=false);
-   # ind = reshape(ind,s,convert(Int64,n/s))
-    ind =  Array{Int64}(s,rho);#zeros(s,rho); # matrix of indices
-    for i =1:s
-         ind[i,:] = sample(1:prob.n,rho,replace=false);
+    rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows
+    ind = sample(1:prob.n,prob.n,replace=false); # shuffle all indices
+    modns = mod(prob.n,s);
+    divi = prob.n-modns;
+    sold =s;
+    if(modns!=0) 
+        s= s+1;
     end
-
+    indM = Array{Int64}(s,rho);# build a matrix indices with approx equally distributed number of indices over s rows
+    indM[1:sold,:] =reshape(ind[1:divi], sold,rho);
+    if(modns!=0)
+        indM[s,1:modns] = ind[divi+1:end];
+        indM[s,modns+1:end] =sample(1:prob.n, rho-modns,replace=false);
+    end
+    
+#    ind =  Array{Int64}(s,rho);#zeros(s,rho); # matrix of indices
+#    for i =1:s
+#         ind[i,:] = sample(1:prob.n,rho,replace=false);
+#    end
     SA = zeros(s,prob.n);
     Sb = zeros(s);
     for i =1:s
