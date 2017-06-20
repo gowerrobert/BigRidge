@@ -16,11 +16,12 @@ end
 
 #sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n);
   #  prob.A = broadcast(*, prob.A, sgn);
+
     
     s = options.sketchsize;
 
     
- idx = sample(1:prob.n,s,replace = false);
+     idx = sample(1:prob.n,s,replace = false);
     prob.b = reshape(prob.b,prob.n,1);
         
     sa = hada(prob.A,idx); # mat[:,1:end-1];  # S * A

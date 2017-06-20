@@ -1,7 +1,6 @@
 function hada(x, idx)
 
 # SHDx for x a matrix and S our sketch matrix
-
 n  = size(x,1)
 p  = size(x,2)
 s = length(idx);
@@ -10,9 +9,8 @@ m = Int(floor(n/2));
 
    # idx_new = idx.*(idx.<=m)+(idx-m).*(idx.>m);
 
-    idx_new = idx - m*(idx .> m); # This only selects elements that constrained to be less than m ! So it will never select parts of the original matrix, and thus never converge
-
-  #  sgn = reshape(sample(1:2,p) * 2 - 3, 1,p);
+idx_new = idx - m*(idx .> m); 
+#  sgn = reshape(sample(1:2,p) * 2 - 3, 1,p);
     
 if n > 3
     
@@ -25,8 +23,6 @@ if n > 3
     
     return vect1+vect2 -2*vect2.*repmat(idx.>m,1,p);
 #     return vect1+vect2 -2*vect2.*broadcast(*,ones(1,p),idx.>m);
-
-
         
     elseif n == 3
         
@@ -38,7 +34,6 @@ if n > 3
         return vect1+vect2 -2*vect2.*repmat((idx .== 3),1,p);
        
 #         return vect1+vect2 -2*vect2.*broadcast(*,ones(1,p),idx .== 3) ;
-
        
     else 
         x1 = reshape(x[1,:],1,p);

@@ -31,7 +31,7 @@ lambda = 1/p;
 # else
     
     prob.n=  n;
-    lambda = 1/p ;
+    lambda = maximum(sum(X.^2,1))/(4.0*p);# This is the dimensionally homogeanous choice for lambda  #1/p ;
     prob.A = X*X'+eye(n)*lambda;
     
     prob.b = X*y;

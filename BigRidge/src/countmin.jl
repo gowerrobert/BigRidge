@@ -29,12 +29,12 @@ s = options.sketchsize;
   #  sas = Countstream(as',s); # S^T * A * S
     
     
-   
      vect = as'*x-bs'; # 
-    y = pinv(sas)*vect;   # solving (S^TAS) y = (S^TAx-S^Tb)   
+    y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)   
 
-STy = S*y;     # calculating STy 
+    STy = S*y;     # calculating STy 
     x[:] = x[:] -STy; 
+
 end
         
         
