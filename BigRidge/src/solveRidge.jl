@@ -7,7 +7,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
         println("FAIL: unknown method name:")
         return
     end
-    x = zeros(prob.n)
+    x = zeros(prob.n);
 
     println(method.name);
 #     times[1] = toc;
@@ -28,11 +28,31 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
          println("It   | Error% | Residual |  Time   ")
          println("-------------------")
     end
+   
+      s = options.sketchsize;
+
+    
+ idx = sample(1:prob.n,s,replace=false);
+    prob.b = reshape(prob.b,prob.n,1);
+        
+    sa = hada(prob.A,idx); # mat[:,1:end-1];  # S * A
+    sb = hada(prob.b,idx) # mat[:,end];   # S * b
+    sas = hada(sa',idx);  # SAS^T    
+    S = hada(eye(prob.n),idx);  # NEED a more efficient function for calculating S
+
+
+
     for i = 1:options.maxiter
        # println("abs error: ", norm(prob.xsol-x))
         tic();
         if(method.name=="CG")
              method.stepmethod(prob,x,options,method);
+     #   elseif (method.name=="countmin")
+     #   method.stepmethod(prob,x,options);
+
+      #  elseif (method.name=="Hadamard")
+       # method.stepmethod(prob,x,options);
+            
         else
              method.stepmethod(prob,x,options);
         end
