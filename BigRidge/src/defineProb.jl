@@ -1,6 +1,6 @@
 function defineProb(dataset)
     
-    # defining a prob based on the name of the chosen method and the dataset
+    # defining a prob based on the dataset
 
 X,y  = loadDataset(dataset);
 

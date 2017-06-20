@@ -16,17 +16,13 @@ s = options.sketchsize;
 
          b = reshape(prob.b,1,prob.n);
 
-    mat = [prob.A;b];
-    M = Countstream(mat,s);
-    
-    as = M[1:end-1,:];
-    bs = M[end,:]';
+  
     S = Countstream(eye(prob.n),s); # S
     sas = S'*as;
 
-   # as = Countstream(prob.A,s); # A * S
-  #  bs = Countstream(prob.b',s); # b * S
-  #  sas = Countstream(as',s); # S^T * A * S
+    as = Countstream(prob.A,s); # A * S
+    bs = Countstream(prob.b',s); # b * S
+    sas = Countstream(as',s); # S^T * A * S
     
     
      vect = as'*x-bs'; # 
