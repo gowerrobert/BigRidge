@@ -11,8 +11,6 @@ function plot_outputs_Plots(OUTPUTS,probname)
     grid = false)
     for i =2:length(OUTPUTS)
         output = OUTPUTS[i]; 
-        println(output)
-        println(output.name)
         plot!(output.times',output.residuals', yscale = :log10, label  = output.name, linestyle=:auto, marker =:auto, grid = false)
     end
     println(probname)
