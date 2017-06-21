@@ -1,8 +1,8 @@
 function boot_rademacher(prob::Prob,options::MyOptions)
-                       
-    flopsperiter = (options.sketchsize)^3 + (options.sketchsize+1)* #  solving  SAS\(SA*x-Sb)  
-    ((prob.n+1+options.sketchsize)*log(convert(Int64,floor(prob.n/s)))) + #  calculating sketch SA, Sb and SAS
-    prob.n*(options.sketchsize+1); #computing SA*x-Sb 
+    s  =options.sketchsize;                   
+    flopsperiter = s^3+  #  solving  SAS\(SA*x-Sb)  
+    (s+1)*((prob.n+1+s)*convert(Int64,ceil(log(floor(prob.n/s)))))+ #  calculating sketch SA, Sb and SAS
+    prob.n*(s+1); #computing SA*x-Sb 
     name = "rademacher";
     stepmethod = step_rademacher
     method = Method(flopsperiter,name,step_rademacher,boot_rademacher)
@@ -33,20 +33,23 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions )
 #    for i =1:s
 #         ind[i,:] = sample(1:prob.n,rho,replace=false);
 #    end
-    SA = zeros(s,prob.n);
-    Sb = zeros(s);
-    for i =1:s
-          SA[i,:] = sum(prob.A[ind[i,:],:],1);
-          Sb[i] = sum(prob.b[ind[i,:]])
-    end
-    SAS = zeros(s,s); 
-    for i =1:s
-         SAS[i,:] = sum(SA[:,ind[i,:]],2);
-    end
-    y = SAS\(SA*x-Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
-    for i =1:s #adding on S^T y
-       x[ind[i,:]] = x[ind[i,:]]-y[i];
-    end
+    sigs = sample(1:2,prob.n,replace=true).*2.-3;
+
+     SA = zeros(s,prob.n);
+     Sb = zeros(s);
+
+     for i =1:s
+           SA[i,:] = sum(sigs[indM[i,:]].*prob.A[indM[i,:],:],1)/s;
+           Sb[i] = sum(sigs[indM[i,:]].*prob.b[indM[i,:]])/s
+     end
+     SAS = zeros(s,s); 
+      for i =1:s
+          SAS[i,:] = sum(sigs[indM[i,:]]'.*SA[:,indM[i,:]],2)/s;
+     end
+     y = SAS\(SA*x-Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
+     for i =1:s #adding on S^T y
+        x[indM[i,:]] = x[indM[i,:]]-sigs[indM[i,:]].*y[i];
+     end
 
 
 end
