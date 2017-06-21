@@ -36,6 +36,7 @@ type Method
     name::AbstractString
     stepmethod::Function
     bootmethod::Function
+    DATA::Array{Float64}
 end
 
 type CGMethod

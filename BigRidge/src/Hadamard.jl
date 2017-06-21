@@ -7,7 +7,7 @@ stepmethod = step_Hadamard
 flopsperiter = (options.sketchsize)^3 + prob.n*options.sketchsize*convert(Int64,ceil(log(options.sketchsize))) +2*prob.n ;
 println("flopsperiter: ", flopsperiter)
 
-method = Method(flopsperiter,name,step_Hadamard,boot_Hadamard)
+method = Method(flopsperiter,name,step_Hadamard,boot_Hadamard,[])
 return method;
 end
 

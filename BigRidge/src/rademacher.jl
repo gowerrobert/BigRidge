@@ -3,9 +3,9 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     flopsperiter = s^3+  #  solving  SAS\(SA*x-Sb)  
     (s+1)*((prob.n+1+s)*convert(Int64,ceil(log(floor(prob.n/s)))))+ #  calculating sketch SA, Sb and SAS
     prob.n*(s+1); #computing SA*x-Sb 
-    name = "rademacher";
+    name = string("rademacher-",s);
     stepmethod = step_rademacher
-    method = Method(flopsperiter,name,step_rademacher,boot_rademacher)
+    method = Method(flopsperiter,name,step_rademacher,boot_rademacher,[])
     return method;
 end
 
@@ -33,6 +33,8 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions )
 #    for i =1:s
 #         ind[i,:] = sample(1:prob.n,rho,replace=false);
 #    end
+    SA = zeros(s,prob.n);
+    Sb = zeros(s);
     sigs = sample(1:2,prob.n,replace=true).*2.-3;
     for i =1:s
            SA[i,:] = sum(sigs[indM[i,:]].*prob.A[indM[i,:],:],1);
