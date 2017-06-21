@@ -2,7 +2,7 @@
 include("dataLoad.jl")
 initDetails()
 
-datasets = ["madelon.t"] #  w1a, SUSY,
+datasets = ["protein"] #  w1a, SUSY,
 for  dataset in datasets
 transformDataJLD(dataset)
 X,y = loadDataset(dataset) #
