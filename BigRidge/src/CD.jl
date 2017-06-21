@@ -6,14 +6,20 @@ function boot_CD(prob::Prob,options::MyOptions)
     name = string("CD-",s);
     stepmethod = step_CD
     grad = zeros(prob.n);
-    grad[:] = prob.b;
+    grad[:] = -prob.b[:];
     method = Method(flopsperiter,name,step_CD,boot_CD,grad)
     return method;
 end
 
-function step_CD(prob::Prob, x::Array{Float64}, options::MyOptions )
-s = sample(1:prob.n,options.sketchsize,replace=false);
-    x[s] = x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ; # Must save and update A*x so that we don't need to calculate  prob.A[s,:]*x  every iteration.
+function step_CD(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+s = sample(1:prob.n,options.sketchsize,replace=false);    
+d = -prob.A[s,s]\method.DATA[s];   # allocates s size vec
+x[s] =  x[s] +d;
+method.DATA[s] =    method.DATA[s] + prob.A[:,s]*d #update the gradient     
+   
+# Implementation with "brute force" update of gradient    
+#method.DATA[s] = prob.A[s,:]*x -prob.b[s];   #update the gradient        
+#x[s] =  x[s] -prob.A[s,s]\method.DATA[s];   #x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ;
 end
         
         
