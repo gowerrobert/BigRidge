@@ -19,6 +19,7 @@ type MyOptions
     max_time::Float64
     printiters::Bool 
     exacterror::Bool
+    AUX::Array{Float64} # auxiliary options used for random stuff
 end
 
 
