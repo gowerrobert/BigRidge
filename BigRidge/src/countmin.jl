@@ -20,19 +20,20 @@ sgn = reshape(sample(1:2,prob.n) * 2 - 3,prob.n,1); # one half are +1 and the re
     m,n = size(prob.A);
 
 
-A_sign = broadcast(*, prob.A, sgn); # flip the signs of each column w.p. 50%
-b_sign = broadcast(*, prob.b, sgn);
-Id_sign = broadcast(*, eye(prob.n), sgn);
+#A_sign = broadcast(*, prob.A, sgn); # flip the signs of each column w.p. 50%
+#b_sign = broadcast(*, prob.b, sgn);
+#Id_sign = broadcast(*, eye(prob.n), sgn);
 
 as = zeros(m, s); # initialize A*S
 bs = zeros(1, s);
 S = zeros(n, s);
 for j=1:n
+        sgn = sample(1:2,1)*2-3;
     
-    as[:, ll[j]] = as[:, ll[j]] +  A_sign[:, j];
-        bs[ll[j]] = bs[ll[j]] +  b_sign[j];
+    as[:, ll[j]] = as[:, ll[j]] + sgn[1]*prob.A[:, j];
+        bs[ll[j]] +=  sgn[1]*prob.b[j];
 
-    S[:, ll[j]] = S[:, ll[j]] +  Id_sign[:, j];
+    S[j, ll[j]] += sgn[1];
 
 
 end

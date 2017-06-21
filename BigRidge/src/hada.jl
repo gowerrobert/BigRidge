@@ -1,14 +1,14 @@
-function hada(A, idx,sgn)
+function hada(x, idx)
 
 # Sx for x a matrix and S our sketch matrix
 
 
-n  = size(A,1)
-p  = size(A,2)
+n  = size(x,1)
+p  = size(x,2)
 s = length(idx);
 
     # This allocates a matrix of size A at every iteration!
-x = broadcast(*, A, sgn); # flip the signs of each column w.p. 50%
+#x = broadcast(*, A, sgn); # flip the signs of each column w.p. 50%
 
 
 if x  == 0
@@ -27,8 +27,8 @@ if floor(log2(n)) == log2(n)
         x2 = x[m+1:end,:];
         
         
-        vect1 = hada(x1,idx_new,sgn[1:m]);
-        vect2 = hada(x2,idx_new,sgn[1:m]);
+        vect1 = hada(x1,idx_new);
+        vect2 = hada(x2,idx_new);
         
         return vect1+vect2 -2*vect2.*repmat(idx.>m,1,p);
         
@@ -36,7 +36,7 @@ if floor(log2(n)) == log2(n)
         
         x1 = x[1:2,:];
         x3 = reshape(x[3,:],1,p);
-        vect1 = hada(x1,idx_new,sgn[1:2]);
+        vect1 = hada(x1,idx_new);
         vect2 = repmat(x3,s,1);
         
         return vect1+vect2 -2*vect2.*repmat((idx .== 3),1,p);
@@ -52,10 +52,9 @@ else
     integ = Int(ceil(log2(n)));
     N = 2^integ;
     X = zeros(N,p);
-    X[1:n,:] = A;
-        sgn1 = zeros(N,1);
-        sgn1[1:n] = sgn;
-    return hada(X,idx,sgn1);
+    X[1:n,:] = x;
+        
+    return hada(X,idx);
 end
 
 
