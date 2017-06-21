@@ -32,11 +32,11 @@ sas = S'*as;
 
 bs = b*S;
 
-
 vect = as'*x-bs'; #
 y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)
 
 x[:] = x[:] -S*y;
+
 
 end
 
