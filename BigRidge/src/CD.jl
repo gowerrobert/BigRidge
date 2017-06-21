@@ -13,7 +13,9 @@ end
 
 function step_CD(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 s = sample(1:prob.n,options.sketchsize,replace=false);
-x[s] =  x[s] -prob.A[s,s]\   #x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ;
+method.DATA[s] = prob.A[s,:]*x -prob.b[s];   #update the gradient        
+x[s] =  x[s] -prob.A[s,s]\method.DATA[s];   #x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ;
+    
 end
         
         

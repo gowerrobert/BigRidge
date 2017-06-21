@@ -12,7 +12,7 @@ return method;
 end
 
 
-function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method ))
+function step_Hadamard(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 
 s = options.sketchsize;
 
