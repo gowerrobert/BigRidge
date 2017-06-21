@@ -7,6 +7,7 @@ n  = size(A,1)
 p  = size(A,2)
 s = length(idx);
 
+    # This allocates a matrix of size A at every iteration!
 x = broadcast(*, A, sgn); # flip the signs of each column w.p. 50%
 
 

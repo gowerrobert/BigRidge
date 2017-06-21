@@ -33,11 +33,11 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
         indM[s,modns+1:end] =sample(1:prob.n, rho-modns,replace=false);
     end
     
-#    ind =  Array{Int64}(s,rho);#zeros(s,rho); # matrix of indices
-#    for i =1:s
-#         ind[i,:] = sample(1:prob.n,rho,replace=false);
-#    end
-   # SA = zeros(s,prob.n);  # this is called method.DATA now
+#   ind =  Array{Int64}(s,rho);#zeros(s,rho); # matrix of indices
+#   for i =1:s
+#        ind[i,:] = sample(1:prob.n,rho,replace=false);
+#   end
+  # SA = zeros(s,prob.n);  # this is called method.DATA now
     Sb = zeros(s);
     sigs = sample(1:2,prob.n,replace=true).*2.-3;
     for i =1:s
@@ -52,7 +52,6 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
      for i =1:s #adding on S^T y
         x[indM[i,:]] = x[indM[i,:]]-sigs[indM[i,:]].*y[i];
      end
-
 end
         
         
