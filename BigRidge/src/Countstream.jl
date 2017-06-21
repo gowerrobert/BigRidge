@@ -1,4 +1,4 @@
-function Countstream(A,s, ll,sgn)
+function Countstream(A,b,)
     
 m,n = size(A);
 

@@ -1,4 +1,4 @@
-function hada(A, idx)
+function hada(A, idx,sgn)
 
 # Sx for x a matrix and S our sketch matrix
 
@@ -7,9 +7,7 @@ n  = size(A,1)
 p  = size(A,2)
 s = length(idx);
 
-sgn = reshape(sample(1:2,n) * 2 - 3, 1,n); # one half are +1 and the rest are −1
-
-x = broadcast(*, A, sgn'); # flip the signs of each column w.p. 50%
+x = broadcast(*, A, sgn); # flip the signs of each column w.p. 50%
 
 
 if x  == 0
@@ -28,8 +26,8 @@ if floor(log2(n)) == log2(n)
         x2 = x[m+1:end,:];
         
         
-        vect1 = hada(x1,idx_new);
-        vect2 = hada(x2,idx_new);
+        vect1 = hada(x1,idx_new,sgn[1:m]);
+        vect2 = hada(x2,idx_new,sgn[1:m]);
         
         return vect1+vect2 -2*vect2.*repmat(idx.>m,1,p);
         
@@ -37,7 +35,7 @@ if floor(log2(n)) == log2(n)
         
         x1 = x[1:2,:];
         x3 = reshape(x[3,:],1,p);
-        vect1 = hada(x1,idx_new);
+        vect1 = hada(x1,idx_new,sgn[1:2]);
         vect2 = repmat(x3,s,1);
         
         return vect1+vect2 -2*vect2.*repmat((idx .== 3),1,p);
@@ -54,7 +52,9 @@ else
     N = 2^integ;
     X = zeros(N,p);
     X[1:n,:] = A;
-    return hada(X,idx);
+        sgn1 = zeros(N,1);
+        sgn1[1:n] = sgn;
+    return hada(X,idx,sgn1);
 end
 
 
