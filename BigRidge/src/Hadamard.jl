@@ -18,30 +18,29 @@ s = options.sketchsize;
 
 
 idx = sample(1:prob.n,s,replace = false);
-prob.b = reshape(prob.b,prob.n,1);
+
+sgn = reshape(sample(1:2,prob.n) * 2 - 3,prob.n,1); # one half are +1 and the rest are −1
 
 
 
-sa = hada(prob.A,idx);   # S * A
 
-S = sa/prob.A;
+sa = hada(prob.A,idx,sgn);   # S * A
+
+#S = hada(eye(prob.n),idx,sgn);   # S
 
 
-sb = S*prob.b; # S * b
-
-sas = S * sa'; # SAS^T
+sb = hada(reshape(prob.b,prob.n,1),idx,sgn);
+#sb = S*prob.b; # S * b
+sas = hada(sa',idx,sgn);
+#sas = S * sa'; # SAS^T
 
 vect = sa*x-sb;
 y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)
 
-#y_n = zeros(prob.n,1);
-#y_n[idx] = y;
-#STy =  hada(y_n,1:prob.n);
-#x[:] = x[:] -STy;
+y_n = zeros(prob.n,1);
+y_n[idx] = y;
 
-x[:] = x[:] -S'*y;
-
-
+x[:] = x[:] -hada(y_n,1:prob.n,sgn);
 
 end
 

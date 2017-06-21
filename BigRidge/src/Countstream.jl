@@ -1,7 +1,6 @@
-function Countstream(A,s, ll)
+function Countstream(A,b,)
     
 m,n = size(A);
-sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n); # one half are +1 and the rest are −1
 
 
 x = broadcast(*, A, sgn); # flip the signs of each column w.p. 50%
