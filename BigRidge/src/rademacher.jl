@@ -13,6 +13,7 @@ function boot_rademacher(prob::Prob,options::MyOptions)
             println("flip signs of rows!")
             stepmethod =  step_rademacher;
         end
+        
     else
     stepmethod = step_rademachertest;
     end
@@ -61,7 +62,44 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
      end
 end
         
-
+function step_rademacher_rho(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+    rho = options.AUX[2]; # the density per row
+    s = options.sketchsize;
+   # rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows
+    ind = sample(1:prob.n,rho*s,replace=false); # shuffle all indices
+#    modns = mod(prob.n,s);
+#    divi = prob.n-modns;
+#    sold =s;
+#    if(modns!=0) 
+#        s= s+1;
+#    end
+#    indM = Array{Int64}(s,rho);# build a matrix indices with approx equally distributed number of indices over s rows
+    indM[1:s,:] =reshape(ind s,rho);
+ #   if(modns!=0)
+ #       indM[s,1:modns] = ind[divi+1:end];
+  #      indM[s,modns+1:end] =sample(1:prob.n, rho-modns,replace=false);
+  #  end
+    
+#   ind =  Array{Int64}(s,rho);#zeros(s,rho); # matrix of indices
+#   for i =1:s
+#        ind[i,:] = sample(1:prob.n,rho,replace=false);
+#   end
+  # SA = zeros(s,prob.n);  # this is called method.DATA now
+    Sb = zeros(s);
+    sigs = sample(1:2,prob.n,replace=true).*2.-3;
+    for i =1:s
+           method.DATA[i,:] = sum(sigs[indM[i,:]].*prob.A[indM[i,:],:],1);
+           Sb[i] = sum(sigs[indM[i,:]].*prob.b[indM[i,:]])
+    end
+    SAS = zeros(s,s); 
+     for i =1:s
+          SAS[i,:] = sum(sigs[indM[i,:]]'.*method.DATA[:,indM[i,:]],2);
+     end
+     y = SAS\(method.DATA*x-Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
+     for i =1:s #adding on S^T y
+        x[indM[i,:]] = x[indM[i,:]]-sigs[indM[i,:]].*y[i];
+     end
+end
 function step_rademachertest(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 # With no sign swapping
     s = options.sketchsize;
