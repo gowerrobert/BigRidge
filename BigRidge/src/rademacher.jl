@@ -54,6 +54,39 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
      end
 end
         
+
+function step_rademacher2(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+# With no sign swapping
+    s = options.sketchsize;
+    rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows
+    ind = sample(1:prob.n,prob.n,replace=false); # shuffle all indices
+    modns = mod(prob.n,s);
+    divi = prob.n-modns;
+    sold =s;
+    if(modns!=0) 
+        s= s+1;
+    end
+    indM = Array{Int64}(s,rho);# build a matrix indices with approx equally distributed number of indices over s rows
+    indM[1:sold,:] =reshape(ind[1:divi], sold,rho);
+    if(modns!=0)
+        indM[s,1:modns] = ind[divi+1:end];
+        indM[s,modns+1:end] =sample(1:prob.n, rho-modns,replace=false);
+    end
+    
+    Sb = zeros(s);
+    for i =1:s
+           method.DATA[i,:] = sum(prob.A[indM[i,:],:],1);
+           Sb[i] = sum(prob.b[indM[i,:]])
+    end
+    SAS = zeros(s,s); 
+     for i =1:s
+          SAS[i,:] = sum(method.DATA[:,indM[i,:]],2);
+     end
+     y = SAS\(method.DATA*x-Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
+     for i =1:s #adding on S^T y
+        x[indM[i,:]] = x[indM[i,:]]-y[i];
+     end
+end
         
         
         

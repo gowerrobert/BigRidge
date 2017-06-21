@@ -31,8 +31,7 @@ function  solveRidge(prob::Prob, method_name, options::MyOptions )
     for i = 1:options.maxiter
        # println("abs error: ", norm(prob.xsol-x))
         tic();
-        method.stepmethod(prob,x,options, method);
-        
+        method.stepmethod(prob,x,options, method);    
         timeaccum= timeaccum +  toq(); # Keeps track of time accumulated at every iteration
     
         if(mod(i,options.skip_error_calculation)==0 )
