@@ -13,7 +13,7 @@ function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions, method
 
 s = options.sketchsize;
 ll = sample(1:s, prob.n); # sample n items from [s] with replacement
-sgn = reshape(sample(1:2,prob.n) * 2 - 3, 1,prob.n); # one half are +1 and the rest are −1
+sgn = reshape(sample(1:2,prob.n) * 2 - 3,prob.n,1); # one half are +1 and the rest are −1
     
     
     

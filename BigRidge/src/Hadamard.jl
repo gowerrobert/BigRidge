@@ -26,7 +26,7 @@ sgn = reshape(sample(1:2,prob.n) * 2 - 3,prob.n,1); # one half are +1 and the re
 
 sa = hada(prob.A,idx,sgn);   # S * A
 
-#S = hada(eye(prob.n),idx,sgn);   # S
+S = hada(eye(prob.n),idx,sgn);   # S
 
 
 sb = hada(reshape(prob.b,prob.n,1),idx,sgn);
@@ -37,11 +37,12 @@ sas = hada(sa',idx,sgn);
 vect = sa*x-sb;
 y = sas\vect;   # solving (S^TAS) y = (S^TAx-S^Tb)
 
-y_n = zeros(prob.n,1);
-y_n[idx] = y;
+#y_n = zeros(prob.n,1);
+#y_n[idx] = y;
 
-x[:] = x[:] -hada(y_n,1:prob.n,sgn);
-
+#x[:] = x[:] -hada(y_n,1:prob.n,sgn);
+x[:] = x[:] - S'*y;
+    
 end
 
 
