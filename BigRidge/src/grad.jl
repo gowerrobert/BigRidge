@@ -4,7 +4,7 @@ function boot_grad(prob::Prob,options::MyOptions)
     flopsperiter = (prob.n)^2;
     name = "grad";
     stepmethod = step_grad
-    method = Method(flopsperiter,name,step_grad,boot_grad)
+    method = Method(flopsperiter,name,step_grad,boot_grad,[])
     return method;
 end
 

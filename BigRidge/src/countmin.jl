@@ -4,7 +4,7 @@ function boot_countmin(prob::Prob,options::MyOptions)
 flopsperiter = (options.sketchsize)^3; # Re-think this
 name = "countmin";
 stepmethod = step_countmin
-method = Method(flopsperiter,name,step_countmin,boot_countmin)
+method = Method(flopsperiter,name,step_countmin,boot_countmin,[])
 return method;
 end
 
