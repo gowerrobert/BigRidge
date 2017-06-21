@@ -11,9 +11,9 @@ function boot_CD(prob::Prob,options::MyOptions)
     return method;
 end
 
-function step_CD(prob::Prob, x::Array{Float64}, options::MyOptions )
+function step_CD(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 s = sample(1:prob.n,options.sketchsize,replace=false);
-    x[s] = x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ; # Must save and update A*x so that we don't need to calculate  prob.A[s,:]*x  every iteration.
+x[s] =  x[s] -prob.A[s,s]\   #x[s] -(prob.A[s,s]\(prob.A[s,:]*x -prob.b[s])) ;
 end
         
         

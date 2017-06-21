@@ -11,7 +11,7 @@ end
 
 #function step_countmin(as::Array{Float64,2},bs::Array{Float64,2},sas::Array{Float64,2},S::Array{Float64,2},prob::Prob, x::Array{Float64}, options::MyOptions )
 
-function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions )
+function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 
     s = options.sketchsize;
     rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows

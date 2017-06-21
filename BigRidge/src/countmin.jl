@@ -9,7 +9,7 @@ return method;
 end
 
 
-function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions )
+function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 
 s = options.sketchsize;
 ll = sample(1:s, prob.n); # sample n items from [s] with replacement
