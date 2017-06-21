@@ -15,7 +15,7 @@ function defineProb(dataset)
     prob.b = X*y;
 
     try 
-       prob.xsol = load("../data/$(dataset)-xsol.jld", "xsol"
+       prob.xsol = load("../data/$(dataset)-xsol.jld", "xsol")
     catch loaderror
        println(loaderror)
        prob.xsol = prob.A\prob.b;

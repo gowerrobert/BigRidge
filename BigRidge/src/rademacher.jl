@@ -7,9 +7,16 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     if(mod(prob.n,s)!=0) 
         s= s+1;
     end
-    SA = zeros(s,prob.n); # saving space for sketched matrix
-    stepmethod = step_rademacher;
-    method = Method(flopsperiter,name,step_rademacher,boot_rademacher,SA)
+    DATA = zeros(s,prob.n); # saving space for sketched matrix SA
+    if(~isempty(options.AUX))
+        if(options.AUX[1]==1.0)
+            println("flip signs of rows!")
+            stepmethod =  step_rademacher;
+        end
+    else
+    stepmethod = step_rademachertest;
+    end
+    method = Method(flopsperiter,name,step_rademacher,boot_rademacher,DATA)
     return method;
 end
 
@@ -55,7 +62,7 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
 end
         
 
-function step_rademacher2(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+function step_rademachertest(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
 # With no sign swapping
     s = options.sketchsize;
     rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows
