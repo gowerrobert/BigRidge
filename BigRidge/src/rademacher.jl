@@ -34,23 +34,18 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions )
 #         ind[i,:] = sample(1:prob.n,rho,replace=false);
 #    end
     sigs = sample(1:2,prob.n,replace=true).*2.-3;
-
-     SA = zeros(s,prob.n);
-     Sb = zeros(s);
-
-     for i =1:s
-           SA[i,:] = sum(sigs[indM[i,:]].*prob.A[indM[i,:],:],1)/s;
-           Sb[i] = sum(sigs[indM[i,:]].*prob.b[indM[i,:]])/s
+    for i =1:s
+           SA[i,:] = sum(sigs[indM[i,:]].*prob.A[indM[i,:],:],1);
+           Sb[i] = sum(sigs[indM[i,:]].*prob.b[indM[i,:]])
      end
      SAS = zeros(s,s); 
       for i =1:s
-          SAS[i,:] = sum(sigs[indM[i,:]]'.*SA[:,indM[i,:]],2)/s;
+          SAS[i,:] = sum(sigs[indM[i,:]]'.*SA[:,indM[i,:]],2);
      end
      y = SAS\(SA*x-Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
      for i =1:s #adding on S^T y
         x[indM[i,:]] = x[indM[i,:]]-sigs[indM[i,:]].*y[i];
      end
-
 
 end
         
