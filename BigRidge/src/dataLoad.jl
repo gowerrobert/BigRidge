@@ -42,7 +42,7 @@ function loadDataset(dataset) # once transformed, load the dataset using JLD
 end
 
 function showDetails(dataset) # shows the details of the dataset
-  return load( "$(default_path)details.jld", "details")[dataset]
+  return load("$(default_path)details.jld", "details")[dataset]
 end
 
 function readLIBSVM(fname::AbstractString, classification::Bool) # the function to read the standard LIBSVM format
