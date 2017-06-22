@@ -5,7 +5,6 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     prob.n*(s+1); #computing SA*x-Sb 
     name = string("rademacher-",s,"-",options.AUX[2]);
 
-    options.AUX[1] = Int(options.AUX[1]); options.AUX[2] = Int(options.AUX[2]);
     rho = Int(options.AUX[2]);
     if(rho*options.sketchsize > prob.n)
           println("change rho density to n/s: ", Int(floor(prob.n/options.sketchsize)) )
@@ -17,6 +16,7 @@ function boot_rademacher(prob::Prob,options::MyOptions)
         sigs = sample(1:2,rho*s,replace=true).*2.-3;
     else
         stepmethod = step_rademacher;
+        sigs =[];
     end  
     SA = zeros(s,prob.n); # saving space for sketched matrix SA
     SAS = zeros(s,s);
@@ -28,13 +28,13 @@ end
 
     
 function step_rademacher_sign_flip(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
-    rho = options.AUX[2]; # the density per row
+    rho = Int(options.AUX[2]); # the density per row
     s = options.sketchsize;
-    method.ind[:] = sample(1:prob.n,rho*s,replace=false); # shuffle all indices
+    sample!(1:prob.n, method.ind ; replace=false)  # get a sample of rows 
     method.ind =reshape(method.ind, s,rho);
-    #sigs = sample(1:2,prob.n,replace=true).*2.-3;
-    method.sigs[:] = sample(1:2,rho*s,replace=true).*2.-3;
-    method.sigs = reshape(ind, s,rho);
+    sample!(1:2,method.sigs; replace=true);
+    method.sigs[:] =method.sigs.*2.-3;
+    method.sigs = reshape(method.sigs, s,rho);
     for i =1:s
            method.SA[i,:] = sum(method.sigs[i,:].*prob.A[ind[i,:],:],1);
            method.Sb[i] = sum(method.sigs[i,:].*prob.b[ind[i,:]])
@@ -47,14 +47,12 @@ function step_rademacher_sign_flip(prob::Prob, x::Array{Float64}, options::MyOpt
         x[ind[i,:]] = x[ind[i,:]]-method.sigs[i,:].*y[i];
      end
 end
-    
-
-        
-function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+ 
+function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
 # With no sign swapping
-    rho = options.AUX[2]; # the density per row
+    rho = Int(options.AUX[2]); # the density per row
     s = options.sketchsize;
-    method.ind[:] = sample(1:prob.n,rho*s,replace=false); # shuffle all indices
+    sample!(1:prob.n, ind ; replace=false)  # get a sample of rows 
     method.ind =reshape(method.ind, s,rho);
     for i =1:s
            method.SA[i,:] = sum(prob.A[ind[i,:],:],1);
@@ -69,11 +67,8 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
      end
 end
         
-        
-        
 
-function step_rademacher_full_indexed(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
-
+function step_rademacher_full_indexed(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
     s = options.sketchsize;
     rho = convert(Int64,floor(prob.n/s)); #hard coded density of rows
     ind = sample(1:prob.n,prob.n,replace=false); # shuffle all indices
