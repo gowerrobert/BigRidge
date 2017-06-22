@@ -28,10 +28,10 @@ as = zeros(m, s); # initialize A*S
 bs = zeros(1, s);
 S = zeros(n, s);
 for j=1:n
-        sgn = sample(1:2,1)*2-3;
-    
-    as[:, ll[j]] = as[:, ll[j]] + sgn[1]*prob.A[:, j];
-        bs[ll[j]] +=  sgn[1]*prob.b[j];
+        
+    sgn = sample(1:2,1)*2-3;
+    as[:, ll[j]] +=  sgn[1]*prob.A[:, j];
+    bs[ll[j]] +=  sgn[1]*prob.b[j];
 
     S[j, ll[j]] += sgn[1];
 
