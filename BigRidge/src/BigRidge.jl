@@ -81,6 +81,7 @@ include("rademacher.jl")
 include("countmin.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
+#include("call_all_methods.jl")
 
 
 #end

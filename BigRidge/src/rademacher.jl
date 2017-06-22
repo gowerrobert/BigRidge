@@ -3,17 +3,17 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     flopsperiter = s^3+  #  solving  SAS\(SA*x-Sb)  
     (s+1)*((prob.n+1+s)*convert(Int64,ceil(log(floor(prob.n/s)))))+ #  calculating sketch SA, Sb and SAS
     prob.n*(s+1); #computing SA*x-Sb 
-    name = string("rademacher-",s,"-",options.AUX[2]);
+    name = string("rademacher-",s,"-",Int(options.AUX[2]));
 
-    rho = Int(options.AUX[2]);
-    if(rho*options.sketchsize > prob.n)
+    if(Int(options.AUX[2])*options.sketchsize > prob.n) # check density size
           println("change rho density to n/s: ", Int(floor(prob.n/options.sketchsize)) )
           options.AUX[2] = Int(floor(prob.n/options.sketchsize));
     end
-    
-    if(options.AUX[1]==1) # with sign flipping
+    rho = Int(options.AUX[2]);    # density
+    if(Int(options.AUX[1])==1) # with sign flipping
         stepmethod =  step_rademacher_sign_flip;
         sigs = sample(1:2,rho*s,replace=true).*2.-3;
+        name = string(name,"-sgn");
     else
         stepmethod = step_rademacher;
         sigs =[];
@@ -21,8 +21,9 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     SA = zeros(s,prob.n); # saving space for sketched matrix SA
     SAS = zeros(s,s);
     Sb = zeros(s);
-    ind = sample(1:prob.n,rho*s,replace=false); 
-    method = SketchMethod(flopsperiter,name,step_rademacher,boot_rademacher,SA,SAS,Sb,ind,sigs)
+    ind = zeros(rho*s);
+    #ind = sample(1:prob.n,rho*s,replace=false); 
+    method = SketchMethod(flopsperiter,name,stepmethod,boot_rademacher,SA,SAS,Sb,ind,sigs)
     return method;
 end
 
@@ -36,34 +37,36 @@ function step_rademacher_sign_flip(prob::Prob, x::Array{Float64}, options::MyOpt
     method.sigs[:] =method.sigs.*2.-3;
     method.sigs = reshape(method.sigs, s,rho);
     for i =1:s
-           method.SA[i,:] = sum(method.sigs[i,:].*prob.A[ind[i,:],:],1);
-           method.Sb[i] = sum(method.sigs[i,:].*prob.b[ind[i,:]])
+           method.SA[i,:] = sum(method.sigs[i,:].*prob.A[method.ind[i,:],:],1);
+           method.Sb[i] = sum(method.sigs[i,:].*prob.b[method.ind[i,:]])
     end
-     for i =1:s
-          method.SAS[i,:] = sum(method.sigs[i,:]'.*method.SA[:,ind[i,:]],2);
-     end
-     y = method.SAS\(method.SA*x-method.Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
-     for i =1:s #adding on S^T y
-        x[ind[i,:]] = x[ind[i,:]]-method.sigs[i,:].*y[i];
-     end
+    for i =1:s
+          method.SAS[i,:] = sum(method.sigs[i,:]'.*method.SA[:,method.ind[i,:]],2);
+    end
+    method.Sb[:] =method.SA*x-method.Sb;
+    method.Sb[:] = method.SAS\method.Sb;   # solving (S^TAS) y = (S^TAx-S^Tb)  
+    for i =1:s #adding on S^T y
+       x[method.ind[i,:]] -= method.sigs[i,:].*method.Sb[i];
+    end
 end
  
 function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
 # With no sign swapping
     rho = Int(options.AUX[2]); # the density per row
     s = options.sketchsize;
-    sample!(1:prob.n, ind ; replace=false)  # get a sample of rows 
+    sample!(1:prob.n, method.ind ; replace=false)  # get a sample of rows 
     method.ind =reshape(method.ind, s,rho);
     for i =1:s
-           method.SA[i,:] = sum(prob.A[ind[i,:],:],1);
-           method.Sb[i] = sum(prob.b[ind[i,:]])
+           method.SA[i,:] = sum(prob.A[method.ind[i,:],:],1);
+           method.Sb[i] = sum(prob.b[method.ind[i,:]])
     end
      for i =1:s
-          method.SAS[i,:] = sum(method.SA[:,ind[i,:]],2);
+          method.SAS[i,:] = sum(method.SA[:,method.ind[i,:]],2);
      end
-     y = method.SAS\(method.SA*x-method.Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
+     method.Sb[:] = method.SAS\(method.SA*x-method.Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
      for i =1:s #adding on S^T y
-        x[ind[i,:]] = x[ind[i,:]]-y[i];
+        x[method.ind[i,:]] -= method.Sb[i];
+        #x[method.ind[i,:]] = x[method.ind[i,:]]-method.Sb[i];
      end
 end
         

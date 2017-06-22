@@ -7,7 +7,7 @@ function boot_CD(prob::Prob,options::MyOptions)
     stepmethod = step_CD
     grad = zeros(prob.n);
     grad[:] = -prob.b[:];
-    method = Method(flopsperiter,name,step_CD,boot_CD,[],[],grad,[],[])
+    method = SketchMethod(flopsperiter,name,step_CD,boot_CD,[],[],grad,[],[])
     return method;
 end
 
