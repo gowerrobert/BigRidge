@@ -22,10 +22,7 @@ rrnew = dot(method.r,method.r);
 beta = (rrnew)/(method.rr);
 method.rr = rrnew;
 method.p[:] = method.r+beta*method.p;
-    x[:] = x[:]+d;
-#println("r :",method.r)
-#println("p :",method.p)
-#println("rr :",method.rr)   
+x[:] = x[:]+d;
 end
         
         
