@@ -32,12 +32,16 @@ type Prob
     name::AbstractString
 end
 
-type Method
+type SketchMethod
     flopsperiter::Int
     name::AbstractString
     stepmethod::Function
     bootmethod::Function
-    DATA::Array{Float64}
+    SA::Array{Float64}
+    SAS::Array{Float64}
+    Sb::Array{Float64}
+    ind::Array{Int64}
+    sigs::Array{Int64}
 end
 
 type CGMethod
