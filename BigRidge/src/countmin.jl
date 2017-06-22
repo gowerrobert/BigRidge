@@ -4,12 +4,12 @@ function boot_countmin(prob::Prob,options::MyOptions)
 flopsperiter = (options.sketchsize)^3; # Re-think this
 name = "countmin";
 stepmethod = step_countmin
-method = Method(flopsperiter,name,step_countmin,boot_countmin,[])
+method = SketchMethod(flopsperiter,name,step_countmin,boot_countmin,[])
 return method;
 end
 
 
-function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions, method::Method )
+function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
 
 s = options.sketchsize;
 ll = sample(1:s, prob.n); # sample n items from [s] with replacement
