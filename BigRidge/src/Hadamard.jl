@@ -42,7 +42,7 @@ method.SA[:] = hada(prob.A,method.ind);   # S * A
 
 
 y_n = zeros(prob.n,1);
-y_n[method.ind] = y;
+y_n[method.ind[:]] = y;
 
 x[:] = x[:] -hada(y_n,1:prob.n);
     
