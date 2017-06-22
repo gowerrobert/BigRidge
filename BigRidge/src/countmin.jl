@@ -7,7 +7,8 @@ stepmethod = step_countmin;
 
 
      SA = zeros(prob.n,s); # saving space for sketched matrix AS (that is AS here and not SA)
-    SAS = zeros(prob.n,s); # here we use this yield to store S instead of SAS
+    SAS = zeros(prob.n+s,s); # here we use this yield to store S instead of SAS
+    # S = SAS[1:prob.n,:]   and 'SAS' = SAS[prob.n+1:end,:]
     Sb = zeros(1,s);
     ind = sample(1:s, prob.n); # sample n items from [s] with replacement
 
@@ -36,7 +37,7 @@ s = options.sketchsize;
 for j=1:n
         
     sample!(1:2,method.sigs);
-       method.sigs[:] = 2.*method.sigs .- 3
+    method.sigs[:] = 2.*method.sigs .- 3
     method.SA[:, method.ind[j]] +=  method.sigs[1].*prob.A[:, j];
     method.Sb[method.ind[j]] +=  method.sigs[1].*prob.b[j];
 
@@ -44,11 +45,8 @@ for j=1:n
 
 
 end
-    
      
-vect = method.SA'*x-method.Sb'; 
-x[:] = x[:] -method.SAS/(method.SAS'*method.SA)*vect; #solving (S^TAS) y = (S^TAx-S^Tb) and multiplying y by S
-
+x[:] -= method.SAS/(method.SAS'*method.SA)*(method.SA'*x-method.Sb'); #solving (S^TAS) y = (S^TAx-S^Tb) and multiplying y by S
 
 end
 

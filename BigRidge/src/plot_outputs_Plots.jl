@@ -1,7 +1,7 @@
 # Front end for plotting the execution in time and in flops of the outputs recorded in OUTPUTS.
 function plot_outputs_Plots(OUTPUTS,probname)
     output = OUTPUTS[1];
-    plot(output.times',output.residuals', 
+    plot(output.times',output.errors', 
     xlabel = "time", 
     ylabel = "residual", 
     yscale = :log10,
@@ -11,7 +11,7 @@ function plot_outputs_Plots(OUTPUTS,probname)
     grid = false)
     for i =2:length(OUTPUTS)
         output = OUTPUTS[i]; 
-        plot!(output.times',output.residuals', yscale = :log10, label  = output.name, linestyle=:auto, marker =:auto, grid = false)
+        plot!(output.times',output.errors', yscale = :log10, label  = output.name, linestyle=:auto, marker =:auto, grid = false)
     end
     println(probname)
     probname= replace(probname, r"[\/]", "-");
@@ -20,7 +20,7 @@ function plot_outputs_Plots(OUTPUTS,probname)
     output = OUTPUTS[1];
     lt = length(output.times);
     reflops = output.flopsperiter;
-    plot((output.flopsperiter/reflops)*(1:lt)*(output.iterations/lt),output.residuals', 
+    plot((output.flopsperiter/reflops)*(1:lt)*(output.iterations/lt),output.errors', 
     xlabel = "flops", 
     ylabel = "residual", 
     yscale = :log10,
@@ -31,7 +31,7 @@ function plot_outputs_Plots(OUTPUTS,probname)
     for i =2:length(OUTPUTS)
         output = OUTPUTS[i];
         lt = length(output.times);
-        plot!((output.flopsperiter/reflops)*(1:lt)*(output.iterations/lt),output.residuals',
+        plot!((output.flopsperiter/reflops)*(1:lt)*(output.iterations/lt),output.errors',
         yscale = :log10, label  = output.name, linestyle=:auto, marker =:auto, grid = false)
     end
 #    probname= replace(probname, r"[\/]", "-");
