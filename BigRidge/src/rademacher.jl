@@ -1,10 +1,6 @@
 function boot_rademacher(prob::Prob,options::MyOptions)
     s  =options.sketchsize;                   
-    flopsperiter = s^3+  #  solving  SAS\(SA*x-Sb)  
-    (s+1)*((prob.n+1+s)*convert(Int64,ceil(log(floor(prob.n/s)))))+ #  calculating sketch SA, Sb and SAS
-    prob.n*(s+1); #computing SA*x-Sb 
     name = string("rademacher-",s,"-",Int(options.AUX[2]));
-
     if(Int(options.AUX[2])*options.sketchsize > prob.n) # check density size
           println("change rho density to n/s: ", Int(floor(prob.n/options.sketchsize)) )
           options.AUX[2] = Int(floor(prob.n/options.sketchsize));
@@ -23,6 +19,9 @@ function boot_rademacher(prob::Prob,options::MyOptions)
     Sb = zeros(s);
     ind = zeros(rho*s);
     #ind = sample(1:prob.n,rho*s,replace=false); 
+    flopsperiter = s^3+  #  solving  SAS\(SA*x-Sb)  
+    (s+1)*(prob.n+s)*Int(ceil(log(rho)))+ #  calculating sketch SA, Sb and SAS 
+    prob.n*(s+1); #computing SA*x-Sb 
     method = SketchMethod(flopsperiter,name,stepmethod,boot_rademacher,SA,SAS,Sb,ind,sigs)
     return method;
 end

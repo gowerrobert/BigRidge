@@ -4,10 +4,10 @@ function defineProb(dataset)
     prob = Prob([],[],[],0,0,dataset);
     n,p = size(X); 
     # centering and scaling the data # 
-    Xmean = mean(X,1);
-    Xstd = std(X,1);  
-    ind = (0.==Xstd); Xstd[ind] =1.0;  #replace 0 in std by 1 incase there is a constant feature
-    X[:]= (X.-Xmean)./Xstd; # Centering and scaling
+   # Xmean = mean(X,1);
+    #Xstd = std(X,1);  
+    #ind = (0.==Xstd); Xstd[ind] =1.0;  #replace 0 in std by 1 incase there is a constant feature
+    #X[:]= (X.-Xmean)./Xstd; # Centering and scaling
     
     prob.n=  n;
     lambda = maximum(sum(X.^2,1))/(4.0*p);# This is the dimensionally homogeanous choice for lambda  #1/p ;
