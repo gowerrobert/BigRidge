@@ -56,3 +56,18 @@ clf
  set(gca,'FontWeight',fw,'FontSize',fsa);
  legend({'Time (hadamardn)','Time (hadamard with s = log_2(n))'},'FontWeight',fw,'FontSize',fsa);
  
+ %%
+ %%
+
+ s=4;
+  idx = randi(N,s,1); 
+for i = 1:5
+    tab(:,i) = hadamards(A(:,i),idx);
+end
+
+
+ 
+ 
+ 
+ 
+ 

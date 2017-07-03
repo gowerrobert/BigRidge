@@ -1,0 +1,5 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Hadamard Sketches}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Algorithm}{2}{section.1.1}
+\contentsline {section}{\numberline {1.2}Convergence rate}{2}{section.1.2}
+\contentsline {chapter}{\numberline {2}Conclusion}{3}{chapter.2}

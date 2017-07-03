@@ -1,0 +1,571 @@
+\documentclass[a4paper,12pt]{report}
+% \usepackage[latin1]{inputenc}
+ \usepackage[T1]{fontenc}
+\usepackage{makeidx}
+\usepackage{lettrine}
+\usepackage{yfonts}
+%\usepackage{manyfoot}
+
+\usepackage[svgnames]{pstricks}
+
+%\usepackage[dvipsnames]{pstricks}
+ \usepackage{pstricks,pst-plot,pstricks-add,pst-math,pst-node}
+ \usepackage{titlesec}
+
+ 
+
+
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{breakurl}
+%\usepackage{oldnbs11}
+%\usepackage{ospecial}
+\usepackage{palatino}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage{aeguill}
+\usepackage{lmodern}
+%\usepackage[english,greek,french]{babel}
+\usepackage[english]{babel}
+
+%\languageattribute{greek}{polutoniko}
+
+\usepackage{eurosym}
+%\usepackage[hmargin={1.8cm,1.9cm},top=1.6cm,bottom=2.5cm]{geometry}
+\usepackage[hmargin={1.3cm,1.7cm},top=0.8cm,bottom=3cm]{geometry}
+\setlength{\headheight}{37pt}
+%\setlength{\headsep}{4cm}%\pagestyle{empty}
+
+\usepackage{textcomp}
+\usepackage{float, color, soul, ulem} 
+\usepackage[dvips]{graphicx}
+\usepackage {xcolor}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts,verbatim,mathdots}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{epigraph}
+\usepackage{ifthen}
+\usepackage{dsfont}
+\usepackage{animate}
+
+\usepackage{subfig}
+\usepackage{amscd}
+
+\usepackage{booktabs} % for much better looking table
+\usepackage{array} % for better arrays (eg matrices) in maths
+
+\usepackage{epsfig}
+\usepackage{tikz}
+
+
+
+\floatplacement{figure}{H}
+\definecolor{grey}{rgb}{0.95,0.95,0.95}
+\lstloadlanguages{matlab}
+
+\renewcommand{\lstlistingname}{Code}
+%\lstset{basicstyle=\small,  breaklines=true, numbersep=7pt, numbers=left, language=matlab, frame=single, backgroundcolor=\color{grey}}
+%\def\Motscle{emph={\lst@keywords}}
+   % \expandafter\lstset\expandafter{%
+      %\Motscle}
+    \definecolor{Ggris}{rgb}{0.45,0.48,0.45}
+ 
+    \lstset{emphstyle=\rmfamily\color{blue},
+    basicstyle=\small,
+    keywordstyle=\ttfamily,
+    commentstyle=\color{red},
+    numberstyle=\tiny\color{red},
+    numbers=left,
+    numbersep=10pt,
+    lineskip=0.7pt,
+    showstringspaces=false,
+    %frame=tBlR ,rulesep =1mm ,framesep =5mm,framerule =2pt,
+%xrightmargin =5mm,xleftmargin =5mm,
+breaklines=true,backgroundcolor=\color{grey}}
+ 
+ 
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} 
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+ 
+ 
+
+
+
+  \newboolean{footmark}
+  \newcounter{savedfootnote}
+  \newcommand*{\footmark}{%
+    \unless \iffootmark
+      \global \footmarktrue
+      \setcounter{savedfootnote}{\value{footnote}}%
+    \fi
+    \footnotemark
+}
+
+  \newcommand*{\foottext}{%
+    \iffootmark
+      \global \footmarkfalse
+      \setcounter{footnote}{\value{savedfootnote}}%
+    \fi
+    \refstepcounter{footnote}%
+    \footnotetext
+}
+%INFO
+\def\dem{\gi{DÈémonstration} : \\}
+\def\rem{\gi{Remarque} : \\}\def\rems{\gi{Remarques} : }
+\def\th{\gi{ThéÈorèËme} :\:\\}\DeclareMathOperator{\loc}{loc}\DeclareMathOperator{\Rec}{Rec}\DeclareMathOperator{\Loc}{Loc}\DeclareMathOperator{\true}{true}\DeclareMathOperator{\false}{false}
+
+
+%   REDEFINITIONS :
+\newfont{\cmmd}{rsfs10 at 10pt}
+\newfont{\pcmmd}{rsfs10 at 7pt}
+\DeclareMathOperator{\tr}{Tr} \DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\adh}{adh}
+\DeclareMathOperator{\dett}{Det}\DeclareMathOperator{\coshyp}{ch}\DeclareMathOperator{\Det}{Det}
+\DeclareMathOperator{\Quad}{Quad}
+\DeclareMathOperator{\Conv}{Conv}\DeclareMathOperator{\Extr}{Extr}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\da}{da}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\gram}{gram}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\sinhyp}{sh}
+\DeclareMathOperator{\tang}{tg}\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Img}{Im}\DeclareMathOperator{\Arctg}{Arc\,tg}
+\DeclareMathOperator{\rg}{rg}\DeclareMathOperator{\Imm}{Im}\DeclareMathOperator{\Ree}{Re}
+\DeclareMathOperator{\Arccos}{Arc\,cos}\DeclareMathOperator{\Log}{Log}\DeclareMathOperator{\Ln}{Ln}\DeclareMathOperator{\argsh}{argsh}
+\DeclareMathOperator{\Arcsin}{Arc\,sin} \DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\ic}{i}\DeclareMathOperator{\iii}{i}
+\DeclareMathOperator{\sg}{sg}\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\gr}{gr}
+\newcommand{\moins}[1]{\smallsetminus\left\{#1\right\}}
+\newcommand{\acco}[1]{\left\{#1\right\}} % donne {.......}
+\newcommand{\pare}[1]{\left(#1\right)}
+\newcommand{\croc}[1]{\left[#1\right]}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\trema}[1]{\"#1}
+\newcommand{\virg}{\raise1pt\hbox{,}\ }
+\newcommand{\pnt}{\raise1pt\hbox{.}\ }
+\newcommand{\pe}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\dsum}{\displaystyle\sum}
+\newcommand{\dprod}{\displaystyle\prod}
+\newcommand{\qqs}[2]{\left(\forall#1\in#2\right)\:}
+\newcommand{\ile}[2]{\left(\exists#1\in#2\right)\:}
+\newcommand{\ileu}[2]{\left(\exists\:!#1\in#2\right)\:}
+\def\ntb#1{|\!|\!|#1|\!|\!|}
+\newcommand{\bqqs}[2]{\big(\forall#1\in#2\big)\:}
+\newcommand{\bqqsn}[2]{\big(\forall#1\notin#2\big)\:}
+\newcommand{\Bqqs}[2]{\Big(\forall#1\in#2\Big)\:}
+\newcommand{\bile}[2]{\big(\exists#1\in#2\big)\:}
+\newcommand{\bileu}[2]{\big(\exists\:!#1\in#2\big)\:}
+\newcommand{\ooo}[1]{\raisebox{-4pt}{\scalebox{#1}{$\text{O}$}}}
+\newcommand{\cdoot}[1]{\raisebox{-2pt}{\scalebox{#1}{$\cdot$}}}
+\newcommand{\es}{\teh{4}{\scalebox{1.3}{\smiley}}{=}}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\spe}{sp}
+\DeclareMathOperator{\sig}{sg}
+\DeclareMathOperator{\Cov}{Cov}
+\def\suit{\rightsquigarrow}
+\def\TT{\mathscr{T}}\def\PO{\mathscr{P}(\Omega)}\def\LL{P}
+
+\def\cchi{\raisebox{2pt}{$\chi$}}
+\def\idee{\raisebox{-4pt}{\bclampe}}
+\def\beuh{\raisebox{-5pt}{\bcsmmh}}
+\def\hihi{\raisebox{-5pt}{\bcsmbh}}
+\def\attention{\raisebox{-4pt}{\bcdanger}}
+
+ \newcommand{\grec}[1]{\selectlanguage{greek}#1\selectlanguage{francais}}
+\def\cchi{\raisebox{2pt}{$\chi$}}\def\suit{\rightsquigarrow}
+\def\jfrac#1#2{\raisebox{2pt}{$#1$}/\raisebox{-2pt}{$#2$}}
+\def\dbind#1{_{_{#1}}}  %Passage direct en indice d'indice
+
+\def\bcdot{\raisebox{-2pt}{\scalebox{2}{$\cdot$}}}\def\bcdotd{\raisebox{-3pt}{\scalebox{2}{$\cdot$}}}
+%\def\mp{\vskip 0,2cm} 
+\def\bp{\vskip 0,4cm} 
+\def\Esp{{\mathbb E}}
+\def\Pr{{\mathbb P}}
+\def\EE{{\mathbf E}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\Q{{\mathbb Q}}
+\def\N{{\mathbb N}}
+\def\K{{\mathbb K}}
+
+\def\A{{\mathcal A}}
+\def\B{{\mathcal B}}
+
+\def\L{{\mathcal L}}
+\def\M{{\mathcal M}}
+\def\gen{{\mathcal G}}
+\def\diff{{\mathrm d}}
+
+\def \ind{\mbox{1\hspace{-.30em}I}}
+\def\l{\lambda}\def\m{\mu}\def\a{\alpha}\def\b{\beta}\def\n{\nu}\def\La{\Lambda}\def\g{\gamma}\def\x{\xi}\def\o{\omega}\def\O{\Omega}\def\vf{\varphi}\def\d{\delta}\def\G{\Gamma}\def\r{\varrho}\def\p{\psi}\def\si{\sigma}\def\D{\Delta}\def\t{\theta}\def\e{\varepsilon}\def\T{\Theta}\def\vt{\vartheta}\def\z{\zeta}\def\F{\Phi}
+
+%DÈfinition
+
+\def \s{\stackrel{\text{déef}}{=}}
+\newcommand{\egaldef}{\stackrel{{\scriptscriptstyle{def}}}{=}}
+\def\etplus{\raisebox{-3pt}{\text{\small*}}\raisebox{0.5pt}{\text{\tiny+}}}   %Pour R^{+*}
+
+%Function
+     \newcommand{\fonc}[4]{\left\{\begin{array}{c}#1\longrightarrow #2\\ #3 \longmapsto #4\end{array}\right}
+    \newcommand{\foncc}[4]{\left\{\begin{array}{ccc}#1 & \longrightarrow & #2 \\ #3& \longmapsto & #4\end{array}\right.}
+     \newcommand{\foncrap}[4]{#1 \ni #2 \longmapsto #3 \in #4}
+  \newcommand{\fonccourte}[2]{#1 \longmapsto #2}
+   \newcommand{\foncfleche}[2]{#1 \rightarrow #2}
+    \newcommand{\foncsanspoint}[4]{#1 \ni #3 \longmapsto #4 \in #2}
+   \newcommand{\fun}[4]{\begin{array}{l r c l}
+& #1 & \longrightarrow & #2 \\
+    & #3 & \longmapsto & #4 \end{array}}
+   
+   
+
+\def\dem{\gi{DéÈmonstration}\\}
+\def\tp{\dot{\t}}\def\tpp{\ddot{\t}}\def\jfrac#1#2{\raisebox{2pt}{$#1$}/\raisebox{-2pt}{$#2$}}
+
+
+\def\Mnr{\mathfrak{M}_n(\R)}\def\Mnc{\mathfrak{M}_n(\C)}\def\Mnk{\mathfrak{M}_n(\K)}
+\def\Mnur{\mathfrak{M}_{n,1}(\R)}\def\Mnuc{\mathfrak{M}_{n,1}(\C)}\def\Mnuk{\mathfrak{M}_{n,1}(\K)}
+
+ \newcommand{\bsum}{\ensuremath\mathop{\scalebox{1.4}{$\displaystyle\sum$}}}
+\newcommand{\bint}{\ensuremath\mathop{\scalebox{1.4}{$\displaystyle\int$}}}
+\newcommand{\oo}{\raisebox{-2pt}{\scalebox{1.5}{$\text{O}$}}}
+%\fancyfoot{{\tiny{Cheikh TourÈ}} \hskip 0.2cm\hrulefill\hspace{0.4cm}page 1}
+%\lhead{\textbf{\begin{huge}\end{huge}}} 
+ %\chead{\textbf{\begin{LARGE} ENS Cachan \end{LARGE}}}
+%  \rhead{\textbf{2015}}
+%\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\labelenumi}{\textbf{\Roman{enumi}-}}
+
+%\renewcommand{\Frlabelitemi}{$\bullet$} for french language
+
+%\renewcommand{\Frlabelitemii}{$\star$}
+%\renewcommand{\Frlabelitemiii}{$\-$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+\renewcommand{\labelenumiii}{(\alph{enumiii}) }
+\newcommand{\ehb}[2]{\overset{\text{#1}}{\underset{\text{#2}}{=}}}
+\newcommand{\ec}[1]{\begin{center}\fbox{\begin{minipage}{16.6cm}#1\end{minipage}}\end{center}}
+\newcommand{\ecr}[1]{\begin{center}\fbox{\begin{minipage}{15cm}#1\end{minipage}}\end{center}}
+
+\newcommand{\eca}[2]{\vspace{2.3mm}\begin{center}\fbox{\begin{minipage}{#1cm}#2\end{minipage}}\end{center}\vspace{2mm}}
+\newcommand{\ecac}[2]{\vspace{2.3mm}\begin{center}\fcolorbox{cyan}{cyan!2}{\parbox{#1cm}{\bf
+ #2
+ }}\end{center}\vspace{3mm}}
+ \newcommand{\ecag}[4]{\vspace{2mm}\begin{center}\fcolorbox{#2}{#2!#3}{\parbox{#1cm}{\bf
+ #4
+ }}\end{center}\vspace{2mm}}
+ %Convergence
+ 
+ 
+ \newcommand{\biblitest}[1]{\textit{#1}}
+ 
+ \newcommand{\cvu}[1]{\overset{\text{cvu}}{\underset{#1}\longrightarrow}}
+\newcommand{\cvs}[1]{\overset{\text{cvs}}{\underset{#1}\longrightarrow}}
+\newcommand{\cvw}[1]{\overset{\text{cv weakly}}{\underset{#1}\rightharpoonup}}
+\newcommand{\cv}[2]{\overset{\text{cv}}{\underset{#1 \rightarrow #2}\longrightarrow}}
+
+ \newcommand{\ecacnbf}[2]{\vspace{1mm}\begin{center}\fcolorbox{cyan}{cyan!20}{\parbox{#1cm}{
+ #2
+ }}\end{center}\vspace{1mm}}
+\newcommand{\sd}[2]{\sum\limits_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{c}\scriptstyle{#1} \\\scriptstyle{#2}\end{array}\right.}}
+\newcommand{\stt}[3]{\sum\limits_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{c}\scriptstyle{#1} \\\scriptstyle{#2}\\\scriptstyle{#3} \end{array}\right.}}
+\newcommand{\dsd}[2]{\dsum\limits_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{c}\scriptstyle{#1} \\\scriptstyle{#2}\end{array}\right.}}
+\newcommand{\ud}[2]{\bigcup\limits_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{c}\scriptstyle{#1} \\\scriptstyle{#2}\end{array}\right.}}
+\newcommand{\ie}[1]{\left\llbracket#1\right\rrbracket}
+\newcommand{\id}[2]{\bigcap\limits_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{c}\scriptstyle{#1} \\\scriptstyle{#2}\end{array}\right.}}
+\newcommand{\di}[2]{_{\renewcommand{\arraystretch}{0.4}\left.\begin{array}{l}\scriptstyle{#1} \\\scriptstyle{#2}\end{array}\right.}}
+\newcommand{\equ}[2]{\underset{#1\to#2}{\sim}}
+\theoremstyle{definition}
+
+\newtheoremstyle{bobox}{}{}{}{}{}{}{ }%espace obligatoire entre accolades precedentes
+{\raisebox{-4pt}{\shadowbox{\magenta{{\thmname{\bf #1}\thmnumber{~\bf#2}}}}}}
+\theoremstyle{bobox}
+
+\newcommand{\thec}[1]{\ec{\begin{theo}#1\end {theo}}}
+\def\E#1{\left\lfloor#1\right\rfloor}
+\newcommand{\bsuma}[3]{\ensuremath\mathop{\scalebox{#1}{$\displaystyle\sum_{#2}^{#3}$}}}
+\newcommand{\bproda}[3]{\ensuremath\mathop{\scalebox{#1}{$\displaystyle\prod_{#2}^{#3}$}}}
+\newcommand{\binta}[3]{\ensuremath\mathop{\scalebox{#1}{$\displaystyle\int_{#2}^{#3}$}}}
+\newcommand{\boplus}[1]{\ensuremath\mathop{\scalebox{#1}{$\displaystyle\bigoplus$}}}
+%\newcommand{\ex}[1]{\begin{center}\fbox{\begin{minipage}{16.7cm}\begin{theo}#1\end {theo}\end{minipage}}\end{center}}
+\newcommand{\thecr}[1]{\begin{center}\fbox{\begin{minipage}{15cm}\begin{theo}#1\end {theo}\end{minipage}}\end{center}}
+\def\rd#1{\uppercase{\text{\cmmd #1}}}
+\def\prd#1{\uppercase{\text{\pcmmd #1}}}
+
+\newcommand{\MG}[1]{\marginpar{#1}}
+%\newcommand{\NOTE}[1]{(\footnote{#1})}
+\newcommand{\GM}{\mathfrak{M}}
+\newcommand{\accol}[2]{\left\{\begin{array}{#1}#2\end{array}\right.}
+\def\citation#1{\nobreak\bigbreak  {\hbox to \hsize{\hfill\let\\=\cr\null%
+ \hfill\vbox{\halign{\it##\hfill\cr#1\hfill\crcr}}}}}
+%Mode math : Mettre dans #1 les indications de centrage l/c/r et dans #2 le contenu de
+%l'accolade. La syntaxe est par exemple $\accol{ccr}{a&b&c\\d&e&f}$.
+
+ %Guillemets, Gras, italique...
+ \newcommand{\eg}[1]{\og #1\fg\,}
+ \newcommand{\gi}[1]{\textbf{\textit{#1}}}
+ \newcommand{\gieg}[1]{\textbf{\textit{\eg{#1}}}}
+\newcommand{\eggi}[1]{\eg{\textbf{\textit{#1}}}}
+
+\newcommand{\pbar}{\rule[-1pt]{0.4pt}{9pt}}   % pbar signifie p(etite) barre
+\newcommand{\dpbar}{\pbar\,\pbar}       % dpbar signifie d(ouble) p(etite) barre
+%\def\cadre#1{\vbox{\hrule\hbox{\vrule\vbox \spread 2pt{\vfil\hbox \spread 2pt{\hfil#1\hfil}\vfil}\vrule}\hrule}}
+%\newcommand{\cadre}{{\vbox{\hrule\hbox{\vrule\vbox \spread 2pt{\vfil\hbox \spread 2pt{\hfil#1\hfil}\vfil}\vrule}\hrule}}}
+
+
+
+
+
+
+\newcommand{\scal}[2]{\left<#1\,|\,#2\right>}
+
+%Intervalles
+\newcommand{\ioo}[2]{\left(\,#1\,;\,#2\,\right)} % Intervalle ouvert ‡ gauche et ‡ droite, ad lib.
+\newcommand{\iof}[2]{\left(\,#1\,;\,#2\,\right]}
+\newcommand{\ifo}[2]{\left[\,#1\,;\,#2\,\right)}
+\newcommand{\ifmfm}[2]{\left[\,#1\,;\,#2\,\right]}
+
+\newcommand{\fleche}[1]{\overrightarrow{\vphantom{M}#1}}
+%\renewcommand{\longmapsto}{\,\epsfbox{d:/tex/fleches.1}\,}
+%\renewcommand{\longrightarrow}{\,\epsfbox{d:/tex/fleches.2}\,}
+%\newcommand{\etc}[1]{#1\,\dots\,#1}
+\newenvironment{marges}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+\renewcommand{\leq}{\leqslant}\renewcommand{\geq}{\geqslant}
+
+\def\indic#1{[\,{\em Indication~: #1}\,]}
+\newcommand{\dsp}{\displaystyle}
+
+%Trois points SW-NE
+\def\adots{\mathinner{\mkern2mu\raise1pt\hbox{.}
+\mkern3mu\raise4pt\hbox{.}\mkern1mu\raise7pt\hbox{.}}}
+
+\newcommand{\col}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\newcommand{\ligne}[2]{\begin{pmatrix}#1&#2\end{pmatrix}}
+\newcommand{\bloc}[4]{\begin{pmatrix}#1&#2\\#3&#4\end{pmatrix}}
+
+
+\def\og{\protect\@flqq}
+ 
+\def\@flqq{\relax \ifmmode \ll \else
+   {\raise .2ex\hbox{$\scriptscriptstyle \ll $}}\fi}
+\def\fg{\protect\@frqq}
+\def\@frqq{\relax \ifmmode \gg \else
+   {\raise .2ex\hbox{$\scriptscriptstyle \gg $}}\fi}
+\makeatother
+%
+\pagestyle{plain}
+
+
+%CaractÈristique 
+\def\car#1{\chi\dbind{#1}}
+
+
+
+\def\vec#1{\overrightarrow{\vphantom A#1}}
+
+\def\rep#1{\ensuremath{\rd r\,_{#1}}}
+
+\def\cit#1{\begin{center}\begin{minipage}{15cm}#1\end{minipage}\end{center}}
+%%%%%%% NumÈrotation des parties, questions, sous-questions et al.
+\newif\ifaffiche\affichetrue
+\newcounter{cpart}\newcounter{num}[cpart]\newcounter{sousnum}[num]\newcounter{ssnum}[sousnum]
+\newcommand{\partie}[1] {\noindent\refstepcounter{cpart} {\framebox{\large{\quad\textbf{Partie\ \Roman{cpart} #1\quad}}}}\\\\ }
+\newcommand{\quest}{\\\noindent\refstepcounter{num}{\textbf{\Roman{cpart}.\Alph{num}.\ }}}
+\newcommand{\squest}{\\\refstepcounter{sousnum}\ifaffiche{\textbf{\Roman{cpart}.\Alph{num}\thesousnum.\,}}\else\affichetrue\fi}
+\newcommand{\ssquest}{\refstepcounter{ssnum}{\textbf{\Roman{cpart}.\Alph{num}\thesousnum\roman{ssnum}.\,}}}
+\newcommand{\questet}{\noindent\refstepcounter{num}{\textbf{\thenum$^*$)\ }}}
+% Pour faire rÈfÈrence ‡ une question dans le texte, du genre : utiliser le I.A.4ii
+
+\def\refpartie#1{\setbox#1=\hbox{\textbf{\Roman{cpart}}}}
+\def\refquest#1{\setbox#1=\hbox{\textbf{\Roman{cpart}.\Alph{num}}}}
+\def\refsquest#1{\setbox#1=\hbox{\textbf{\Roman{cpart}.\Alph{num}\thesousnum}}}
+\def\refssquest#1{\setbox#1=\hbox{\textbf{\Roman{cpart}.\Alph{num}\thesousnum\roman{ssnum}}}}
+\def\grefpartie#1#2{\setbox#1#2=\hbox{\textbf{\Roman{cpart}}}}
+\def\grefquest#1#2{\setbox#1#2=\hbox{\textbf{\Roman{cpart}.\Alph{num}}}}
+\def\grefsquest#1#2{\setbox#1#2=\hbox{\textbf{\Roman{cpart}.\Alph{num}\thesousnum}}}
+\def\grefssquest#1#2{\setbox#1#2=\hbox{\textbf{\Roman{cpart}.\Alph{num}\thesousnum\roman{ssnum}}}}
+%Norme
+\newcommand{\module}[1]{\,\pbar\,#1\,\pbar\,}
+\newcommand{\norme}[1]{\,\dpbar\,#1\,\dpbar\,}
+\newcommand{\normeinf}[1]{\,\dpbar\,#1\,\dpbar\,_{\infty}}
+\newcommand{\subord}[1]{\pbar\,\pbar\,\pbar\ #1\,\pbar\,\pbar\,\pbar\,}
+
+\def\LE{\mathscr{L}(E)}
+\def\MR{\mathfrak{M}_n(\R)}
+\def\MC{\mathfrak{M}_n(\C)}
+\def\diint{\dint\!\!\!\dint\limits_}
+\newenvironment{narrow}[2]{%
+ \begin{list}{}{%
+  \setlength{\topsep}{0pt}%
+  \setlength{\leftmargin}{#1}%
+  \setlength{\rightmargin}{#2}%
+  \setlength{\listparindent}{\parindent}%
+  \setlength{\itemindent}{\parindent}%
+  \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+
+\newenvironment{lemme}{
+\vspace{.5em}
+\begin{narrow}{.7cm}{.7cm}
+$\left[\begin{tabular}{p{\linewidth}}
+}
+{
+\end{tabular}\right.$\\
+\end{narrow}
+\vspace{.5em}
+}
+
+
+\usepackage{fancybox}
+
+
+
+%   TEXTE : 
+
+
+%\renewcommand{\labelenumi}{\textbf{\Roman{enumi}-}}
+
+%\renewcommand{\Frlabelitemi}{$\bullet$} for french language
+%\renewcommand{\Frlabelitemii}{$\star$}
+
+%\renewcommand{\Frlabelitemiii}{$\-$}
+\renewcommand{\labelenumi}{\shadowbox{\red\arabic{enumi}}}
+\renewcommand{\labelenumii}{\textbf{\arabic{enumii})} }
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+
+\addtocounter{secnumdepth}{1}
+\setcounter{tocdepth}{4}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\alph{subsubsection}}
+%   TEXTE :
+
+\def\teh#1#2#3{\overset{\text{ \tiny{#2}}}{\rule{0pt}{#1pt}#3}}
+%\renewcommand{\labelenumi}{\textbf{\Roman{enumi}-}}
+
+
+%\renewcommand{\Frlabelitemi}{$\bullet$} for french language
+%\renewcommand{\Frlabelitemii}{$\star$}
+
+
+%\renewcommand{\Frlabelitemiii}{$\-$}
+%\renewcommand{\labelenumi}{\shadowbox{\blue\arabic{enumi}.}}
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})} }
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+%\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\:\raisebox{-6pt}{\shadowbox{\blue\arabic{subsubsection}}\:\:}}
+
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\addtocounter{secnumdepth}{1}
+%\setcounter{tocdepth}{4}
+%\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\alph{subsubsection}}
+%   TEXTE :
+%\makeindex
+\usepackage{fancyhdr}
+%\setlength{\headheight}{31pt}%\usepackage{marvosym}
+\usepackage{wasysym}%\usepackage{fontspec}
+%\newfontfamily\DejaSans{DejaVu Sans}
+\pagestyle{fancy}
+
+
+%
+\usepackage{charter}
+\fancyfoot{{\small{Cheikh Toure}} \hskip1.3cm\hrulefill\hspace{0.7cm}$\bullet\:\square$ \hspace{0.6cm}page \thepage}
+
+
+
+%  \rhead{\begin{Large}\shadowbox{\blue{\textbf{\old{2014}-\old{2015}}}}\end{Large}}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\labelenumi}{\textbf{\Roman{enumi}-}}
+
+%\renewcommand{\Frlabelitemi}{$\bullet$} for french language
+
+\renewcommand{\labelenumi}{\bf\arabic{enumi})}
+\renewcommand{\labelenumii}{(\alph{enumii}) }
+
+
+\usepackage{charter}
+\pagestyle{fancy}
+\date{}\usepackage{bclogo}
+\xdefinecolor{bb}{named}{OrangeRed}
+\xdefinecolor{cc}{named}{HotPink}
+\xdefinecolor{dd}{named}{MediumSpringGreen}
+\xdefinecolor{ee}{named}{LightSeaGreen}
+\xdefinecolor{ff}{named}{MidnightBlue}
+\fancyfoot{{\small{Cheikh TourÈ}} \hskip 0.7cm\hrulefill\hspace{0.8cm} page \thepage\:
+$\bullet\,\square$\:}
+
+\def\pr{\begin{center}\bf \blue Proof :\end{center}}
+%   \newtheorem{Lemme}{Lemma}
+%\newtheorem{prop}{Proposition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{theo}{Theorem}
+%\newtheorem{coro}{Corollary}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
+%\newtheorem{remark}[theorem]{Remark}
+\def\remark{\gi{Remark} : \\}
+
+
+\def \argmin{\arg \hspace{-0.05cm} \min}
+\def \argmax{\arg \hspace{-0.05cm} \max}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
+
+ \newcommand{\pourRef}[1]{\textbf{\textit{ #1}}}
+
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\baStar}{\begin{eqnarray*}}
+\newcommand{\eaStar}{\end{eqnarray*}}
+
