@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1540,20 +1540,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
 
-Overfull \hbox (43.74019pt too wide) in paragraph at lines 62--66
+Overfull \hbox (46.07214pt too wide) in paragraph at lines 62--66
 \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
 []\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
  I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
 [][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[]
-[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = [][]\OM
-L/lmm/m/it/12 E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m
-/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/l
-mm/m/it/12 H$\T1/bch/m/n/12 . 
+[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = \OML/lm
+m/m/it/12 H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/
+m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/
+lmm/m/it/12 H$\T1/bch/m/n/12 . 
  []
 
 
@@ -1593,7 +1593,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
 Here is how much of TeX's memory you used:
  26655 strings out of 493089
  460814 string characters out of 6134841
- 665223 words of memory out of 5000000
+ 664223 words of memory out of 5000000
  29490 multiletter control sequences out of 15000+600000
  61644 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1613,7 +1613,7 @@ mf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fon
 ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy1
 0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on rapportDeStage.pdf (7 pages, 117514 bytes).
+Output written on rapportDeStage.pdf (7 pages, 116941 bytes).
 PDF statistics:
  136 PDF objects out of 1000 (max. 8388607)
  113 compressed objects within 2 object streams

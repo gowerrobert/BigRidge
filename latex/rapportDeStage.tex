@@ -54,17 +54,17 @@ $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$
 $S_{i} = I_{C_{i}} H.$\\
 
 %$\bold{S} = [I_{C_{1}},I_{C_{2}},\dots,I_{C_{r}}] H$.\\
-Denote $I_{C} = [I_{C_{1}},I_{C_{2}},\dots,I_{C_{r}}].$\\
+%Denote $I_{C} = [I_{C_{1}},I_{C_{2}},\dots,I_{C_{r}}].$\\
 $\tilde{A} = \frac{1}{n} H A H^{T} = \frac{H}{\sqrt{n}} A \frac{H^{T}}{\sqrt{n}}.$\\
 
 %$E[Z] = (A \bold{S}^{T} D) (D \bold{S} A) = (A H^{T} I_{C}^{T} D) (D I_{C} H A) = $
 
 $A^{-\frac12}E[Z]A^{-\frac12} = E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12} ] = \dsp\sum\limits_{i} p_{i} A^{\frac 12} H^{T} I_{C_{i}}^{T} (I_{C_{i}} H A H^{T} I_{C_{i}}^{T})^{-1} I_{C_{i}} H A^{\frac 12} \\
 = A^{\frac 12} H^{T} \frac{1}{n} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] H A^{\frac 12}  = H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} (\frac{H^{T}}{n})^{-1} =
-\frac{H^{T}}{n} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} H$.\\
+H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} H$.\\
 Hence :\\
 
-$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(H \frac{H^{T}}{n} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} ) $
+$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(\tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} ) $
 
 
 
