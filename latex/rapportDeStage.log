@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 18:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1487,7 +1487,11 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 23.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-) [1
+)
+
+LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 23.
+
+[1
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -1509,14 +1513,10 @@ me{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.29 \end{abstract}
-                    [1] (./rapportDeStage.toc
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 3.
-)
+                    [1]
+
+Package hyperref Warning: old toc file detected, not used; run LaTeX again.
+
 \tf@toc=\write6
 \openout6 = `rapportDeStage.toc'.
 
@@ -1529,94 +1529,5 @@ l.31 \newpage
 
 ]
 Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
-
- []
-
-
-Overfull \hbox (46.07214pt too wide) in paragraph at lines 62--66
-\OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
-[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
- I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
-[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[]
-[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = \OML/lm
-m/m/it/12 H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/
-m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/
-lmm/m/it/12 H$\T1/bch/m/n/12 . 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--66
-
- []
-
-[2
-
-]
-Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
-
- []
-
-[3
-
-]
-Chapter 3.
-[4
-
-]
-Package atenddvi Info: Last page = 7.
- [5
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 106.
- (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
-Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
-(rerunfilecheck)             Checksum: 1086E0C2D0AB1981187744F769FBCF0F;384.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
- ) 
-Here is how much of TeX's memory you used:
- 26655 strings out of 493089
- 460814 string characters out of 6134841
- 664223 words of memory out of 5000000
- 29490 multiletter control sequences out of 15000+600000
- 61644 words of font info for 86 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 63i,6n,96p,619b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/lo
-cal/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texliv
-e/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-d
-ist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
-enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/
-charter/bchb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/cha
-rter/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charte
-r/bchri8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on rapportDeStage.pdf (7 pages, 116941 bytes).
-PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 16 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12

@@ -30,6 +30,47 @@ Inria Paris (Sierra department)\\\\ }
 \tableofcontents
 \newpage
 
+\chapter{Randomized Newton Method}
+
+%\ecag{11}{green}{19}{
+%\begin{definition}
+%
+%
+%
+%\end{definition} 
+%}
+
+
+\section{Algorithm}
+
+\section{Convergence rate}
+
+
+For $p_{i} = \frac{Tr(I_{C_{i}} A I_{C_{i}}^{T})}{\norm{A^{\frac 12} \bold{S} }^{2}_{F}}$ for $i = 1,\dots,r$,\\
+
+ [reference here] shows that $\rho \leq 1 - \frac{\lambda_{min}(\bold{S}^{T}A\bold{S})}{\norm{A^{\frac 12} \bold{S} }^{2}_{F}}$.\\
+
+$Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$\\
+
+$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
+
+$A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
+
+for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
+
+Since $\lambda_{max}$ is convex, we obtain that :\\
+
+$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
+
+$\bold{S} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$
+
+[ref Rob thesis] 
+
+
+ 
+ 
+ 
+
 \chapter{Hadamard Sketches}
 
 %\ecag{11}{green}{19}{
