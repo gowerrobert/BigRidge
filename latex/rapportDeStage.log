@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  4 JUL 2017 14:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1535,17 +1535,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
+Overfull \hbox (43.74019pt too wide) in paragraph at lines 62--66
+\OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
+[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
+ I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
+[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[]
+[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = [][]\OM
+L/lmm/m/it/12 E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m
+/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/l
+mm/m/it/12 H$\T1/bch/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--66
 
  []
 
@@ -1553,27 +1565,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
 ]
 Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
 [3
 
 ]
-Package atenddvi Info: Last page = 6.
- [4
+Chapter 3.
+[4
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 83.
+Package atenddvi Info: Last page = 7.
+ [5
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 106.
  (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
 Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
-(rerunfilecheck)             Checksum: 26AF7D407E68B358E302D6C079981CA9;214.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
+(rerunfilecheck)             Checksum: 1086E0C2D0AB1981187744F769FBCF0F;384.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
  ) 
 Here is how much of TeX's memory you used:
- 26648 strings out of 493089
- 460740 string characters out of 6134841
- 662223 words of memory out of 5000000
- 29487 multiletter control sequences out of 15000+600000
+ 26655 strings out of 493089
+ 460814 string characters out of 6134841
+ 665223 words of memory out of 5000000
+ 29490 multiletter control sequences out of 15000+600000
  61644 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,6n,96p,619b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1592,10 +1613,10 @@ mf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fon
 ts/type1/public/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy1
 0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on rapportDeStage.pdf (6 pages, 113435 bytes).
+Output written on rapportDeStage.pdf (7 pages, 117514 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 113 compressed objects within 2 object streams
+ 16 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
