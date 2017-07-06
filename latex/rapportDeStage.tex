@@ -43,12 +43,12 @@ Inria Paris (Sierra department)\\\\ }
 
 \section{Algorithm}
 
-\section{Convergence rate}
+\section{Convergence rate (draft)}
 
 
-For $p_{i} = \frac{Tr(I_{C_{i}} A I_{C_{i}}^{T})}{\norm{A^{\frac 12} \bold{S} }^{2}_{F}}$ for $i = 1,\dots,r$,\\
+%For $p_{i} = \frac{Tr(I_{C_{i}} A I_{C_{i}}^{T})}{\norm{A^{\frac{1}{2} S }^{2}_{F}}$ for $i = 1,\dots,r$,\\
 
- [reference here] shows that $\rho \leq 1 - \frac{\lambda_{min}(\bold{S}^{T}A\bold{S})}{\norm{A^{\frac 12} \bold{S} }^{2}_{F}}$.\\
+% [reference here] shows that $\rho \leq 1 - \frac{\lambda_{min}(S^{T}A\bold{S})}{\norm{A^{\frac 12} \bold{S} }^{2}_{F}}$.\\
 
 $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$\\
 
@@ -62,7 +62,12 @@ Since $\lambda_{max}$ is convex, we obtain that :\\
 
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
 
-$\bold{S} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$
+$\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$.\\
+
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$.\\
+
+And then :\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A\bold{C} ) \lambda_{min}(D^{2}) $ where $D = \sqrt{p} \text{diag}( (S_{1}AS_{1}^{T})^{-\frac 12},\dots, (S_{r}AS_{r}^{T})^{-\frac 12})$
 
 [ref Rob thesis] 
 
@@ -85,7 +90,7 @@ $\bold{S} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$
 \section{Algorithm}
 
 
-\section{Convergence rate}
+\section{Convergence rate (draft)}
 
 $Z = A S^{T} (S A S^{T})^{-1} S A$\\
 

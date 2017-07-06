@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  5 JUL 2017 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  6 JUL 2017 15:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1487,11 +1487,7 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 23.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-)
-
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 23.
-
-[1
+) [1
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -1513,10 +1509,14 @@ me{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.29 \end{abstract}
-                    [1]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
+                    [1] (./rapportDeStage.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 3.
+)
 \tf@toc=\write6
 \openout6 = `rapportDeStage.toc'.
 
@@ -1529,5 +1529,146 @@ l.31 \newpage
 
 ]
 Chapter 1.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
+d on input line 65.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+[2
+
+]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Overfull \hbox (46.07214pt too wide) in paragraph at lines 108--112
+\OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
+[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
+ I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
+[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[]
+[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = \OML/lm
+m/m/it/12 H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/
+m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/
+lmm/m/it/12 H$\T1/bch/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
+
+ []
+
+[3
+
+]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+[4
+
+]
+Chapter 4.
+[5
+
+]
+Package atenddvi Info: Last page = 8.
+ [6
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 152.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 152.
+ (./rapportDeStage.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 152.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 152.
+
+
+Package rerunfilecheck Warning: File `rapportDeStage.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `rapportDeStage.out':
+(rerunfilecheck)             Before: E19693CBC4F455DA5249D0DCC4DC4DDA;561
+(rerunfilecheck)             After:  74D383B2E60EBC17A3E5AB6A9CFFBD18;581.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
+ ) 
+Here is how much of TeX's memory you used:
+ 26670 strings out of 493089
+ 460980 string characters out of 6134841
+ 664223 words of memory out of 5000000
+ 29498 multiletter control sequences out of 15000+600000
+ 73842 words of font info for 91 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 63i,6n,96p,619b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
+15/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2015/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
+enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/
+charter/bchb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/cha
+rter/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charte
+r/bchri8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr
+8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on rapportDeStage.pdf (8 pages, 151907 bytes).
+PDF statistics:
+ 164 PDF objects out of 1000 (max. 8388607)
+ 138 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+
