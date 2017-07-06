@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.1}Algorithm}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Convergence rate (draft)}{2}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}General case}{2}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Uniform case}{2}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.2}Uniform case}{3}{subsection.1.2.2}
 \contentsline {chapter}{\numberline {2}Hadamard Sketches}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Algorithm}{4}{section.2.1}
 \contentsline {section}{\numberline {2.2}Convergence rate (draft)}{4}{section.2.2}

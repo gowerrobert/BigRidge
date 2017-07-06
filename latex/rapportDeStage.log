@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  6 JUL 2017 16:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  6 JUL 2017 18:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1530,75 +1530,78 @@ l.31 \newpage
 ]
 Chapter 1.
 
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
 Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
-d on input line 54.
+d on input line 67.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--61
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 83--88
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
-
+Overfull \hbox (19.52293pt too wide) in paragraph at lines 89--91
+[]\T1/bch/m/n/12 Therefore, $\OML/lmm/m/it/12 ^^U[]\OT1/lmr/m/n/12 (\OML/lmm/m/
+it/12 A[]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 Z\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 
+A[]\OT1/lmr/m/n/12 ) \U/msa/m/n/12 > [] \OML/lmm/m/it/12 p[][] \OT1/lmr/m/n/12 
+= [] \OML/lmm/m/it/12 p[][] \U/msa/m/n/12 > [] \OML/lmm/m/it/12 p[][]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 [2
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 96--101
-
- []
-
-[3]
+] [3]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
 
-Overfull \hbox (46.07214pt too wide) in paragraph at lines 139--143
+Overfull \hbox (46.07214pt too wide) in paragraph at lines 138--142
 \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
 []\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
  I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
@@ -1610,7 +1613,7 @@ lmm/m/it/12 H$\T1/bch/m/n/12 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--143
+Underfull \hbox (badness 10000) in paragraph at lines 138--142
 
  []
 
@@ -1619,7 +1622,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--143
 ]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
@@ -1634,28 +1637,28 @@ Package atenddvi Info: Last page = 9.
  [7
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 183.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 183.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 182.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 182.
  (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 183.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 182.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 182.
 Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
 (rerunfilecheck)             Checksum: 5B88C0A964754E8D3CF76F93008DBE5C;713.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 183.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 182.
  ) 
 Here is how much of TeX's memory you used:
- 26695 strings out of 493089
- 461308 string characters out of 6134841
+ 26696 strings out of 493089
+ 461321 string characters out of 6134841
  668223 words of memory out of 5000000
  29515 multiletter control sequences out of 15000+600000
  82666 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,11n,96p,619b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,11n,96p,619b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
 exlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/te
-xmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2015/texmf-dist/f
-onts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/d
-vips/lm/lm-mathit.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/
+xmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2015/texmf-dist/f
+onts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/d
+vips/lm/lm-mathsy.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/
 charter/bchb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/cha
 rter/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charte
 r/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charter/b
@@ -1671,10 +1674,10 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapportDeStage.pdf (9 pages, 183945 bytes).
+Output written on rapportDeStage.pdf (9 pages, 181103 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
+ 193 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
