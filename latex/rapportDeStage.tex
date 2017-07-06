@@ -64,12 +64,30 @@ $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\fra
 
 $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$.\\
 
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$.\\
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where $D = \sqrt{p} \,\text{diag}( (S_{1}AS_{1}^{T})^{-\frac 12},\dots, (S_{r}AS_{r}^{T})^{-\frac 12})$ wherein $p = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, knowing that $s$ is the sketchsize. \\
+
+\ecag{11}{red}{19}{
+\begin{proposition} [Unifom sketching]
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{1}{\pare{\substack{n \\ s}}} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+
+\end{proposition}
+}
+
 
 And then :\\
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A\bold{C} ) \lambda_{min}(D^{2}) $ where $D = \sqrt{p} \text{diag}( (S_{1}AS_{1}^{T})^{-\frac 12},\dots, (S_{r}AS_{r}^{T})^{-\frac 12})$
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A\bold{C} ) \lambda_{min}(D^{2})$
 
-[ref Rob thesis] 
+[ref Rob thesis] \\
+
+$\dsp \lambda_{min}(D^{2}) = p \min_{i} \frac{1}{\lambda_{max}(I_{C_{i}} A I_{C_{i}}^{T} ) } = p \min_{i} \frac{1}{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}}) \lambda_{max}(A)}  \geq \frac{p}{\lambda_{max}(A)} $, 
+since for any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$ 
+$\scal{I_{C_{i}}^{T} I_{C_{i}} x }{x} =$
+$ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$
+ and then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
+ 
+ Therefore, 
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq p \frac{\lambda_{min}(\bold{C}^{T}A\bold{C} )}{\lambda_{max}(A)}  = p \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}  \geq p \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$
 
 
  
