@@ -1,0 +1,8 @@
+% test for getting an idea of the lambda_min of CC^T, where C is the
+% concatenation matrix resulting from the newton sketch method
+
+clear all
+
+n = 4;
+s=1;
+C1 = 

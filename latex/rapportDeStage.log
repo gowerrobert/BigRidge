@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  6 JUL 2017 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  7 JUL 2017 16:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1663,21 +1663,20 @@ charter/bchb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/cha
 rter/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charte
 r/bchr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/bitstrea/charter/b
 chri8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2015/texmf
--dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts
-/type1/public/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr6.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapportDeStage.pdf (9 pages, 181103 bytes).
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/lm/lmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
+ic/lm/lmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr8.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on rapportDeStage.pdf (9 pages, 167174 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
+ 189 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
  25 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
