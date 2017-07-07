@@ -72,11 +72,11 @@ $A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\fra
  \ecag{11}{red}{19}{
 \begin{proposition} [Unifom sketching]
 $\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
 
 \end{proposition}
 }
- 
+\pr 
 
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
 
@@ -87,7 +87,12 @@ $ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$
  and then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
  
  Therefore, 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(A)}  =  \min_{i} p_{i} \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}  \geq  \min_{i} p_{i} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(A)}  =  \min_{i} p_{i} \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}.$\\
+
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that :\\ 
+
+
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
 
 
 \subsection{Uniform case}
@@ -98,7 +103,7 @@ For any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform p
 \ecag{11}{red}{19}{
 \begin{proposition} [Unifom sketching]
 $\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{1}{\pare{\substack{n \\ s}}} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
 
 \end{proposition}
 }
@@ -122,6 +127,8 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{1}{\pare{\substack
 
 \section{Convergence rate (draft)}
 
+
+
 $Z = A S^{T} (S A S^{T})^{-1} S A$\\
 
 
@@ -129,8 +136,16 @@ $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$
 
 $S_{i} = I_{C_{i}} H.$\\
 
-%$\bold{S} = [I_{C_{1}},I_{C_{2}},\dots,I_{C_{r}}] H$.\\
-%Denote $I_{C} = [I_{C_{1}},I_{C_{2}},\dots,I_{C_{r}}].$\\
+\ecag{11}{red}{19}{
+\begin{proposition} [Unifom sketching]
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+
+\end{proposition}
+}
+ \pr
+
+
 $\tilde{A} = \frac{1}{n} H A H^{T} = \frac{H}{\sqrt{n}} A \frac{H^{T}}{\sqrt{n}}.$\\
 
 %$E[Z] = (A \bold{S}^{T} D) (D \bold{S} A) = (A H^{T} I_{C}^{T} D) (D I_{C} H A) = $
@@ -145,7 +160,7 @@ $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(\til
 
 
 We recognize the convergence rate in the Randomized Newton Method and then, denoting by $\rho_{Newton}(M)$ the convergence rate of the Newton method associated with the definite positive matrix $M$, we obtain that :\\
-$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) $
+$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) = \rho_{Newton}(A) $, since $A$ and $\tilde{A}$ have the same eigenvalues.\\
 
 
 \chapter{Count-min Sketches}
