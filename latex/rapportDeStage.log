@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  10 JUL 2017 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  10 JUL 2017 18:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1535,6 +1535,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--56
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
@@ -1588,71 +1593,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--101
 [3]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
 
-Overfull \hbox (46.07214pt too wide) in paragraph at lines 153--157
-\OT1/lmr/m/n/12 = \OML/lmm/m/it/12 A[]H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I
-[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12
- I[]\OT1/lmr/m/n/12 ]\OML/lmm/m/it/12 HA[] \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 H
-[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 I[]
-[]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]([])[] = \OML/lm
-m/m/it/12 H[][]E\OT1/lmr/m/n/12 [\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 (\OML/lmm/
-m/it/12 I[][]I[]\OT1/lmr/m/n/12 )[]\OML/lmm/m/it/12 I[]\OT1/lmr/m/n/12 ][]\OML/
-lmm/m/it/12 H$\T1/bch/m/n/12 . 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 153--157
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--171
 
  []
 
 [4
 
-]
+] [5]
 Chapter 3.
-[5
-
-]
-Chapter 4.
 [6
 
 ]
-Package atenddvi Info: Last page = 9.
- [7
+Chapter 4.
+[7
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 198.
+Package atenddvi Info: Last page = 10.
+ [8
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 214.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 214.
  (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
-(rerunfilecheck)             Checksum: 5B88C0A964754E8D3CF76F93008DBE5C;713.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
+(rerunfilecheck)             Checksum: 42C3F9D4C86949BB346EBA73C095E16E;726.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 214.
  ) 
 Here is how much of TeX's memory you used:
- 26697 strings out of 493089
- 461334 string characters out of 6134841
- 669223 words of memory out of 5000000
- 29515 multiletter control sequences out of 15000+600000
+ 26702 strings out of 493089
+ 461381 string characters out of 6134841
+ 668223 words of memory out of 5000000
+ 29519 multiletter control sequences out of 15000+600000
  82666 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,11n,96p,619b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1675,10 +1678,10 @@ fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapportDeStage.pdf (9 pages, 171935 bytes).
+Output written on rapportDeStage.pdf (10 pages, 179635 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
+ 196 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

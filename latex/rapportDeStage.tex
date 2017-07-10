@@ -30,7 +30,7 @@ Inria Paris (Sierra department)\\\\ }
 \tableofcontents
 \newpage
 
-\chapter{Randomized Newton Method}
+\chapter{Randomized Newton Method} \label{newton}
 
 %\ecag{11}{green}{19}{
 %\begin{definition}
@@ -52,11 +52,11 @@ Inria Paris (Sierra department)\\\\ }
  %reference here] shows that $\rho \leq 1 - \frac{\lambda_{min}(I_{C}^{T}A I_{C})}{\norm{A^{\frac 12} I_{C} }^{2}_{F}}$.\\ [ref Rob thesis] \\
  
  
-$Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$\\
+Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
 
-$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
+The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
-$A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
+By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
 
 for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
 
@@ -64,13 +64,13 @@ Since $\lambda_{max}$ is convex, we obtain that :\\
 
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
 
-$\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$.\\
+Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$.\\
 
 $A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where $D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12})$
  
  
  \ecag{11}{red}{19}{
-\begin{proposition} [Unifom sketching]
+\begin{proposition} [Unifom sketching] \label{unif}
 $\\\\$
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
 
@@ -97,21 +97,29 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n
 
 \subsection{Uniform case}
 
-For any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, knowing that $s$ is the sketchsize. \\
+For any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, knowing that $s$ is the sketch size. That leads towards that corollary of \textbf{Proposition} \ref{unif} :\\
 
 
-\ecag{11}{red}{19}{
-\begin{proposition} [Unifom sketching]
+\ecag{11}{green}{19}{
+\begin{corollary} [Unifom sketching]
 $\\\\$
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
 
-\end{proposition}
+\end{corollary}
 }
  
  
  
 
-\chapter{Hadamard Sketches}
+\chapter{Randomized orthonormal systems}
+
+This type of randomized system is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
+When the dimension of our matrix $A$ is $n$, we denote by $H_{n}$ the Hadamard matrix (well defined if the dimension of the problem $n$ is a power of $2$) defined recursively as :\\
+
+$H_{p} = ..$ and $H_{1} = 1.$\\
+
+The Hadamard sketch consists of choosing a sketch matrix $S \in \M_{s,n}$ where $s$ is called the sketch size of the problem, as follows :\\ 
+we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical base of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
 
 %\ecag{11}{green}{19}{
 %\begin{definition}
@@ -129,12 +137,37 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 
 
-$Z = A S^{T} (S A S^{T})^{-1} S A$\\
+Now we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our Hadamard random matrix.\\
 
 
-$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$
+The convergence rate is then $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$
 
-$S_{i} = I_{C_{i}} H.$\\
+Notice that $S_{i} = I_{C_{i}} H D.$ where $(C_{i})_{i}$ are uniform random subsets of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ section \ref{newton}.\\
+
+Let's condition on the Rademacher diagonal matrix $D$.\\
+
+Define by $\tilde{A}_{D} = \frac{H} {\sqrt{n}} D A D \frac{H^{T}}{\sqrt{n}}$. We obtain that :
+
+\baStar
+A^{-\frac12}E[Z|D]A^{-\frac12} &=& E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12}|D ] \\
+&=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D H^{T} I_{C_{i}}^{T} (I_{C_{i}} H D A D H^{T} I_{C_{i}}^{T})^{-1} I_{C_{i}} H D A^{\frac 12} \\
+&=& A^{\frac 12}D H^{T} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] HD A^{\frac 12} \\
+ &=& n D H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} n (H^{T})^{-1} D\\
+  &=& D H^{T} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} H D.
+  \eaStar
+  
+  
+  
+  %%%%%%%%%%%
+  \emph{(following to be changed)}
+
+Hence :\\
+
+$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(\tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} ) $
+
+
+We recognize the convergence rate in the Randomized Newton Method and then, denoting by $\rho_{Newton}(M)$ the convergence rate of the Newton method associated with the definite positive matrix $M$, we obtain that :\\
+$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) = \rho_{Newton}(A) $, since $A$ and $\tilde{A}$ have the same eigenvalues.\\
 
 \ecag{11}{red}{19}{
 \begin{proposition} [Unifom sketching]
@@ -143,24 +176,7 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 \end{proposition}
 }
- \pr
 
-
-$\tilde{A} = \frac{1}{n} H A H^{T} = \frac{H}{\sqrt{n}} A \frac{H^{T}}{\sqrt{n}}.$\\
-
-%$E[Z] = (A \bold{S}^{T} D) (D \bold{S} A) = (A H^{T} I_{C}^{T} D) (D I_{C} H A) = $
-
-$A^{-\frac12}E[Z]A^{-\frac12} = E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12} ] = \dsp\sum\limits_{i} p_{i} A^{\frac 12} H^{T} I_{C_{i}}^{T} (I_{C_{i}} H A H^{T} I_{C_{i}}^{T})^{-1} I_{C_{i}} H A^{\frac 12} \\
-= A^{\frac 12} H^{T} \frac{1}{n} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] H A^{\frac 12}  = H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} (\frac{H^{T}}{n})^{-1} =
-H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} H$.\\
-Hence :\\
-
-$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(\tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} ) $
-
-
-
-We recognize the convergence rate in the Randomized Newton Method and then, denoting by $\rho_{Newton}(M)$ the convergence rate of the Newton method associated with the definite positive matrix $M$, we obtain that :\\
-$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) = \rho_{Newton}(A) $, since $A$ and $\tilde{A}$ have the same eigenvalues.\\
 
 
 \chapter{Count-min Sketches}
