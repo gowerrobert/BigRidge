@@ -1,7 +1,8 @@
 
 \input{preambuleReport}
 
-
+\usepackage[colorinlistoftodos,bordercolor=orange,backgroundcolor=orange!20,linecolor=orange,textsize=scriptsize]{todonotes}
+\newcommand{\rob}[1]{\todo[inline]{\textbf{Robert: }#1}}
 
 \title{New stochastic sketching methods for Big Data Ridge Regression}
 \author{Cheikh Saliou Tour\'e \\ \\
@@ -107,7 +108,7 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 \end{corollary}
 }
- 
+ \rob{This is already pretty interesting! It shows an improvement for using bigger bachsize! We should try to push this further, for instance, when $s =n$ we know the method converges in one step. It would be great if we have a convergence rate that shows this phenomena. In other words, when $s =n$ we have $\lambda_{\min}(A^{-1/2}E[Z]A^{-1/2}) =1$ ! Also, please have a look at the paper ``paving\_kaczmarz.pdf'' which I've just added to our repo.}
  
  
 
