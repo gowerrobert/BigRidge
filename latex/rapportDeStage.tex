@@ -47,11 +47,8 @@ Inria Paris (Sierra department)\\\\ }
 \section{Convergence rate (draft)}
 
 \subsection{General case}
-
-%For $p_{i} = \frac{Tr(I_{C_{i}} A I_{C_{i}}^{T})}{\norm{A^{\frac{1}{2} I_{C} }^{2}_{F}}$ for $i = 1,\dots,r$,\\
-
- %reference here] shows that $\rho \leq 1 - \frac{\lambda_{min}(I_{C}^{T}A I_{C})}{\norm{A^{\frac 12} I_{C} }^{2}_{F}}$.\\ [ref Rob thesis] \\
- 
+$A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
+For $C$ any subset of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
  
 Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
 
@@ -65,9 +62,9 @@ Since $\lambda_{max}$ is convex, we obtain that :\\
 
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
 
-Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$.\\
+Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
 
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where $D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12})$
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
  
  
  \ecag{11}{red}{19}{
@@ -110,6 +107,10 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 }
  \rob{This is already pretty interesting! It shows an improvement for using bigger bachsize! We should try to push this further, for instance, when $s =n$ we know the method converges in one step. It would be great if we have a convergence rate that shows this phenomena. In other words, when $s =n$ we have $\lambda_{\min}(A^{-1/2}E[Z]A^{-1/2}) =1$ ! Also, please have a look at the paper ``paving\_kaczmarz.pdf'' which I've just added to our repo.}
  
+ \subsection{A convenient probability}
+ 
+ Suppose here that $\dsp p_{i} = \frac{Tr( I_{C_{i}} A I_{C_{i}}^{T} ) }{\norm{A^{\frac12}\bold{C}}^{2}_{F} }$, for any $i = 1,\dots,r.$\\
+
  
 
 \chapter{Randomized orthonormal systems}
@@ -197,7 +198,13 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 $S$ is constructed as follows :\\
 For every $i\in\acco{1,\dots,n}$, $l$ is chosen uniformly on $\acco{1,\dots,n}$ and $\epsilon$ uniformly on $\acco{-1,1}$, then $S$ is updated in his $l^{th}$ row as :\\
-$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}^{T}$ is the $i^{th}$ coloumn of the identity matrix.
+$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}^{T}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
+
+
+
+$\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ and $\lambda_{max}(S_{i}^{T}S_{i}) = \lambda_{max}(S_{i}S_{i}^{T}).$\\
+$S_{i} S_{i}^{T} = \dsp\sum_{i,k} f_{\pi(j)}e_{j}^{T} e_{k}f_{\pi(k)}^{T}$.\\
+
 
 \chapter{Conclusion}
 
