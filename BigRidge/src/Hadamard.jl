@@ -41,10 +41,10 @@ method.SA[:] = hada(prob.A,method.ind);   # S * A
      y = method.SAS\(method.SA*x-method.Sb);   # solving (S^TAS) y = (S^TAx-S^Tb)  
 
 
-y_n = zeros(prob.n,1);
+y_n = zeros(prob.n,1); #pre-allocate as well
 y_n[method.ind[:]] = y;
 
-x[:] = x[:] -hada(y_n,1:prob.n);
+x[:] = x[:] -hada(y_n,1:prob.n); # this vector 1:prob.n is also being allocated each iteration! pre-allocated as well.
     
 end
 
