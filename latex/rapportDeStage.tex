@@ -135,49 +135,53 @@ we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probabi
 \section{Algorithm}
 
 
-\section{Convergence rate (draft)}
+\section{Convergence rate}
 
 
 
 Now we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our Hadamard random matrix.\\
 
+ $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ section \ref{newton}, $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
 
-The convergence rate is then $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$
 
-Notice that $S_{i} = I_{C_{i}} H D.$ where $(C_{i})_{i}$ are uniform random subsets of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ section \ref{newton}.\\
+Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
 
-Let's condition on the Rademacher diagonal matrix $D$.\\
+\ecag{11}{blue}{19}{
+\begin{lemma} [Unifom sketching]
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+
+\end{lemma}
+}
+\pr
+
+Let's condition on the \emph{Rademacher diagonal matrix} $D$.\\
 
 Define by $\tilde{A}_{D} = \frac{H} {\sqrt{n}} D A D \frac{H^{T}}{\sqrt{n}}$. We obtain that :
 
 \baStar
 A^{-\frac12}E[Z|D]A^{-\frac12} &=& E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12}|D ] \\
 &=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D H^{T} I_{C_{i}}^{T} (I_{C_{i}} H D A D H^{T} I_{C_{i}}^{T})^{-1} I_{C_{i}} H D A^{\frac 12} \\
-&=& A^{\frac 12}D H^{T} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] HD A^{\frac 12} \\
- &=& n D H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} n (H^{T})^{-1} D\\
-  &=& D H^{T} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} H D.
+&=& \frac1n A^{\frac 12}D H^{T} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] HD A^{\frac 12} \\
+ &=&  D H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} n (H^{T})^{-1} D\\
+  &=& \frac1n D H^{T} \tilde{A}_{D}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D}^{\frac 12} H D.
   \eaStar
   
-  
-  
-  %%%%%%%%%%%
-  \emph{(following to be changed)}
-
 Hence :\\
 
-$\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = 1 - \lambda_{min}(\tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} ) $
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{E_{D}\croc{\tilde{A}_{D}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D}^{\frac 12} }}$.\\
+Denote by $(D_{i})_{i=1,\dots,2^{n}}$ the $2^{n}$ possible values of the random matrix $D$.\\
+We obtain that :\\
 
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{ \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12} }$.\\
+And thanks to the concavity of $\lambda_{min}$, we obtain that :\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{ \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12}}$
 
 We recognize the convergence rate in the Randomized Newton Method and then, denoting by $\rho_{Newton}(M)$ the convergence rate of the Newton method associated with the definite positive matrix $M$, we obtain that :\\
-$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) = \rho_{Newton}(A) $, since $A$ and $\tilde{A}$ have the same eigenvalues.\\
 
-\ecag{11}{red}{19}{
-\begin{proposition} [Unifom sketching]
-$\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
 
-\end{proposition}
-}
+%$\rho = 1 - \lambda_{min}( \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12}) = 1 -  (1 - \rho_{Newton}(\tilde{A} ) ) =  \rho_{Newton}(\tilde{A} ) = \rho_{Newton}(A) $, since $A$ and $\tilde{A}$ have the same eigenvalues.\\
+
 
 
 
