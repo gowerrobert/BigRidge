@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  2 AUG 2017 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  2 AUG 2017 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1689,6 +1689,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
+
+Overfull \hbox (5.998pt too wide) in paragraph at lines 210--211
+[]\T1/bch/m/n/12 For any $\OML/lmm/m/it/12 ^^Y \OT1/lmr/m/n/12 : [] \OMS/lmsy/m
+/n/12 ! []$\T1/bch/m/n/12 , de-note by $\OML/lmm/m/it/12 I[]$ \T1/bch/m/n/12 th
+e $\OML/lmm/m/it/12 s \OMS/lmsy/m/n/12 ^^B \OML/lmm/m/it/12 n$ \T1/bch/m/n/12 m
+a-trix which columns are $[][] \OML/lmm/m/it/12 :$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
+
+ []
+
 [6
 
 ]
@@ -1700,14 +1723,14 @@ Package atenddvi Info: Last page = 10.
  [8
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 223.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 223.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 230.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 230.
  (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 223.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 223.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 230.
 Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
 (rerunfilecheck)             Checksum: 5701C384ED1C4F3A5193D7B987AFB83E;794.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 223.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 230.
  ) 
 Here is how much of TeX's memory you used:
  27014 strings out of 493089
@@ -1716,7 +1739,7 @@ Here is how much of TeX's memory you used:
  29812 multiletter control sequences out of 15000+600000
  96259 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,11n,96p,653b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,12n,96p,653b,664s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
 cal/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/201
 5/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/f
@@ -1737,7 +1760,7 @@ ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapportDeStage.pdf (10 pages, 199187 bytes).
+Output written on rapportDeStage.pdf (10 pages, 201022 bytes).
 PDF statistics:
  207 PDF objects out of 1000 (max. 8388607)
  176 compressed objects within 2 object streams

@@ -203,8 +203,16 @@ Denote by $\acco{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\acco
 Then we obtain that every count-min random matrix is of the form : \\
 $\dsp S = \dsp\sum_{i=1}^{n} \dsp\epsilon(i) f_{\pi(i)}e_{i}^{T} \in \M_{s,n}(\R)$, where $\epsilon : \foncfleche{\acco{1,\dots,n}}{\acco{1,-1}}$ and $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $.\\
 
+We therefore can rewrite $S$ as :\\
+ $S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{1}^{T} \\ \vdots \\ e_{n}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)}$.\\
+ 
 
-%$S_{i} S_{i}^{T} = \dsp\sum_{i,k} f_{\pi(j)}e_{j}^{T} e_{k}f_{\pi(k)}^{T}$.\\
+For any $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $, denote by $I_{\pi}$ the $s\times n$ matrix which columns are $\acco{f_{\pi(i)}}_{i=1,\dots,n}.$\\\\
+
+Let $S$ be a random count-min sketch matrix.\\
+ $S = I_{\pi} D$ where $\pi$ is a uniform random element of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ and $D$ is a $n\times n$ diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
+
+
 
 
 \chapter{Conclusion}
