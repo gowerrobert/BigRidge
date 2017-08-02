@@ -75,7 +75,6 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n
 \end{proposition}
 }
 \pr 
-
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
 
 $\dsp \lambda_{min}(D^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(I_{C_{i}} A I_{C_{i}}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}}) \lambda_{max}(A)}  \geq \min_{i}\frac{ p_{i} }{\lambda_{max}(A)} $, 
@@ -212,8 +211,57 @@ For any $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $, denote by $I_{
 Let $S$ be a random count-min sketch matrix.\\
  $S = I_{\pi} D$ where $\pi$ is a uniform random element of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ and $D$ is a $n\times n$ diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
 
+Denote again by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our count-min random matrix.\\
+Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\\\
+
+Denote $r \egaldef s^{n}$ and $(\pi_{1},\dots,\pi_{r})$ the different elements of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$.\\
+Denote by $\bold{C} = (I_{\pi_{1}}^{T},\dots,I_{\pi_{r}}^{T})$ which is of size $ n \times r s$.\\
+
+$A^{-\frac12}E[Z|D]A^{-\frac12} = (A^{\frac 12} \bold{C} D \Delta)(\Delta D \bold{C}^{T} A^{\frac 12})$ where \\$\Delta =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
+
+ 
+ \ecag{11}{red}{19}{
+\begin{proposition} \label{general}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  ... \dsp
+\frac{\lambda_{min}(A)}{\lambda_{max}(A)}$
+
+\end{proposition}
+}
+\pr 
+
+Denote by $\tilde{A} = D A D.$\\
+
+\baStar
+A^{-\frac12}E[Z|D]A^{-\frac12} &=& E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12}|D ] \\
+&=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D I_{\pi_{i}}^{T} (I_{\pi_{i}}  D A D I_{\pi_{i}}^{T})^{-1} I_{\pi_{i}} D A^{\frac 12} \\
+&=& A^{\frac 12}D E[ I_{\pi}^{T} (I_{\pi} \tilde{A}_{D} I_{\pi}^{T})^{-1} I_{\pi} ] D A^{\frac 12} \\
+   \eaStar
 
 
+Then : $A^{-\frac12}E[Z|D]A^{-\frac12} = (A^{\frac 12} D \bold{C} \Delta)(\Delta \bold{C}^{T} D A^{\frac 12})$ where \\$\Delta =  \,\text{diag}(\sqrt{p_{1}} (I_{\pi_{1}}\tilde{A}_{D} I_{\pi_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{\pi_{r}} \tilde{A}_{D} I_{\pi_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$.\\
+
+By concavity of $\lambda_{min}$, we obtain that :\\
+
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) = \lambda_{min} \pare{E_{D}\croc{A^{-\frac12}E[Z|D]A^{-\frac12}} } \geq E_{D} \pare{\lambda_{min} (A^{\frac 12} D \bold{C} \Delta)(\Delta \bold{C}^{T} D A^{\frac 12}) }$.\\
+
+Then :\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq E_{D} \pare{\lambda_{min} (\bold{C}^{T} D A D \bold{C} \Delta^{2})} \geq E_{D} \pare{\lambda_{min} (\bold{C}^{T} D A D \bold{C})\lambda_{min} (\Delta^{2})}.$\\
+
+$\dsp \lambda_{min}(\Delta^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(I_{\pi_{i}} \tilde{A}_{D} I_{\pi_{i}}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(I_{\pi_{i}}^{T} I_{\pi_{i}}) \lambda_{max}(\tilde{A}_{D})}  \geq \min_{i}\frac{ p_{i} }{n\, \lambda_{max}(\tilde{A}_{D})} $, 
+since for any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$ 
+
+$\scal{I_{\pi_{i}}^{T} I_{\pi_{i}} x }{x} = \norm{ I_{\pi_{i}}x }^{2} = \norm{\dsp\sum_{i=1}^{n} x_{i}f_{\pi(i)} }^{2} \leq \pare{\dsp\sum_{i=1}^{n} \abs{x_{i}}}^{2} \leq n\norm{x}^{2}$
+ and then $\lambda_{max}( I_{\pi_{i}}^{T} I_{\pi_{i}}  ) \leq n$.\\
+ 
+ Therefore, 
+$\dsp \lambda_{min} (\bold{C}^{T} D A D \bold{C} \Delta^{2}) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}\tilde{A}_{D} \bold{C} )}{n \,\lambda_{max}(\tilde{A}_{D})}  =  \min_{i} p_{i} \frac{ \lambda_{min}(\tilde{A}_{D}) \lambda_{min}(\bold{C} \bold{C}^{T} )}{n \,\lambda_{max}(\tilde{A})}.$\\
+
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{\pi_{i}}^{T} I_{\pi_{i}} = ... I_{n} $.\\
+Plus, $\tilde{A}_{D}$ is similar to $A$, thereby we obtain that :\\ 
+
+
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp E_{D}\croc{ ...\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} } = \frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} $
 
 \chapter{Conclusion}
 

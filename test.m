@@ -3,10 +3,13 @@
 
 clear all
 
-n = 6;
-s = 3;
-r = nchoosek(n,s);
-idx = nchoosek(1:n,s);
+n = 5;
+s = 2;
+%r = nchoosek(n,s);
+
+r = s^n;
+
+%idx = nchoosek(1:n,s);
 C  = zeros(n,n); % represents C^T * C;
 for i=1:r
     D{i} = zeros(s,n); %  construction of I_C_i
