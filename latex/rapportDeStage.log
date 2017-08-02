@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  2 AUG 2017 14:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.30)  2 AUG 2017 16:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1680,7 +1680,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--201
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 202--205
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
@@ -1695,14 +1700,14 @@ Package atenddvi Info: Last page = 10.
  [8
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 221.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 223.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 223.
  (./rapportDeStage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 223.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 223.
 Package rerunfilecheck Info: File `rapportDeStage.out' has not changed.
 (rerunfilecheck)             Checksum: 5701C384ED1C4F3A5193D7B987AFB83E;794.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 223.
  ) 
 Here is how much of TeX's memory you used:
  27014 strings out of 493089
@@ -1732,7 +1737,7 @@ ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on rapportDeStage.pdf (10 pages, 198393 bytes).
+Output written on rapportDeStage.pdf (10 pages, 199187 bytes).
 PDF statistics:
  207 PDF objects out of 1000 (max. 8388607)
  176 compressed objects within 2 object streams

@@ -197,12 +197,14 @@ $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min
 
 $S$ is constructed as follows :\\
 For every $i\in\acco{1,\dots,n}$, $l$ is chosen uniformly on $\acco{1,\dots,n}$ and $\epsilon$ uniformly on $\acco{-1,1}$, then $S$ is updated in his $l^{th}$ row as :\\
-$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}^{T}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
+$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
+
+Denote by $\acco{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\acco{f_{i}}_{i=1,\dots,s}$ a canonical basis of $\R^{s}.$\\ 
+Then we obtain that every count-min random matrix is of the form : \\
+$\dsp S = \dsp\sum_{i=1}^{n} \dsp\epsilon(i) f_{\pi(i)}e_{i}^{T} \in \M_{s,n}(\R)$, where $\epsilon : \foncfleche{\acco{1,\dots,n}}{\acco{1,-1}}$ and $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $.\\
 
 
-
-$\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ and $\lambda_{max}(S_{i}^{T}S_{i}) = \lambda_{max}(S_{i}S_{i}^{T}).$\\
-$S_{i} S_{i}^{T} = \dsp\sum_{i,k} f_{\pi(j)}e_{j}^{T} e_{k}f_{\pi(k)}^{T}$.\\
+%$S_{i} S_{i}^{T} = \dsp\sum_{i,k} f_{\pi(j)}e_{j}^{T} e_{k}f_{\pi(k)}^{T}$.\\
 
 
 \chapter{Conclusion}
