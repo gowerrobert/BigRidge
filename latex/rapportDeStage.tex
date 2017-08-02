@@ -90,7 +90,7 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\l
 $\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that :\\ 
 
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $ $\bullet$
 
 
 \subsection{Uniform case}
@@ -118,18 +118,11 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 This type of randomized system is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
 When the dimension of our matrix $A$ is $n$, we denote by $H_{n}$ the Hadamard matrix (well defined if the dimension of the problem $n$ is a power of $2$) defined recursively as :\\
 
-$H_{p} = ..$ and $H_{1} = 1.$\\
+$H_{2^{p}} = \begin{pmatrix} H_{2^{p-1}} & - H_{2^{p-1}} \\
+					H_{2^{p-1}} & H_{2^{p-1}}  \end{pmatrix} $ for $p=1,2,\dots$and $H_{1} = 1.$\\
 
 The Hadamard sketch consists of choosing a sketch matrix $S \in \M_{s,n}$ where $s$ is called the sketch size of the problem, as follows :\\ 
 we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical base of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
-
-%\ecag{11}{green}{19}{
-%\begin{definition}
-%
-%
-%
-%\end{definition} 
-%}
 
 
 \section{Algorithm}
@@ -141,7 +134,7 @@ we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probabi
 
 Now we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our Hadamard random matrix.\\
 
- $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ section \ref{newton}, $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
+ $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ $\textbf{section}\,\ref{newton}$, $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
 
 
 Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
