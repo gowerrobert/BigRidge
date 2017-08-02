@@ -217,14 +217,13 @@ Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A
 Denote $r \egaldef s^{n}$ and $(\pi_{1},\dots,\pi_{r})$ the different elements of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$.\\
 Denote by $\bold{C} = (I_{\pi_{1}}^{T},\dots,I_{\pi_{r}}^{T})$ which is of size $ n \times r s$.\\
 
-$A^{-\frac12}E[Z|D]A^{-\frac12} = (A^{\frac 12} \bold{C} D \Delta)(\Delta D \bold{C}^{T} A^{\frac 12})$ where \\$\Delta =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
 
  
  \ecag{11}{red}{19}{
 \begin{proposition} \label{general}
 $\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  ... \dsp
-\frac{\lambda_{min}(A)}{\lambda_{max}(A)}$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp
+\frac{(s-1)\,\lambda_{min}(A)}{n\,s\,\lambda_{max}(A)}$
 
 \end{proposition}
 }
@@ -257,11 +256,29 @@ $\scal{I_{\pi_{i}}^{T} I_{\pi_{i}} x }{x} = \norm{ I_{\pi_{i}}x }^{2} = \norm{\d
  Therefore, 
 $\dsp \lambda_{min} (\bold{C}^{T} D A D \bold{C} \Delta^{2}) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}\tilde{A}_{D} \bold{C} )}{n \,\lambda_{max}(\tilde{A}_{D})}  =  \min_{i} p_{i} \frac{ \lambda_{min}(\tilde{A}_{D}) \lambda_{min}(\bold{C} \bold{C}^{T} )}{n \,\lambda_{max}(\tilde{A})}.$\\
 
-$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{\pi_{i}}^{T} I_{\pi_{i}} = ... I_{n} $.\\
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{\pi_{i}}^{T} I_{\pi_{i}} = s^{n-1}
+    \left(
+    \begin{array}{ccccc}
+    s                                    \\
+      & s             &   & \text{\huge1}\\
+      &               & s                \\
+      & \text{\huge1} &   & s            \\
+      &               &   &   & s
+    \end{array}
+    \right).$\\
+Denote by $\dsp M = \frac{1}{s^{n-1}}\, \bold{C} \bold{C}^{T}.$\\
+
+By subtracting $(s-1)I_{n}$ from $M$, we recognize that $s-1$ is an eigenvalue of $M$ with multiplicity $n-1$. Then the trace gives us that $n+s-1$ is the other eigenvalue of $M$.\\ 
+Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$
+
 Plus, $\tilde{A}_{D}$ is similar to $A$, thereby we obtain that :\\ 
 
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp E_{D}\croc{ ...\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} } = \frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} $
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp E_{D}\croc{ (s-1)s^{n-1}\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} } = (s-1)s^{n-1}\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} $.\\
+
+Plus, for any $i=1,\dots,r$, $p_{i} = s^{-n}$, then finally we obtain that :\\
+
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
 
 \chapter{Conclusion}
 
