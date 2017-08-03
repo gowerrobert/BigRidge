@@ -280,6 +280,15 @@ Plus, for any $i=1,\dots,r$, $p_{i} = s^{-n}$, then finally we obtain that :\\
 
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
 
+
+\section{Sparse Shuffling (Spashu)}
+\rob{I was calling this Radamacher sketch before, but in truth it is not the Radamacher sketch. So we need to give this a new name. How about Sparse Shuffling Sketch? Or a Spashu sketch for short :) }
+
+Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random for all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define $S \in \R^{n \times s}$ as a Sparse Shuffling sketch when
+ \[S = \sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
+ Note that there are exactly $m$ non-zero elements in each row of $S$.
+ 
+ We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$
 \chapter{Conclusion}
 
 \appendix
