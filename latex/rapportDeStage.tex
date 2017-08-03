@@ -31,20 +31,64 @@ Inria Paris (Sierra department)\\\\ }
 \tableofcontents
 \newpage
 
+\chapter{General Sketching method}
+
+$A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
+We denote by $S$ the $s\times n$ matrix \\ 
+ 
+Throughout the computations, we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+
+The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
+
+By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
+
+for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
+
+Since $\lambda_{max}$ is convex, we obtain that :\\
+
+$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}) \leq 1$.\\
+
+Denote by $\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ which is of size $ n \times r s$.\\
+
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
+ 
+  \ecag{11}{blue}{19}{
+\begin{lemma} \label{general sketch}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp ...\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
+
+\end{lemma}
+}
+\pr 
+
+
+
 \chapter{Randomized Newton Method} \label{newton}
 
-%\ecag{11}{green}{19}{
-%\begin{definition}
-%
-%
-% 
-%\end{definition} 
-%}
 
+$A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
+For $C$ any subset of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
+ 
+Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+
+The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
+
+By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
+
+for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
+
+Since $\lambda_{max}$ is convex, we obtain that :\\
+
+$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
+
+Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
+
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
+ 
 
 \section{Algorithm}
 
-\section{Convergence rate (draft)}
+\section{Convergence rate}
 
 \subsection{General case}
 $A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
