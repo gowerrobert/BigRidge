@@ -35,32 +35,35 @@ Inria Paris (Sierra department)\\\\ }
 
 $A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
 $s$ is the sketch size.\\
- $\acco{S_{i}}_{i=1,\dots,n}$ is the set of realizations of our $s\times n$ sketch matrix.\\
+ $\acco{S_{i}}_{i=1,\dots,r}$ is the set of $r$ realizations of our $s\times n$ sketch matrix.\\
 We denote by $S$ the $s\times n$ random sketch matrix, which is such that $S = S_{i}$ with probability $p_{i}$. \\ 
  
-Throughout the computations, we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+Throughout the computations, we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$. That is a quantity that intervenes in the computation of the convergence rate\footnote{will put before the intervention of the convergence rate in the convergence of our sequence to the optimal solution }.\\
+
+
 
 The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
 By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
-for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
+for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ is a projection matrix (a matrix such that $M^{2} = M$) and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
 
-Since $\lambda_{max}$ is convex, we obtain that :\\
+Since $\lambda_{max}$ is a convex function, we obtain that :\\
 
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}) \leq 1$.\\
 
 Denote by $\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ which is of size $ n \times r s$.\\
-
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
- 
   \ecag{11}{blue}{19}{
-\begin{lemma} \label{general sketch}
+\begin{lemma} \label{general lemma}
+
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R).$ Plus :
 $\\\\$
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(S_{i}^{T} S_{i})} $
 
 \end{lemma}
 }
 \pr
+$A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
+Then we straightforwardly obtain that : $A^{-\frac12}E[Z]A^{-\frac12} = A^{\frac 12} \bold{C} D^{2} \bold{C}^{T} A^{\frac 12}$.\\
 
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
 
@@ -71,7 +74,7 @@ $\bullet$
 
 
 
-\chapter{Randomized Newton Method} \label{newton}
+\chapter{Block Coordinate Descent Method} \label{newton}
 
 
 
@@ -80,57 +83,39 @@ $\bullet$
 
 \section{Convergence rate}
 
-\subsection{General case}
 $A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
-For $C$ any subset of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
+For any subset $C$ of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
+Denote by $\acco{C_{i}}_{i=1,\dots,r}$ the subsets of $\acco{1,\dots,n}$ of size $s$ : that implies that $\dsp r \egaldef  \pare{\substack{n \\ s}}.$
  
-Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$.\\
 
 The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
-By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
-
-for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
-
-Since $\lambda_{max}$ is convex, we obtain that :\\
-
-$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
 
 Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
-
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
  
+ By \textbf{lemma} \ref{general sketch}, we have that : 
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}})} $
  
- \ecag{11}{green}{19}{
-\begin{corollary} \label{general}
-$\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
-
-\end{corollary}
-}
-\pr 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
-
-$\dsp \lambda_{min}(D^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(I_{C_{i}} A I_{C_{i}}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}}) \lambda_{max}(A)}  \geq \min_{i}\frac{ p_{i} }{\lambda_{max}(A)} $, 
-since for any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$ 
+For any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$,
 $\scal{I_{C_{i}}^{T} I_{C_{i}} x }{x} =$
-$ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$
- and then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
+$ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$, then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
  
  Therefore, 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(A)}  =  \min_{i} p_{i} \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}.$\\
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}  \min_{i} p_{i}.$\\
 
-$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that :\\ 
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i=1}^{r} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that corollary :
+ 
+ \ecag{17}{green}{19}{
+\begin{corollary} \label{coordinate}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $.\\
 
-
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $ $\bullet$
-
-
-\subsection{Uniform case}
-
-For any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, knowing that $s$ is the sketch size. That leads towards that corollary of \textbf{Proposition} \ref{general} :\\
-
+If we choose $\acco{p_{i}}_{i=1}^{r}$ as the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, $i.e.$ for any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$, then :\\\\
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
+\end{corollary}
+}
+
 
  \rob{This is already pretty interesting! It shows an improvement for using bigger bachsize! We should try to push this further, for instance, when $s =n$ we know the method converges in one step. It would be great if we have a convergence rate that shows this phenomena. In other words, when $s =n$ we have $\lambda_{\min}(A^{-1/2}E[Z]A^{-1/2}) =1$ ! Also, please have a look at the paper ``paving\_kaczmarz.pdf'' which I've just added to our repo.}
  
@@ -142,14 +127,14 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 \chapter{Randomized orthonormal systems}
 
-This type of randomized system is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
+This type of randomized sketch is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
 When the dimension of our matrix $A$ is $n$, we denote by $H_{n}$ the Hadamard matrix (well defined if the dimension of the problem $n$ is a power of $2$) defined recursively as :\\
 
 $H_{2^{p}} = \begin{pmatrix} H_{2^{p-1}} & - H_{2^{p-1}} \\
 					H_{2^{p-1}} & H_{2^{p-1}}  \end{pmatrix} $ for $p=1,2,\dots$and $H_{1} = 1.$\\
 
-The Hadamard sketch consists of choosing a sketch matrix $S \in \M_{s,n}$ where $s$ is called the sketch size of the problem, as follows :\\ 
-we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical base of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
+The Hadamard sketch consists of choosing a random sketch matrix $S \in \M_{s,n}$ where $s$ is the sketch size of the problem, as follows :\\ 
+we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical basis of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
 
 
 \section{Algorithm}
@@ -160,11 +145,11 @@ we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probabi
 
 
 Now we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our Hadamard random matrix.\\
+For any subset $C$ of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
 
- $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ $\textbf{section}\,\ref{newton}$, $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
+By construction, $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$,  $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$. \\
 
-
-Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
+Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$. From \textbf{lemma} \ref{general lemma}, we have that :
 
 \ecag{11}{green}{19}{
 \begin{corollary} [Unifom sketching]
@@ -197,10 +182,10 @@ $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{ \dsp\sum\limi
 And thanks to the concavity of $\lambda_{min}$, we obtain that :\\
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{ \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12}}$.\\
 
-We recognize least eigenvalues of Newton Sketches and then by $\textbf{Corollary}\, \ref{unif}$, we obtain that :\\
+We then straightforwardly use the uniform case in \textbf{Corollary} \ref{coordinate} to obtain that :\\
 
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \frac{s}{n} \frac{\lambda_{min}(\tilde{A}_{D_{i}})}{\lambda_{max}(\tilde{A}_{D_{i}})}$.\\
-Since for all $i = 1,\dots, 2^{n}$, $\tilde{A}_{D_{i}}$ is similar to $A$, we obtain that :\\
+Since for all $i = 1,\dots, 2^{n}$, $\tilde{A}_{D_{i}}$ is similar to $A$, we obtain finally :\\
 
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$ $\bullet$
 
