@@ -295,7 +295,7 @@ $\bold{C} \bold{C}^{T}= \dsp\sum\limits_{k=1}^{r} f_{\pi_{k}}^{T} f_{\pi_{k}} = 
       & \text{\huge1} &   & s            \\
       &               &   &   & s
     \end{array}
-    \right).$\\
+    \right)$, thanks to the facts that :\\ For all $i\neq j$, $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(i)} = r = s^{n}$ and $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(j)} = \dsp\sum\limits_{k=1}^{r} 1_{\acco{\pi_{k}(i) = \pi_{k}(j)}} = s \times s^{n-2} = s^{n-1}.$\\
 Denote by $\dsp M = \frac{1}{s^{n-1}}\, \bold{C} \bold{C}^{T}.$\\
 
 By subtracting $(s-1)I_{n}$ from $M$, we recognize that $s-1$ is an eigenvalue of $M$ with multiplicity $n-1$. Then the trace of $M$ gives us that $n+s-1$ is the other eigenvalue of $M$.\\ 
@@ -343,8 +343,7 @@ Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shufflin
  \ecag{11}{green}{19}{
 \begin{corollary} \label{shuffle}
 $\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp
-%\frac{(s-1)\,\lambda_{min}(A)}{n\,s\,\lambda_{max}(A)}
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}
 $
 
 \end{corollary}
@@ -402,6 +401,15 @@ Right now we have that :\\
 
 $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})}    }  }{ n! \,m\, \lambda_{max}(A) }. $\\
 
+By Cauchy-Schwarz inequality, $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})} \leq  \sqrt{\tr\pare{D f_{\pi}^{T} f_{\pi} D^{2} f_{\pi}^{T} f_{\pi} D } }\sqrt{ \tr\pare{J-I_{n}}^{2}}$.\\
+Then : $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})} \leq  \sqrt{\tr\pare{ f_{\pi}^{T} f_{\pi} f_{\pi}^{T} f_{\pi} } } \sqrt{n^{2}-n}\leq \sqrt{s m^{2}}\sqrt{n^{2}-n} $.\\
+Therefore :\\
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! m\sqrt{s n (n-1)}   }  }{ n! \,m\, \lambda_{max}(A) } =\frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{m\sqrt{s n (n-1)}}{n(n-1)}} $.\\
+Then :\\
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{s n (n-1)}}{s(n-1)}} = \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}.$\\
+
+We finally finish the proof thanks to the concavity of the function $\lambda_{min}$ :\\
+  $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} \bullet$
 
  
 \chapter{Conclusion}
