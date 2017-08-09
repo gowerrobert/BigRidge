@@ -94,7 +94,7 @@ The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{
 
 Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
  
- By \textbf{lemma} \ref{general sketch}, we have that : 
+ By \textbf{lemma} \ref{general lemma}, we have that : 
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}})} $
  
 For any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$,
@@ -313,11 +313,44 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{
 \section{Sparse Shuffling (Spashu)}
 \rob{I was calling this Radamacher sketch before, but in truth it is not the Radamacher sketch. So we need to give this a new name. How about Sparse Shuffling Sketch? Or a Spashu sketch for short :) }
 
-Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random for all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define $S \in \R^{n \times s}$ as a Sparse Shuffling sketch when
- \[S = \sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
+Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random for all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define $S \in \R^{n \times s}$ as a $s\times n$ Sparse Shuffling sketch when
+ \[S = \dsp\sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
  Note that there are exactly $m$ non-zero elements in each row of $S$.
  
- We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$
+ We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
+ 
+ 
+Notice that $S$ can be rewriting as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} $, where $\pi$ is the function $\fonc{\acco{1,\dots,n}}{\acco{1,\dots,s}}{j}{-\lfloor -\frac{j}{m} \rfloor}.$\\
+ 
+ $\pi$ verifies that for all $i \in \acco{1,\dots,s}$, for all $j \in \acco{1+(m-1) i,\dots,m i}$, $\pi(j) = i. $
+ 
+ For any permutation $\phi$ on $\acco{1,\dots,n}$, denote by $P_{\phi}$ the $n\times n$ matrix $ \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} $.\\
+ Denote by $\phi_{1},\dots,\phi_{n!}$ the different permutations of $\mathfrak{S}_{n}$ and define $(p_{k})_{k=1,\dots,n!}$ such that $p_{k} = \frac{1}{n!}$ for all $k$.\\ Let's consider that uniform probability on $\mathfrak{S}_{n}$.\\ Then $\phi = \phi_{k}$ with probability $\dsp \frac{1}{n!}$.\\\\
+ 
+ Let $\epsilon$ be a uniform random vector of $\acco{-1,1}^{n}$ and $\phi$ a uniform random permutation of $\mathfrak{S}_{n}$.\\
+Let $S$ be a random shuffling sketch such that : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} .$\\
+
+Denote by $f_{\pi} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} }$ and $D = \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)}$.\\
+We have that :\\
+$S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)} P_{\phi}.$\\
+Then : $S = f_{\pi} D P_{\phi}$.\\
+
+Denote by $\bold{C} = (P_{\phi_{1}}^{T},\dots,P_{\phi_{r}}^{T})$ which is a $ n \times n! \,n$ matrix.\\
+
+
+Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
+
+ \ecag{11}{green}{19}{
+\begin{corollary} \label{shuffle}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp
+%\frac{(s-1)\,\lambda_{min}(A)}{n\,s\,\lambda_{max}(A)}
+$
+
+\end{corollary}
+}
+
+ 
 \chapter{Conclusion}
 
 \appendix
