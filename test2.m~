@@ -1,0 +1,20 @@
+% test for getting an idea of the lambda_min of CC^T in the shuffle case, where C is the
+% concatenation matrix resulting from the shuffle sketch method
+
+clear all
+
+n = ;
+A = rand(n,n); 
+%A = [[1;2;3] [4;5;6] [7;8;9]];
+D = zeros(n,n);
+perm = perms(1:n);
+for i = 1:factorial(n)
+   
+    P{i} = zeros(n,n);
+    vect = perm(i,:);
+    for l = 1:n
+    P{i}(l,vect(l)) = 1;
+    end
+    D = D + P{i}'*A*P{i};
+end
+D

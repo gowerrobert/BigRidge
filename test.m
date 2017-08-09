@@ -1,10 +1,10 @@
 % test for getting an idea of the lambda_min of CC^T, where C is the
-% concatenation matrix resulting from the newton sketch method
+% concatenation matrix resulting from the count-min sketch method
 
 clear all
 
-n = 7;
-s = 4;
+n = 5;
+s = 2;
 %r = nchoosek(n,s);
 
 r = s^n;

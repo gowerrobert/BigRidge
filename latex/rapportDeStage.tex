@@ -335,7 +335,7 @@ We have that :\\
 $S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)} P_{\phi}.$\\
 Then : $S = f_{\pi} D P_{\phi}$.\\
 
-Denote by $\bold{C} = (P_{\phi_{1}}^{T},\dots,P_{\phi_{r}}^{T})$ which is a $ n \times n! \,n$ matrix.\\
+Denote by $\bold{C}_{D} = (\pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{r}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,n$ matrix.\\
 
 
 Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
@@ -349,7 +349,26 @@ $
 
 \end{corollary}
 }
+\pr
 
+The \textbf{lemma}\ref{general lemma} gives us that :\\ 
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ \lambda_{max}(A)} \min_{k} \frac{p_{k}}{\lambda_{max}( P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}} )}.$\\
+For all $k = 1,\dots,n!$, $p_{k} = \frac{1}{n!}$ and $P_{\phi_{k}}$ is an orthogonal matrix ( $i.e.$ $P_{\phi_{k}} P_{\phi_{k}}^{T} = I_{n}$). Therefore one obtains that :\\
+
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ n! \, \lambda_{max}(A) \lambda_{max}(f_{\pi}^{T} f_{\pi})}. $\\
+ 
+ \baStar
+ \bold{C}_{D} \bold{C}_{D}^{T} &=& \dsp\sum\limits_{k=1}^{n!}\\
+ &=& \small  (n-1)!\left(
+    \begin{array}{ccccc}
+    \tr(D f_{\pi}^{T} f_{\pi} D)                                    \\
+      & \tr(D f_{\pi}^{T} f_{\pi} D)               &   & \textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }}{n-2}$  }\\
+      &               & \ddots               \\
+      &\textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }}{n-2}$  }&   & \tr(D f_{\pi}^{T} f_{\pi} D)               \\
+      &               &   &   & \tr(D f_{\pi}^{T} f_{\pi} D)   
+    \end{array}
+    \right).\\
+    \eaStar
  
 \chapter{Conclusion}
 
