@@ -1,3 +1,2 @@
---> Change definition of error to energy norm ||x-x_*||_A
 --> find and test efficient way of flipping signs in rows of A for countmin sketch and radamacher
---> Test of big problems!
+
