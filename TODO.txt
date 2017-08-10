@@ -1,8 +1,9 @@
 ****Implementations in BigRidge *****
 --> Why is countmin sketch much slower than all other methods? Double check implementation
 --> find and test efficient way of flipping signs in rows of A for countmin sketch and radamacher. Does flipping the signs help?
---> Verify 
+--> Compare the new theoretical bounds on batching converges rate with the imperical convergence rate.
 --> Try and implement a new sparse sketch as detailed in: papers/sparse_sketches.pdf
+--> Think about using a stochastic estimate of the inverse matrix, see Chapter 3 in my thesis.
 
 
 ****Rapport de stage*****
