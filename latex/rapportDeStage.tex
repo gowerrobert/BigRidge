@@ -211,10 +211,6 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda
 
 \section{Convergence rate}
 
-%$S$ is constructed as follows :\\
-%For every $i\in\acco{1,\dots,n}$, $l$ is chosen uniformly on $\acco{1,\dots,n}$ and $\epsilon$ uniformly on $\acco{-1,1}$, then $S$ is updated in his $l^{th}$ row as :\\
-%$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
-
 Denote by $\pare{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\pare{f_{i}}_{i=1,\dots,s}$ a canonical basis of $\R^{s}.$\\ 
 Then we obtain that every count-min random matrix is of the form : \\
 $\dsp S = \dsp\sum_{i=1}^{n} \dsp\epsilon(i) f_{\pi(i)}e_{i}^{T} \in \M_{s,n}(\R)$, where $\epsilon : \foncfleche{\acco{1,\dots,n}}{\acco{1,-1}}$ and $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $.\\
@@ -304,10 +300,7 @@ Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$.\\
 Thereby we obtain that :\\ 
 
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n}$ \\
-
-
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n} =  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
 
 
 \section{Sparse Shuffling (Spashu)}
@@ -335,7 +328,7 @@ We have that :\\
 $S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)} P_{\phi}.$\\
 Then : $S = f_{\pi} D P_{\phi}$.\\
 
-Denote by $\bold{C}_{D} = (\pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{r}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,n$ matrix.\\
+Denote by $\bold{C}_{D} = (\pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{n!}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,n$ matrix.\\
 
 
 Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
