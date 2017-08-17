@@ -230,7 +230,31 @@ Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A
 
 Denote $r \egaldef s^{n}$ and $\acco{\pi_{1},\dots,\pi_{r}}$ the elements of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ which is of size $r = s^{n}$.\\
 Then, $\pi = \pi_{k}$ with probability $p_{k} \egaldef s^{-n}$.\\
+
 Denote by $\bold{C} = (f_{\pi_{1}}^{T},\dots,f_{\pi_{r}}^{T})$ which is a $ n \times r s$ matrix.\\
+
+ \ecag{19}{blue}{19}{
+\begin{lemma} \label{eigenvalue}
+$\\\\$
+Let $M$ be a $n\times n$ matrix of the form $a I_{n} + $
+ where $a$ and $b$ are two real numbers. Then :\\
+    $a-b$ and $a+(n-1)b$ are the eigenvalues of $M$ with $a-b$ of multiplicity at least $n-1$.
+
+\end{lemma}
+}
+
+\pr
+
+Let's observe that by subtracting $(a-b) I_{n}$ from $M$, we obtain : $M-(a-b)I_{n} = \left(
+    \begin{array}{ccccc}
+    b                                    \\
+      & b             &   & \text{\huge b}\\
+      &               & \ddots               \\
+      & \text{\huge b} &   & b            \\
+      &               &   &   & b
+    \end{array}
+    \right)$ which is a matrix of range at most $1$ (of range $0$ if $b = 0$). Therefore $a-b$ is an eigenvalue of $M$ of multiplicity at least $n-1$.\\
+    Then, $\tr(M) - (n-1) (a-b)$ is the remaining eigenvalue. And since $\tr(M) = na$, then $a+(n-1)b$ is the remaining eigenvalue. $\qed$
 
 
  
@@ -242,6 +266,8 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp
 
 \end{corollary}
 }
+
+
 \pr 
 
 Denote by $\tilde{A} = D A D.$\\
@@ -295,7 +321,7 @@ $\bold{C} \bold{C}^{T}= \dsp\sum\limits_{k=1}^{r} f_{\pi_{k}}^{T} f_{\pi_{k}} = 
     \right)$, thanks to the facts that :\\ For all $i\neq j$, $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(i)} = r = s^{n}$ and $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(j)} = \dsp\sum\limits_{k=1}^{r} 1_{\acco{\pi_{k}(i) = \pi_{k}(j)}} = s \times s^{n-2} = s^{n-1}.$\\
 Denote by $\dsp M = \frac{1}{s^{n-1}}\, \bold{C} \bold{C}^{T}.$\\
 
-By subtracting $(s-1)I_{n}$ from $M$, we recognize that $s-1$ is an eigenvalue of $M$ with multiplicity $n-1$. Then the trace of $M$ gives us that $n+s-1$ is the other eigenvalue of $M$.\\ 
+By using the \textbf{lemma} \ref{eigenvalue}, $(s-1)s^{n-1}$ and $s^{n} + (n-1)s^{n-1} = (n+s-1)s^{n-1}$ are the eigenvalues of $\bold{C} \bold{C}^{T}$.\\
 Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$.\\
 
 Thereby we obtain that :\\ 
@@ -313,9 +339,7 @@ Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, select
  We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
  
  
-Notice that $S$ can be rewritten as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} $, where $\pi$ is the function $\fonc{\acco{1,\dots,n}}{\acco{1,\dots,s}}{j}{-\lfloor -\frac{j}{m} \rfloor}.$\\
-
- \rob{I think it should be $\pi: j \rightarrow \lceil \frac{j}{m} \rceil$}
+Notice that $S$ can be rewritten as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} $, where $\pi$ is the function $\fonc{\acco{1,\dots,n}}{\acco{1,\dots,s}}{j}{\lceil\frac{j}{m} \rceil}.$\\
  
  $\pi$ verifies that for all $i \in \acco{1,\dots,s}$, for all $j \in \acco{1+m (i-1),\dots,m i}$, $\pi(j) = i. $
  
@@ -365,12 +389,14 @@ $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lamb
     \end{array}
     \right)\\
     \eaStar
-    Denote by $\lambda_{1} = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }     $ and \\$\lambda_{2} = (n-1)!(n-1)\tr(f_{\pi}^{T} f_{\pi})+(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) } $.\\
-    By subtracting $\lambda_{1}I_{n}$  from $\bold{C}_{D} \bold{C}_{D}^{T} $, we straightforwardly observe that $\lambda_{1}$ is an eigenvalue of $\bold{C}_{D} \bold{C}_{D}^{T} $ of multiplicity $n-1$. And then taking the trace shows that $\lambda_{2}$ is the remaining eigenvalue.\\
-    Hence, $\lambda_{min}( \bold{C}_{D} \bold{C}_{D}^{T} ) = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }.$\\
+    
+    By using the \textbf{lemma} \ref{eigenvalue}, $\lambda_{1} = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -\frac{(n-1)!}{n-2} \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }     $ and \\$\lambda_{2} = (n-1)!\tr(f_{\pi}^{T} f_{\pi})+(n-1)!\frac{n-1}{n-2} \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) } $ are the eigenvalues of $\bold{C}_{D} \bold{C}_{D}^{T} $.\\
+    Hence, $\lambda_{min}( \bold{C}_{D} \bold{C}_{D}^{T} ) = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -\frac{(n-1)!}{n-2} \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }.$\\
     
     Now denote by $1_{m} = \underbrace{\pare{1,\dots,1}}_{m \;\text{times}\; 1}$.\\
     One observes that  $f_{\pi} = \pare{f_{1}1_{m}, f_{2}1_{m}, \dots, f_{s}1_{m}}.$\\
+    
+    
 Then :\\
 $f_{\pi}^{T} f_{\pi} = \pare{1_{m}^{T}f_{i}^{T}f_{j}1_{m}}_{i,j=1,\dots,s} =    \left(
     \begin{array}{ccccc}
@@ -389,8 +415,12 @@ $f_{\pi}^{T} f_{\pi} = \pare{1_{m}^{T}f_{i}^{T}f_{j}1_{m}}_{i,j=1,\dots,s} =    
       &               &   &   & J_{m}
     \end{array}
     \right).$
+    
+    When we use the \textbf{lemma} \ref{eigenvalue} on $J_{m}$, we obtain that $0$ and $m$ are the eigenvalues of $J_{m}$, with $0$ of multiplicity $m-1$.\\
 Then :\\
-$\lambda_{max}(f_{\pi}^{T}f_{\pi}) = m$ and $\tr(f_{\pi}^{T} f_{\pi}) = n$.\\
+$\lambda_{max}(f_{\pi}^{T}f_{\pi}) = m$ and $\tr(f_{\pi}^{T} f_{\pi}) = s \tr(J_{m}) = s\, m = n$.\\
+
+\emph{A modifier à partir d'ici}\\
 
 Right now we have that :\\
 
