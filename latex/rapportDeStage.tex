@@ -76,7 +76,7 @@ $\qed$
 
 \chapter{Block Coordinate Descent Method} \label{newton}
 
-
+\rob{Explain why is this called block coordinate descent? Write little intro.}
 
 
 \section{Algorithm}
@@ -321,7 +321,7 @@ Notice that $S$ can be rewritten as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi
  $\pi$ verifies that for all $i \in \acco{1,\dots,s}$, for all $j \in \acco{1+m (i-1),\dots,m i}$, $\pi(j) = i. $
  
  For any permutation $\phi$ on $\acco{1,\dots,n}$, denote by $P_{\phi}$ the $n\times n$ matrix $ \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} $.\\
- Denote by $\phi_{1},\dots,\phi_{n!}$ the different permutations of $\mathfrak{S}_{n}$ and define $(p_{k})_{k=1,\dots,n!}$ such that $p_{k} = \frac{1}{n!}$ for all $k$.\\ Let's consider that uniform probability on $\mathfrak{S}_{n}$.\\ Then $\phi = \phi_{k}$ with probability $\dsp \frac{1}{n!}$.\\\\
+ Denote by $\phi_{1},\dots,\phi_{n!}$ the different permutations over $\{1,\ldots, n\}$ and define $(p_{k})_{k=1,\dots,n!}$ such that $p_{k} = \frac{1}{n!}$ for all $k$, which is the uniform probability distribution over all permutations.  Then $\phi = \phi_{k}$ with probability $\dsp \frac{1}{n!}$.\\\\
  
  Let $\epsilon$ be a uniform random vector of $\acco{-1,1}^{n}$ and $\phi$ a uniform random permutation of $\mathfrak{S}_{n}$.\\
 Let $S$ be a random shuffling sketch such that : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} .$\\
