@@ -70,7 +70,7 @@ $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \
 $\dsp \lambda_{min}(D^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(S_{i} A S_{i}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(S_{i}^{T} S_{i}) \lambda_{max}(A)}.$\\
  Therefore, 
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i}  \frac{p_{i} \lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(S_{i}^{T} S_{i}) \lambda_{max}(A) }  =  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(S_{i}^{T} S_{i})}$
-$\bullet$
+$\qed$
 
 
 
@@ -192,7 +192,7 @@ We then straightforwardly use the uniform case in \textbf{Corollary} \ref{coordi
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \frac{s}{n} \frac{\lambda_{min}(\tilde{A}_{D_{i}})}{\lambda_{max}(\tilde{A}_{D_{i}})}$.\\
 For all $i = 1,\dots, 2^{n}$, $\tilde{A}_{D_{i}}$ is similar to $A$, and then finally :\\
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$ $\bullet$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$ $\qed$
 
 
 
@@ -301,7 +301,7 @@ Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$.\\
 Thereby we obtain that :\\ 
 
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n} =  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n} =  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\qed$
 
 
 \section{Sparse Shuffling (Spashu)}
@@ -405,7 +405,7 @@ Then :\\
 $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{s n (n-1)}}{s(n-1)}} = \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}.$\\
 
 We finally finish the proof thanks to the concavity of the function $\lambda_{min}$ :\\
-  $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} \bullet$
+  $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} \qed$
 
  
 \chapter{Conclusion}
