@@ -3,6 +3,7 @@
 
 \usepackage[colorinlistoftodos,bordercolor=orange,backgroundcolor=orange!20,linecolor=orange,textsize=scriptsize]{todonotes}
 \newcommand{\rob}[1]{\todo[inline]{\textbf{Robert: }#1}}
+\newcommand{\cheikh}[1]{\todo[inline]{\textbf{Cheikh: }#1}}
 
 \title{New stochastic sketching methods for Big Data Ridge Regression}
 \author{Cheikh Saliou Tour\'e \\ \\
@@ -52,7 +53,7 @@ Since $\lambda_{max}$ is a convex function, we obtain that :\\
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}) \leq 1$.\\
 
 Denote by $\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ which is of size $ n \times r s$.\\
-  \ecag{11}{blue}{19}{
+  \ecag{15}{blue}{19}{
 \begin{lemma} \label{general lemma}
 
 $A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R).$ Plus :
@@ -262,7 +263,6 @@ Let $M = \left(
 }
 
 \pr
-\emph{A modifier}
 
 Let's observe that by subtracting $(a-b) I_{n}$ from $M$, we obtain : $M-(a-b)I_{n} = \left(
     \begin{array}{ccccc}
@@ -352,11 +352,20 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A)
 
 \section{Sparse Shuffling (Spashu)}
 
-Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random from all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define the \emph{Spashu} (Sparse Shuffling) sketch $S \in \R^{n \times s}$ as a $s\times n$  when
+Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random from all the $n!$ possible permutations. Define by $\mathfrak{S}_{n}$ the set of all permutation functions on $\acco{1,\dots,n}.$\\
+ Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$\\
+
+% We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
+
+
+
+
+Denote by $\pare{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\pare{f_{i}}_{i=1,\dots,s}$ a canonical basis of $\R^{s}.$\\ 
+ We define the \emph{Spashu} (Sparse Shuffling) $s\times n$ sketch matrix $S \in \R^{n \times s}$  when
  \[S := \dsp\sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
- Note that there are $n$ non-zeros elements in $S$, with exactly $m$ non-zero elements in each row of $S$.
+ Note that there are at most $n$ non-zeros elements in $S$ ($m s$), with exactly $m$ non-zero elements in each row of $S$.
  \rob{To include subsampling, we will either have to re-define $\phi: C \rightarrow \{1,\ldots, ms\}$ where $C \subset \{1,\ldots, n\}$ and $|C| = ms$, or re-define the $\epsilon$ function to return $\{-1,1,0\}$.}
- We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
+
  
  
 Notice that $S$ can be rewritten as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} $, where $\pi$ is the function $\fonc{\acco{1,\dots,n}}{\acco{1,\dots,s}}{j}{\lceil\frac{j}{m} \rceil}.$\\
@@ -374,7 +383,7 @@ We have that :\\
 $S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)} P_{\phi}.$\\
 Then : $S = f_{\pi} D P_{\phi}$.\\
 
-Denote by $\bold{C}_{D} = \pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{n!}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,n$ matrix.\\
+Denote by $\bold{C}_{D} = \pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{n!}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,s$ matrix.\\
 
 
 Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
@@ -382,9 +391,9 @@ Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shufflin
  \ecag{16}{blue}{19}{
 \begin{lemma} \label{permutation}
 $\\\\$
-Let $M$ be a symmetric matrix and $\acco{\phi_{1},\dots,\phi_{n!}}$ the permutations of $n$ elements.\\
+Let $M$ be a  matrix and $\mathfrak{S}_{n}$ be the set of all permutations of $\acco{1,\dots,n}$.\\
 Then :\\
-$\dsp\sum\limits_{k=1}^{n!} P_{\phi_{k}}^{T} M P_{\phi_{k}} = \small  (n-1)!\left(
+$\dsp\sum\limits_{\phi\in\mathfrak{S}_{n}} P_{\phi}^{T} M P_{\phi} = \small  (n-1)!\left(
     \begin{array}{ccccc}
     \tr(M)                                    \\
       & \tr(M)               &   & \textbf{\Large $\frac{\tr\pare{M (J-I_{n}) }}{n-1}$  }\\
@@ -439,7 +448,7 @@ $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lamb
  For any positive integer $k$, denote by $J_{k} \in \M_{k}(\R)$ the all-ones matrix of size $k$, $i.e.$ $J_{k}(i,j) = 1$ for all $i,j = 1,\dots, k$.\\
   
  
- $\bold{C}_{D} \bold{C}_{D}^{T} = \dsp\sum\limits_{k=1}^{n!} P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}}$.\\
+ $\bold{C}_{D} \bold{C}_{D}^{T} = \dsp\sum\limits_{\phi\in\mathfrak{S}_{n}} P_{\phi}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi}$.\\
 Then by \textbf{lemma} \ref{permutation} :\\
  
  \baStar
@@ -501,6 +510,8 @@ We finally finish the proof thanks to the concavity of the function $\lambda_{mi
 
  
  \rem
+ \begin{itemize}
+ \item
  For $D = I_{n}$, 
  \baStar
  \dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) &\geq& \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! \tr\pare{ f_{\pi}^{T} f_{\pi}  (J-I_{n})}    }  }{ n! \,m\, \lambda_{max}(A) }\\
@@ -509,6 +520,10 @@ We finally finish the proof thanks to the concavity of the function $\lambda_{mi
   &\geq&  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} 
   \eaStar
   And then the convergence rate would be better if we could dodge $D$.
+  \item 
+  $\\$
+ \cheikh{Still trying to have some results about the subsampling case, I am currently using $\phi$ as injective functions from $\acco{1,\dots,ms}$ to $\acco{1,\dots,n}$. Will write it down tomorrow normally.}
+  \end{itemize}
  
  
 \chapter{Conclusion}
