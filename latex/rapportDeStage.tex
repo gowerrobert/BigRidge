@@ -34,120 +34,91 @@ Inria Paris (Sierra department)\\\\ }
 \chapter{General Sketching method}
 
 $A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
-We denote by $S$ the $s\times n$ matrix \\ 
+$s$ is the sketch size.\\
+ $\acco{S_{i}}_{i=1,\dots,r}$ is the set of $r$ realizations of our $s\times n$ sketch matrix.\\
+We denote by $S$ the $s\times n$ random sketch matrix, which is such that $S = S_{i}$ with probability $p_{i}$. \\ 
  
-Throughout the computations, we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+Throughout the computations, we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$. That is a quantity that intervenes in the computation of the convergence rate\footnote{will put before the intervention of the convergence rate in the convergence of our sequence to the optimal solution }.\\
+
+
 
 The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
-By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
+By definition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
+for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ is a projection matrix (a matrix such that $M^{2} = M$) and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
 
-for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
-
-Since $\lambda_{max}$ is convex, we obtain that :\\
+Since $\lambda_{max}$ is a convex function, we obtain that :\\
 
 $0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}) \leq 1$.\\
 
 Denote by $\bold{C} = (S_{1}^{T},\dots,S_{r}^{T})$ which is of size $ n \times r s$.\\
 
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
- 
-\ecag{11}{blue}{19}{
-\begin{lemma} \label{general sketch}
+  \ecag{11}{blue}{19}{
+\begin{lemma} \label{general lemma}
+%$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
+*****
+$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (S_{1}A S_{1}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(S_{r}A S_{r}^{T})^{-\frac 12}) \in \M_{r s}(\R).$ Plus :
+
 $\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp ...\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(S_{i}^{T} S_{i})} $
 
 \end{lemma}
 }
-\pr 
+\pr
+$A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} S_{i}^{T} (S_{i}  A  S_{i}^{T})^{-1} S_{i} A^{\frac 12}$ \\
+Then we straightforwardly obtain that : $A^{-\frac12}E[Z]A^{-\frac12} = A^{\frac 12} \bold{C} D^{2} \bold{C}^{T} A^{\frac 12}$.\\
+
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
+
+$\dsp \lambda_{min}(D^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(S_{i} A S_{i}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(S_{i}^{T} S_{i}) \lambda_{max}(A)}.$\\
+ Therefore, 
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i}  \frac{p_{i} \lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(S_{i}^{T} S_{i}) \lambda_{max}(A) }  =  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(S_{i}^{T} S_{i})}$
+$\bullet$
 
 
 
-\chapter{Randomized Newton Method} \label{newton}
+\chapter{Block Coordinate Descent Method} \label{newton}
 
 
-$A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
-For $C$ any subset of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
- 
-Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
 
-The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
-
-By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
-
-for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
-
-Since $\lambda_{max}$ is convex, we obtain that :\\
-
-$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
-
-Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
-
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
- 
 
 \section{Algorithm}
 
 \section{Convergence rate}
 
-\subsection{General case}
 $A$ is a $n \times n$ positive definite matrix representing our problem.\\ 
-For $C$ any subset of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
+For any subset $C$ of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
+Denote by $\acco{C_{i}}_{i=1,\dots,r}$ the subsets of $\acco{1,\dots,n}$ of size $s$ : that implies that $\dsp r \egaldef  \pare{\substack{n \\ s}}.$
  
-Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$. That is a quantity that intervenes in the computation of the convergence rate.\\
+Throughout the computations, we denote by $Z = A I_{C}^{T} (I_{C} A I_{C}^{T})^{-1} I_{C} A$.\\
 
 The convergence rate is defined by $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
-By defiition, $A^{-\frac12}E[Z]A^{-\frac12} = \dsp\sum\limits_{i} p_{i} A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ \\
-
-for any $i \in \acco{1,\dots,n}$, $A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}$ is a projection matrix and then its eigenvalues are a nonempty subset of $\acco{0,1}$.\\
-
-Since $\lambda_{max}$ is convex, we obtain that :\\
-
-$0 \leq \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \leq  \lambda_{max}(A^{-\frac12}E[Z]A^{-\frac12}) \leq \dsp\sum\limits_{i} p_{i} \lambda_{max}(A^{\frac 12} I_{C_{i}}^{T} (I_{C_{i}}  A  I_{C_{i}}^{T})^{-1} I_{C_{i}} A^{\frac 12}) \leq 1$.\\
 
 Denote by $\bold{C} = (I_{C_{1}}^{T},\dots,I_{C_{r}}^{T})$ which is of size $ n \times r s$.\\
-
-$A^{-\frac12}E[Z]A^{-\frac12} = (A^{\frac 12} \bold{C} D)(D \bold{C}^{T} A^{\frac 12})$ where \\$D =  \,\text{diag}(\sqrt{p_{1}} (I_{C_{1}}A I_{C_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{C_{r}} A I_{C_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$
  
+ By \textbf{lemma} \ref{general lemma}, we have that : 
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{i} \frac{p_{i}}{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}})} $
  
- \ecag{11}{red}{19}{
-\begin{proposition} \label{general}
-$\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $
-
-\end{proposition}
-}
-\pr 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \lambda_{min}(\bold{C}^{T}A \bold{C} ) \lambda_{min}(D^{2})$
-
-$\dsp \lambda_{min}(D^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(I_{C_{i}} A I_{C_{i}}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(I_{C_{i}}^{T} I_{C_{i}}) \lambda_{max}(A)}  \geq \min_{i}\frac{ p_{i} }{\lambda_{max}(A)} $, 
-since for any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$ 
+For any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$,
 $\scal{I_{C_{i}}^{T} I_{C_{i}} x }{x} =$
-$ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$
- and then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
+$ \norm{ I_{C_{i}}x }^{2} \leq \norm{x}^{2}$, then $\lambda_{max}( I_{C_{i}}^{T} I_{C_{i}}  ) \leq 1$.\\
  
  Therefore, 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}A \bold{C} )}{\lambda_{max}(A)}  =  \min_{i} p_{i} \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}.$\\
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{ \lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{\lambda_{max}(A)}  \min_{i} p_{i}.$\\
 
-$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that :\\ 
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i=1}^{r} I_{C_{i}}^{T} I_{C_{i}} = \pare{\substack{n-1 \\ s-1}} I_{n} $ and then we obtain that corollary :
+ 
+ \ecag{17}{green}{19}{
+\begin{corollary} \label{coordinate}
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $.\\
 
-
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp \pare{\substack{n-1 \\ s-1}}\frac{\lambda_{min}(A)}{\lambda_{max}(A)}\min_{i} p_{i} $ $\bullet$
-
-
-\subsection{Uniform case}
-
-For any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$ is the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, knowing that $s$ is the sketch size. That leads towards that corollary of \textbf{Proposition} \ref{general} :\\
-
-
-\ecag{11}{green}{19}{
-\begin{corollary} [Unifom sketching] \label{unif}
-$\\\\$
+If we choose $\acco{p_{i}}_{i=1}^{r}$ as the uniform probability of choosing $s$ rows uniformly on $\acco{1,\dots,n}$, $i.e.$ for any $i$, $p_{i} = \dsp\frac{1}{\pare{\substack{ n \\ s }}}$, then :\\\\
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
-
 \end{corollary}
 }
+
+
  \rob{This is already pretty interesting! It shows an improvement for using bigger bachsize! We should try to push this further, for instance, when $s =n$ we know the method converges in one step. It would be great if we have a convergence rate that shows this phenomena. In other words, when $s =n$ we have $\lambda_{\min}(A^{-1/2}E[Z]A^{-1/2}) =1$ ! Also, please have a look at the paper ``paving\_kaczmarz.pdf'' which I've just added to our repo.}
  
  %\subsection{A convenient probability}
@@ -158,14 +129,14 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambd
 
 \chapter{Randomized orthonormal systems}
 
-This type of randomized system is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
+This type of randomized sketch is well-suited for big data regression, thanks to the efficiency of matrix multiplication used in this method.\\
 When the dimension of our matrix $A$ is $n$, we denote by $H_{n}$ the Hadamard matrix (well defined if the dimension of the problem $n$ is a power of $2$) defined recursively as :\\
 
 $H_{2^{p}} = \begin{pmatrix} H_{2^{p-1}} & - H_{2^{p-1}} \\
 					H_{2^{p-1}} & H_{2^{p-1}}  \end{pmatrix} $ for $p=1,2,\dots$and $H_{1} = 1.$\\
 
-The Hadamard sketch consists of choosing a sketch matrix $S \in \M_{s,n}$ where $s$ is called the sketch size of the problem, as follows :\\ 
-we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical base of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
+The Hadamard sketch consists of choosing a random sketch matrix $S \in \M_{s,n}$ where $s$ is the sketch size of the problem, as follows :\\ 
+we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probability $\frac 1n$ for $j = 1,\dots,n$,where $(e_{j})_{j}$ forms a canonical basis of $\R^{n}$, and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$.  
 
 
 \section{Algorithm}
@@ -176,18 +147,18 @@ we sample $s$ $i.i.d.$ rows of the form $s^{T} = e_{j}^{T}H_{n} D $ with probabi
 
 
 Now we denote by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our Hadamard random matrix.\\
+For any subset $C$ of $\acco{1,\dots,n}$ of length $s$, we denote by $I_{C}$ the $s\times n$ matrix which rows are $\acco{e_{i}^{T}}_{i\in C}$ up to a permutation, where $\acco{e_{i}}_{i=1,\dots,n}$ is a canonical basis of $\R^{n}.$\\ 
 
- $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$, as defined in the $Randomized \,\,Newton$ $\textbf{section}\,\ref{newton}$, $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D$ is a diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
+By construction, $S = I_{C} H D$ where $C$ is a uniform random subset of $\acco{1,\dots,n}$ of size $s$,  $H$ is the $Hadamard$ matrix ($H H^{T} = n I_{n}$) and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$. \\
 
+Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$. From \textbf{lemma} \ref{general lemma}, we have that :
 
-Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.
-
-\ecag{11}{blue}{19}{
-\begin{lemma} [Unifom sketching]
+\ecag{11}{green}{19}{
+\begin{corollary} [Unifom sketching]
 $\\\\$
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)} $
 
-\end{lemma}
+\end{corollary}
 }
 \pr
 
@@ -199,26 +170,30 @@ Define by $\tilde{A}_{D} = \frac{H} {\sqrt{n}} D A D \frac{H^{T}}{\sqrt{n}}$. We
 A^{-\frac12}E[Z|D]A^{-\frac12} &=& E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12}|D ] \\
 &=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D H^{T} I_{C_{i}}^{T} (I_{C_{i}} H D A D H^{T} I_{C_{i}}^{T})^{-1} I_{C_{i}} H D A^{\frac 12} \\
 &=& \frac1n A^{\frac 12}D H^{T} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] HD A^{\frac 12} \\
- &=&  D H^{-1} \tilde{A}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}^{\frac 12} n (H^{T})^{-1} D\\
-  &=& \frac1n D H^{T} \tilde{A}_{D}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D}^{\frac 12} H D.
+&=& D H^{-1} HD \frac1n A^{\frac 12}D H^{T} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] HD A^{\frac 12} D H^{T} (H^{T})^{-1}D  \\
+&=& D H^{-1} \tilde{A}^{\frac12}_{D} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ]\tilde{A}^{\frac12}_{D}\,  n (H^{T})^{-1}D \\
+&=& D H^{-1} \tilde{A}^{\frac12}_{D} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ]\tilde{A}^{\frac12}_{D} \,H D \\
   \eaStar
   
 Hence :\\
 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{E_{D}\croc{\tilde{A}_{D}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D}^{\frac 12} }}$.\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{E_{D}\croc{D H^{-1} \tilde{A}_{D}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D} I_{C}^{T})^{-1} I_{C}] \tilde{A}_{D}^{\frac 12} H D}}$.\\
 Denote by $(D_{i})_{i=1,\dots,2^{n}}$ the $2^{n}$ possible values of the random matrix $D$.\\
 We obtain that :\\
 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{ \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12} }$.\\
-And thanks to the concavity of $\lambda_{min}$, we obtain that :\\
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{ \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12}}$.\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{ \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} D_{i} H^{-1} \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12} H D_{i}}$.\\
+And thanks to the concavity of $\lambda_{min}$, we obtain that :
+\baStar
+\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) &\geq&  \dsp \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{D_{i} H^{-1} \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12} H D_{i}}\\
+ &=& \sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{ \tilde{A}_{D_{i}}^{\frac 12} E[ I_{C}^{T} (I_{C} \tilde{A}_{D_{i}} I_{C}^{T})^{-1} I_{C} ] \tilde{A}_{D_{i}}^{\frac 12}}
+\eaStar
 
-We recognize least eigenvalues of Newton Sketches and then by $\textbf{Corollary}\, \ref{unif}$, we obtain that :\\
+We then straightforwardly use the uniform case in \textbf{Corollary} \ref{coordinate} to obtain that :\\
 
 $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \frac{s}{n} \frac{\lambda_{min}(\tilde{A}_{D_{i}})}{\lambda_{max}(\tilde{A}_{D_{i}})}$.\\
-Since for all $i = 1,\dots, 2^{n}$, $\tilde{A}_{D_{i}}$ is similar to $A$, we obtain that :\\
+For all $i = 1,\dots, 2^{n}$, $\tilde{A}_{D_{i}}$ is similar to $A$, and then finally :\\
 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$ $\bullet$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}$ $\bullet$
 
 
 
@@ -238,11 +213,11 @@ $\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) \geq \frac{s}{n} \frac{\lambda_{min
 
 \section{Convergence rate}
 
-$S$ is constructed as follows :\\
-For every $i\in\acco{1,\dots,n}$, $l$ is chosen uniformly on $\acco{1,\dots,n}$ and $\epsilon$ uniformly on $\acco{-1,1}$, then $S$ is updated in his $l^{th}$ row as :\\
-$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
+%$S$ is constructed as follows :\\
+%For every $i\in\acco{1,\dots,n}$, $l$ is chosen uniformly on $\acco{1,\dots,n}$ and $\epsilon$ uniformly on $\acco{-1,1}$, then $S$ is updated in his $l^{th}$ row as :\\
+%$S(l, :) := S(l,:) + \epsilon \, e_{i}^{T}$, where $e_{i}$ is the $i^{th}$ coloumn of the identity matrix.\\\\
 
-Denote by $\acco{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\acco{f_{i}}_{i=1,\dots,s}$ a canonical basis of $\R^{s}.$\\ 
+Denote by $\pare{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\pare{f_{i}}_{i=1,\dots,s}$ a canonical basis of $\R^{s}.$\\ 
 Then we obtain that every count-min random matrix is of the form : \\
 $\dsp S = \dsp\sum_{i=1}^{n} \dsp\epsilon(i) f_{\pi(i)}e_{i}^{T} \in \M_{s,n}(\R)$, where $\epsilon : \foncfleche{\acco{1,\dots,n}}{\acco{1,-1}}$ and $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $.\\
 
@@ -250,26 +225,27 @@ We therefore can rewrite $S$ as :\\
  $S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{1}^{T} \\ \vdots \\ e_{n}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)}$.\\
  
 
-For any $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $, denote by $I_{\pi}$ the $s\times n$ matrix which columns are $\acco{f_{\pi(i)}}_{i=1,\dots,n}.$\\\\
+For any $\pi : \foncfleche{\acco{1,\dots,n}}{\acco{1,\dots,s}} $, define by $f_{\pi}$ the $s\times n$ matrix $\pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} }.$\\
 
 Let $S$ be a random count-min sketch matrix.\\
- $S = I_{\pi} D$ where $\pi$ is a uniform random element of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ and $D$ is a $n\times n$ diagonal random matrix which values are uniformly distributed in $\acco{-1,1}$ \\
+ $S = f_{\pi} D$ where $\pi$ is a uniform random element of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ and $D = diag(\nu)$ is a diagonal matrix of $i.i.d.$ Rademacher variables $\nu \in \acco{-1,1}^{n}$. \\
 
 Denote again by $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our count-min random matrix.\\
 Recall that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\\\
 
-Denote $r \egaldef s^{n}$ and $(\pi_{1},\dots,\pi_{r})$ the different elements of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$.\\
-Denote by $\bold{C} = (I_{\pi_{1}}^{T},\dots,I_{\pi_{r}}^{T})$ which is of size $ n \times r s$.\\
+Denote $r \egaldef s^{n}$ and $\acco{\pi_{1},\dots,\pi_{r}}$ the elements of $\acco{1,\dots,s}^{\acco{1,\dots,n}}$ which is of size $r = s^{n}$.\\
+Then, $\pi = \pi_{k}$ with probability $p_{k} \egaldef s^{-n}$.\\
+Denote by $\bold{C} = (f_{\pi_{1}}^{T},\dots,f_{\pi_{r}}^{T})$ which is a $ n \times r s$ matrix.\\
 
 
  
- \ecag{11}{red}{19}{
-\begin{proposition} \label{general}
+ \ecag{11}{green}{19}{
+\begin{corollary} \label{general}
 $\\\\$
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp
 \frac{(s-1)\,\lambda_{min}(A)}{n\,s\,\lambda_{max}(A)}$
 
-\end{proposition}
+\end{corollary}
 }
 \pr 
 
@@ -277,50 +253,61 @@ Denote by $\tilde{A} = D A D.$\\
 
 \baStar
 A^{-\frac12}E[Z|D]A^{-\frac12} &=& E[A^{\frac 12} S^{T} (S A S^{T})^{-1} S A^{\frac 12}|D ] \\
-&=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D I_{\pi_{i}}^{T} (I_{\pi_{i}}  D A D I_{\pi_{i}}^{T})^{-1} I_{\pi_{i}} D A^{\frac 12} \\
-&=& A^{\frac 12}D E[ I_{\pi}^{T} (I_{\pi} \tilde{A}_{D} I_{\pi}^{T})^{-1} I_{\pi} ] D A^{\frac 12} \\
+&=& \dsp\sum\limits_{i} p_{i} A^{\frac 12} D f_{\pi_{i}}^{T} (f_{\pi_{i}}  D A D f_{\pi_{i}}^{T})^{-1} f_{\pi_{i}} D A^{\frac 12} \\
+&=& A^{\frac 12}D E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D} f_{\pi}^{T})^{-1} f_{\pi} ] D A^{\frac 12} \\
+&=& D \tilde{A}^{\frac 12}_{D} E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D} f_{\pi}^{T})^{-1} f_{\pi} ] \tilde{A}^{\frac 12}_{D} D \\
    \eaStar
+   
+   Then :\\
 
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{E_{D}\croc{D  \tilde{A}_{D}^{\frac 12} E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D} f_{\pi}^{T})^{-1} f_{\pi}] \tilde{A}_{D}^{\frac 12} D}}$.\\
+Denote again by $(D_{i})_{i=1,\dots,2^{n}}$ the $2^{n}$ possible values of the random matrix $D$.\\
+We obtain that :\\
 
-Then : $A^{-\frac12}E[Z|D]A^{-\frac12} = (A^{\frac 12} D \bold{C} \Delta)(\Delta \bold{C}^{T} D A^{\frac 12})$ where \\$\Delta =  \,\text{diag}(\sqrt{p_{1}} (I_{\pi_{1}}\tilde{A}_{D} I_{\pi_{1}}^{T})^{-\frac 12},\dots, \sqrt{p_{r}}(I_{\pi_{r}} \tilde{A}_{D} I_{\pi_{r}}^{T})^{-\frac 12}) \in \M_{r s}(\R)$.\\
+$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) = \lambda_{min}\pare{ \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} D_{i}  \tilde{A}_{D_{i}}^{\frac 12} E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D_{i}} f_{\pi}^{T})^{-1} f_{\pi} ] \tilde{A}_{D_{i}}^{\frac 12} D_{i}}$.\\
+And thanks to the concavity of $\lambda_{min}$, we obtain that :\\
 
-By concavity of $\lambda_{min}$, we obtain that :\\
+\baStar
+\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}) &\geq&  \dsp\sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{D_{i} \tilde{A}_{D_{i}}^{\frac 12} E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D_{i}} f_{\pi}^{T})^{-1} f_{\pi} ] \tilde{A}_{D_{i}}^{\frac 12} D_{i}}\\
+ &=& \sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \lambda_{min}\pare{ \tilde{A}_{D_{i}}^{\frac 12} E[ f_{\pi}^{T} (f_{\pi} \tilde{A}_{D_{i}} f_{\pi}^{T})^{-1} f_{\pi} ] \tilde{A}_{D_{i}}^{\frac 12}}
+\eaStar
+   
+Then by \textbf{lemma} \ref{general lemma} :\\
 
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) = \lambda_{min} \pare{E_{D}\croc{A^{-\frac12}E[Z|D]A^{-\frac12}} } \geq E_{D} \pare{\lambda_{min} (A^{\frac 12} D \bold{C} \Delta)(\Delta \bold{C}^{T} D A^{\frac 12}) }$.\\
+\baStar
+\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  &\geq&  \dsp   \sum\limits_{i=1}^{2^{n}} \frac{1}{ 2^{n}} \frac{\lambda_{min}(\tilde{A}_{D_{i}}) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(\tilde{A}_{D_{i}})} \min_{k} \frac{p_{k}}{\lambda_{max}(f_{\pi_{k}}^{T} f_{\pi_{k}})} \\
+&=& \frac{\lambda_{min}(A) \lambda_{min}(\bold{C} \bold{C}^{T} )}{ \lambda_{max}(A)} \min_{k} \frac{p_{k}}{\lambda_{max}(f_{\pi_{k}}^{T} f_{\pi_{k}})} \\
+\eaStar
 
-Then :\\
-$\lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} ) \geq E_{D} \pare{\lambda_{min} (\bold{C}^{T} D A D \bold{C} \Delta^{2})} \geq E_{D} \pare{\lambda_{min} (\bold{C}^{T} D A D \bold{C})\lambda_{min} (\Delta^{2})}.$\\
+Recall that $p_{k} = s^{-n}$ for any $k\in \acco{1,\dots,r}$.\\
 
-$\dsp \lambda_{min}(\Delta^{2}) =  \min_{i}  \frac{p_{i}}{\lambda_{max}(I_{\pi_{i}} \tilde{A}_{D} I_{\pi_{i}}^{T} ) } \geq  \min_{i}\frac{p_{i} }{\lambda_{max}(I_{\pi_{i}}^{T} I_{\pi_{i}}) \lambda_{max}(\tilde{A}_{D})}  \geq \min_{i}\frac{ p_{i} }{n\, \lambda_{max}(\tilde{A}_{D})} $, 
-since for any $i\in \acco{1,\dots,n}$, for any $x$ in $\R^{n}$ 
+For any $x$ in $\R^{n}$, for any $k\in \acco{1,\dots,r}$,
 
-$\scal{I_{\pi_{i}}^{T} I_{\pi_{i}} x }{x} = \norm{ I_{\pi_{i}}x }^{2} = \norm{\dsp\sum_{i=1}^{n} x_{i}f_{\pi(i)} }^{2} \leq \pare{\dsp\sum_{i=1}^{n} \abs{x_{i}}}^{2} \leq n\norm{x}^{2}$
- and then $\lambda_{max}( I_{\pi_{i}}^{T} I_{\pi_{i}}  ) \leq n$.\\
+$\scal{f_{\pi_{k}}^{T} f_{\pi_{k}} x }{x} = \norm{ f_{\pi_{k}}x }^{2} = \norm{\dsp\sum_{i=1}^{n} x_{i}f_{\pi_{k}(i)} }^{2} \leq \pare{\dsp\sum_{i=1}^{n} \abs{x_{i}}}^{2} \leq n\norm{x}^{2}$
+ and then $\lambda_{max}( f_{\pi_{k}}^{T} f_{\pi_{k}}  ) \leq n$.\\\\
  
- Therefore, 
-$\dsp \lambda_{min} (\bold{C}^{T} D A D \bold{C} \Delta^{2}) \geq  \min_{i} p_{i} \frac{\lambda_{min}(\bold{C}^{T}\tilde{A}_{D} \bold{C} )}{n \,\lambda_{max}(\tilde{A}_{D})}  =  \min_{i} p_{i} \frac{ \lambda_{min}(\tilde{A}_{D}) \lambda_{min}(\bold{C} \bold{C}^{T} )}{n \,\lambda_{max}(\tilde{A})}.$\\
-
-$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{i} I_{\pi_{i}}^{T} I_{\pi_{i}} = s^{n-1}
+ 
+ 
+$\bold{C} \bold{C}^{T}= \dsp\sum\limits_{k=1}^{r} f_{\pi_{k}}^{T} f_{\pi_{k}} = s^{n-1}
     \left(
     \begin{array}{ccccc}
     s                                    \\
       & s             &   & \text{\huge1}\\
-      &               & s                \\
+      &               & \ddots               \\
       & \text{\huge1} &   & s            \\
       &               &   &   & s
     \end{array}
-    \right).$\\
+    \right)$, thanks to the facts that :\\ For all $i\neq j$, $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(i)} = r = s^{n}$ and $\dsp\sum\limits_{k=1}^{r} f_{\pi_{k}(i)}^{T} f_{\pi_{k}(j)} = \dsp\sum\limits_{k=1}^{r} 1_{\acco{\pi_{k}(i) = \pi_{k}(j)}} = s \times s^{n-2} = s^{n-1}.$\\
 Denote by $\dsp M = \frac{1}{s^{n-1}}\, \bold{C} \bold{C}^{T}.$\\
 
-By subtracting $(s-1)I_{n}$ from $M$, we recognize that $s-1$ is an eigenvalue of $M$ with multiplicity $n-1$. Then the trace gives us that $n+s-1$ is the other eigenvalue of $M$.\\ 
-Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$
+By subtracting $(s-1)I_{n}$ from $M$, we recognize that $s-1$ is an eigenvalue of $M$ with multiplicity $n-1$. Then the trace of $M$ gives us that $n+s-1$ is the other eigenvalue of $M$.\\ 
+Hence, $\lambda_{min}(\bold{C} \bold{C}^{T}) = (s-1)s^{n-1}$.\\
 
-Plus, $\tilde{A}_{D}$ is similar to $A$, thereby we obtain that :\\ 
+Thereby we obtain that :\\ 
 
 
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp E_{D}\croc{ (s-1)s^{n-1}\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} } = (s-1)s^{n-1}\frac{\lambda_{min}(A)}{n \,\lambda_{max}(A)}  \min_{i} p_{i} $.\\
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n}$ \\
 
-Plus, for any $i=1,\dots,r$, $p_{i} = s^{-n}$, then finally we obtain that :\\
 
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\bullet$
 
@@ -328,11 +315,105 @@ $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{(s-1)\,\lambda_{
 \section{Sparse Shuffling (Spashu)}
 \rob{I was calling this Radamacher sketch before, but in truth it is not the Radamacher sketch. So we need to give this a new name. How about Sparse Shuffling Sketch? Or a Spashu sketch for short :) }
 
-Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random for all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define $S \in \R^{n \times s}$ as a Sparse Shuffling sketch when
- \[S = \sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
+Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random for all the $n!$ possible permutations. Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$ We define $S \in \R^{n \times s}$ as a $s\times n$ Sparse Shuffling sketch when
+ \[S = \dsp\sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
  Note that there are exactly $m$ non-zero elements in each row of $S$.
  
- We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$
+ We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
+ 
+ 
+Notice that $S$ can be rewriting as : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} $, where $\pi$ is the function $\fonc{\acco{1,\dots,n}}{\acco{1,\dots,s}}{j}{-\lfloor -\frac{j}{m} \rfloor}.$\\
+ 
+ $\pi$ verifies that for all $i \in \acco{1,\dots,s}$, for all $j \in \acco{1+m (i-1),\dots,m i}$, $\pi(j) = i. $
+ 
+ For any permutation $\phi$ on $\acco{1,\dots,n}$, denote by $P_{\phi}$ the $n\times n$ matrix $ \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} $.\\
+ Denote by $\phi_{1},\dots,\phi_{n!}$ the different permutations of $\mathfrak{S}_{n}$ and define $(p_{k})_{k=1,\dots,n!}$ such that $p_{k} = \frac{1}{n!}$ for all $k$.\\ Let's consider that uniform probability on $\mathfrak{S}_{n}$.\\ Then $\phi = \phi_{k}$ with probability $\dsp \frac{1}{n!}$.\\\\
+ 
+ Let $\epsilon$ be a uniform random vector of $\acco{-1,1}^{n}$ and $\phi$ a uniform random permutation of $\mathfrak{S}_{n}$.\\
+Let $S$ be a random shuffling sketch such that : $S = \dsp\sum_{j=1}^{n} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} .$\\
+
+Denote by $f_{\pi} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} }$ and $D = \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)}$.\\
+We have that :\\
+$S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(n)f_{\pi(n)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(n)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(n)} P_{\phi}.$\\
+Then : $S = f_{\pi} D P_{\phi}$.\\
+
+Denote by $\bold{C}_{D} = (\pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{r}}^{T} D f_{\pi}^{T} } $ which is a $ n \times n! \,n$ matrix.\\
+
+
+Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
+
+ \ecag{11}{green}{19}{
+\begin{corollary} \label{shuffle}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}
+$
+
+\end{corollary}
+}
+\pr
+
+The \textbf{lemma}\ref{general lemma} gives us that :\\ 
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ \lambda_{max}(A)} \min_{k} \frac{p_{k}}{\lambda_{max}( P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}} )}.$\\
+For all $k = 1,\dots,n!$, $p_{k} = \frac{1}{n!}$ and $P_{\phi_{k}}$ is an orthogonal matrix ( $i.e.$ $P_{\phi_{k}} P_{\phi_{k}}^{T} = I_{n}$). Therefore one obtains that :\\
+
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ n! \, \lambda_{max}(A) \lambda_{max}(f_{\pi}^{T} f_{\pi})}. $\\
+ 
+ For any positive integer $k$, denote by $J_{k} \in \M_{k}(\R)$ the all-ones matrix of size $k$, $i.e.$ $J_{k}(i,j) = 1$ for all $i,j = 1,\dots, k$.\\
+ 
+ \baStar
+ \bold{C}_{D} \bold{C}_{D}^{T} &=& \dsp\sum\limits_{k=1}^{n!} P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}} \\
+&=& \small  (n-1)!\left(
+    \begin{array}{ccccc}
+    \tr(f_{\pi}^{T} f_{\pi})                                    \\
+      & \tr(f_{\pi}^{T} f_{\pi})               &   & \textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }}{n-2}$  }\\
+      &               & \ddots               \\
+      &\textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }}{n-2}$  }&   & \tr(f_{\pi}^{T} f_{\pi})               \\
+      &               &   &   & \tr(f_{\pi}^{T} f_{\pi})   
+    \end{array}
+    \right)\\
+    \eaStar
+    Denote by $\lambda_{1} = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }     $ and \\$\lambda_{2} = (n-1)!(n-1)\tr(f_{\pi}^{T} f_{\pi})+(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) } $.\\
+    By subtracting $\lambda_{1}I_{n}$  from $\bold{C}_{D} \bold{C}_{D}^{T} $, we straightforwardly observe that $\lambda_{1}$ is an eigenvalue of $\bold{C}_{D} \bold{C}_{D}^{T} $ of multiplicity $n-1$. And then taking the trace shows that $\lambda_{2}$ is the remaining eigenvalue.\\
+    Hence, $\lambda_{min}( \bold{C}_{D} \bold{C}_{D}^{T} ) = (n-1)!\tr(f_{\pi}^{T} f_{\pi}) -(n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }.$\\
+    
+    Now denote by $1_{m} = \underbrace{\pare{1,\dots,1}}_{m \;\text{times}\; 1}$.\\
+    One observes that  $f_{\pi} = \pare{f_{1}1_{m}, f_{2}1_{m}, \dots, f_{s}1_{m}}.$\\
+Then :\\
+$f_{\pi}^{T} f_{\pi} = \pare{1_{m}^{T}f_{i}^{T}f_{j}1_{m}}_{i,j=1,\dots,s} =    \left(
+    \begin{array}{ccccc}
+    1_{m}^{T}1_{m}                                   \\
+      & 1_{m}^{T}1_{m}              &   & \text{\huge0}\\
+      &               & \ddots               \\
+      & \text{\huge0} &   & 1_{m}^{T}1_{m}            \\
+      &               &   &   & 1_{m}^{T}1_{m} 
+    \end{array}
+    \right) = \left(
+    \begin{array}{ccccc}
+    J_{m}                                 \\
+      & J_{m}              &   & \text{\huge0}\\
+      &               & \ddots               \\
+      & \text{\huge0} &   & J_{m}          \\
+      &               &   &   & J_{m}
+    \end{array}
+    \right).$
+Then :\\
+$\lambda_{max}(f_{\pi}^{T}f_{\pi}) = m$ and $\tr(f_{\pi}^{T} f_{\pi}) = n$.\\
+
+Right now we have that :\\
+
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})}    }  }{ n! \,m\, \lambda_{max}(A) }. $\\
+
+By Cauchy-Schwarz inequality, $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})} \leq  \sqrt{\tr\pare{D f_{\pi}^{T} f_{\pi} D^{2} f_{\pi}^{T} f_{\pi} D } }\sqrt{ \tr\pare{J-I_{n}}^{2}}$.\\
+Then : $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n})} \leq  \sqrt{\tr\pare{ f_{\pi}^{T} f_{\pi} f_{\pi}^{T} f_{\pi} } } \sqrt{n^{2}-n}\leq \sqrt{s m^{2}}\sqrt{n^{2}-n} $.\\
+Therefore :\\
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! m\sqrt{s n (n-1)}   }  }{ n! \,m\, \lambda_{max}(A) } =\frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{m\sqrt{s n (n-1)}}{n(n-1)}} $.\\
+Then :\\
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{s n (n-1)}}{s(n-1)}} = \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}.$\\
+
+We finally finish the proof thanks to the concavity of the function $\lambda_{min}$ :\\
+  $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} \bullet$
+
+ 
 \chapter{Conclusion}
 
 \appendix
