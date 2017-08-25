@@ -350,9 +350,178 @@ Thereby we obtain that :\\
 $\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \frac{\lambda_{min}(A) (s-1)s^{n-1}}{ \lambda_{max}(A)}  \frac{s^{-n}}{n} =  \frac{(s-1)\,\lambda_{min}(A)}{n \, s \,\lambda_{max}(A)} $ $\qed$
 
 
-\section{Sparse Shuffling (Spashu)}
+\section{Sparse subsampled Shuffling}
 
-Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random from all the $n!$ possible permutations. Define by $\mathfrak{S}_{n}$ the set of all permutation functions on $\acco{1,\dots,n}.$\\
+ For any injective function $\phi \, : \,\fonccourte{ \acco{1,\dots,m s} }{ \acco{1,\dots,n} } $, denote by $P_{\phi}$ the $m s\times n$ matrix $ \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(m s)}^{T} \end{pmatrix} $  because $\phi$ is an injective function.\\
+ 
+ For any $k,l\in\acco{1,\dots,ms}$, $P_{\phi}P_{\phi}^{T}(k,l) = e_{\phi(k)}^{T}e_{\phi(l)}$ . Then $P_{\phi}P_{\phi}^{T} = I_{ms}.$\\
+ 
+ Denote by $\mathfrak{A}_{ms,n}$ the set of injective functions $\phi \, : \,\fonccourte{ \acco{1,\dots,m s} }{ \acco{1,\dots,n} } $.  The cardinal of $\mathfrak{A}_{ms,n}$ is $\dsp (ms)!\pare{\substack{ n\\ ms}} = \frac{n!}{(n-ms)!} \egaldef q$. We will only consider the uiform probability over $\mathfrak{A}_{ms,n}$.\\\\
+ 
+  Let $\epsilon$ be a uniform random vector of $\acco{-1,1}^{ms}$ and $\phi$ a uniform random injective function of $\mathfrak{A}_{ms,n}$.\\
+Let $S$ be a random shuffling sketch such that : $S = \dsp\sum_{j=1}^{ms} \epsilon_{j}f_{\pi(j)}e_{\phi(j)}^{T} .$\\
+
+Denote by $f_{\pi} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(ms)} }$ and $D = \text{diag}\pare{\epsilon(1),\dots,\epsilon(ms)}$.\\
+We have that :\\
+$S = \pare{ \epsilon(1)f_{\pi(1)},\epsilon(2)f_{\pi(2)},\dots,\epsilon(ms)f_{\pi(ms)} } \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(ms)}^{T} \end{pmatrix} = \pare{ f_{\pi(1)}, f_{\pi(2)},\dots, f_{\pi(ms)} } \text{diag}\pare{\epsilon(1),\dots,\epsilon(ms)} P_{\phi}.$\\
+Then : $S = f_{\pi} D P_{\phi}$.\\
+
+Recall that $q = \frac{n!}{(n-ms)!}$ and denote by $\bold{C}_{D} = \pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{q}}^{T} D f_{\pi}^{T} } $ which is a $ n \times q \,s$ matrix.\\
+
+  
+ $\bold{C}_{D} \bold{C}_{D}^{T} = \dsp\sum\limits_{\phi\in\mathfrak{A}_{ms,n}} P_{\phi}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi}$ and is a $n\times n$ matrix.\\
+
+ \ecag{23}{blue}{19}{
+\begin{lemma} \label{injective}
+$\\\\$
+Denote by $\mathfrak{A}_{ms,n}$ be the set of all injective functions $\phi : \foncfleche{\acco{1,\dots,ms}}{\acco{1,\dots,n}}$.\\
+Let $M$ be a $ms\times ms$ matrix.\\
+Then :\\
+$\dsp\sum\limits_{\phi\in\mathfrak{A}_{ms,n}} P_{\phi}^{T} M P_{\phi} = \small  \frac{(n-1)!}{(n-ms)!}\left(
+    \begin{array}{ccccc}
+    \tr(M)                                    \\
+      & \tr(M)               &   & \textbf{\Large $\frac{\tr\pare{M (J_{ms}-I_{ms}) }}{n-1}$  }\\
+      &               & \ddots               \\
+      &\textbf{\Large $\frac{\tr\pare{M (J_{ms}-I_{ms}) }}{n-1}$  }&   & \tr(M)               \\
+      &               &   &   & \tr(M)   
+    \end{array}
+    \right)$
+   
+\end{lemma}
+}
+
+\pr 
+
+$P_{\phi} = \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(ms)}^{T} \end{pmatrix} $ is a $ms \times n$ matrix.\\
+Denote by $(g_{i})_{i=1,\dots,ms}$ a canonical basis of $\R^{ms}$ and $g_{0}$ the $zero-vector$ of $\R^{ms}$.\\
+For any injective function $\phi : \foncfleche{\acco{1,\dots,ms}}{\acco{1,\dots,n}}$, define $\tilde{\phi} : \foncfleche{\acco{1,\dots,n}}{\acco{0,1,\dots,ms}}$ such that $\tilde{\phi}\circ\phi = id$ and for any $i\notin \Ima(\phi)$, $\tilde{\phi}(i) = 0$.\\
+For any $i\in \acco{1,\dots,n}$, $P_{\phi}e_{i} = \begin{pmatrix} e_{\phi(1)}^{T}e_{i} \\ \vdots \\ e_{\phi(ms)}^{T}e_{i} \end{pmatrix} = g_{\tilde{\phi}(i)}.$ Then : $P_{\phi} = \pare{ g_{\tilde{\phi}(1)},\dots,g_{\tilde{\phi}(n)}}.$\\
+
+Denote by $Q =\dsp\sum\limits_{\phi\in\mathfrak{A}_{ms,n}} P_{\phi}^{T} M P_{\phi}$.\\
+
+Let $i,j,i^{\prime},j^{\prime} \in \acco{1,\dots,n}$ such that $i = j$ if and only if $i^{\prime} = j^{\prime}$, let $\phi$ be a permutation of $n$ elements.\\
+
+For any $\phi \in \mathfrak{A}_{ms,n}$, $P_{\phi}^{T}MP_{\phi}(i,j) = g_{\tilde{\phi}(i)}^{T}Mg_{\tilde{\phi}(j)}$.\\
+And then :\\
+$Q(i,j) = \dsp\sum\limits_{\substack{\phi\in\mathfrak{A}_{ms,n} \\ \tilde{\phi}(i)\tilde{\phi}(j)\neq0}} M(\tilde{\phi}(i),\tilde{\phi}(j))$.\\
+
+
+Let $\sigma$ be a permutation matrix such that $\sigma(i) = i^{\prime}$ and $\sigma(j) = j^{\prime}$.\\
+Notice that such a $\sigma$ exists since $i = j$ if and only if $i^{\prime} = j^{\prime}$.\\
+Notice that $\widetilde{\sigma\circ\phi} = \tilde{\phi}\circ\sigma^{-1}$.\\
+When $\phi$ covers $\mathfrak{A}_{ms,n}$, $\sigma\circ\phi$ also covers $\mathfrak{A}_{ms,n}$. Then :\\
+$Q(i,j) = \dsp\sum\limits_{\substack{\phi\in\mathfrak{A}_{ms,n} \\ \tilde{\phi}(i)\tilde{\phi}(j)\neq0}} M(\tilde{\phi}(i),\tilde{\phi}(j)) =\dsp\sum\limits_{\substack{\phi\in\mathfrak{A}_{ms,n} \\ \tilde{\phi}\circ\sigma^{-1}(i)\tilde{\phi}\circ\sigma^{-1}(j)\neq0}} M(\tilde{\phi}\circ\sigma^{-1}(i),\tilde{\phi}\circ\sigma^{-1}(j)) = \dsp\sum\limits_{\substack{\phi\in\mathfrak{A}_{ms,n} \\ \tilde{\phi}(i^{\prime})\tilde{\phi}(j^{\prime})\neq0}} M(\phi(i^{\prime}),\phi(j^{\prime})) = Q(i^{\prime},j^{\prime}).$\\
+Hence we obtain that for all $i,j,i^{\prime},j^{\prime} \in \acco{1,\dots,n}$ such that $i \neq j$ and $i^{\prime} \neq j^{\prime}$, $Q(i,i) = Q(j,j)$ and $Q(i,j) = Q(i^{\prime},j^{\prime})$.\\
+Then for all $i,j\in \acco{1,\dots,n}$ such that $i\neq j$, $Q(i,i) = \dsp\frac{1}{n} \tr(Q)$ and \\$n(n-1)Q(i,j) = \dsp\sum_{k\neq l} Q(k,l) = \tr(QJ_{n})-\tr(Q)$, where $J_{n}$ is the one-all matrix of size $n$.\\
+
+Recall that $P_{\phi}P_{\phi}^{T}=I_{ms}$. Also, $P_{\phi}J_{n}P_{\phi}^{T}(k,l) = e_{\phi(k)}^{T}J_{n}e_{\phi(l)} = J(\phi(k),\phi(l)) = 1.$ Then $P_{\phi}J_{n}P_{\phi}^{T} = J_{ms}.$\\
+
+Therefore : $\tr(Q) = \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(P_{\phi}^{T} M P_{\phi}) = \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(M P_{\phi} P_{\phi}^{T} )= \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(M) = \dsp\frac{n!}{(n-ms)!}\tr(M),$\\\\
+ $\tr(QJ_{n}) = \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(P_{\phi}^{T} M P_{\phi}J_{n}) = \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(M P_{\phi} J_{n}P_{\phi}^{T} )= \dsp\sum\limits_{\phi \in \mathfrak{A}_{ms,n}} \tr(MJ_{ms}) = \dsp\frac{n!}{(n-ms)!}\tr(MJ_{ms})$ $\qed$\\\\
+
+
+
+ \ecag{15}{green}{19}{
+\begin{corollary} \label{shuffle}
+$\\\\$
+$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{m(sm-1)}}{n-1}} $ and then :\\
+
+$\dsp \rho \leq 1 -  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{m(sm-1)}}{n-1}} $
+
+\end{corollary}
+}
+
+\pr
+
+The \textbf{lemma}\ref{general lemma} gives us that :\\ 
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ \lambda_{max}(A)} \min_{k} \frac{(n-ms)!}{n!\lambda_{max}( P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}} )}.$\\
+
+We know that for any injective function $\phi$ , $P_{\phi} P_{\phi}^{T} = I_{ms}$. And then :\\
+$\lambda_{max}( P_{\phi}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi} ) = \lambda_{max}( D f_{\pi}^{T} f_{\pi} D P_{\phi} P_{\phi}^{T} ) = \lambda_{max}( D f_{\pi}^{T} f_{\pi} D ) =  \lambda_{max}( f_{\pi}^{T} f_{\pi} D^{2} )  =  \lambda_{max}(f_{\pi}^{T} f_{\pi}).$\\
+Therefore : $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ \lambda_{max}(A)} \frac{(n-ms)!}{n!\lambda_{max}(f_{\pi}^{T} f_{\pi})}.$\\
+
+ 
+ For any positive integer $k$, denote by $J_{k} \in \M_{k}(\R)$ the all-ones matrix of size $k$, $i.e.$ $J_{k}(i,j) = 1$ for all $i,j = 1,\dots, k$.\\
+
+
+ $\bold{C}_{D} \bold{C}_{D}^{T} = \dsp\sum\limits_{\phi\in\mathfrak{A}_{ms,n}} P_{\phi}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi}$.\\
+Then by \textbf{lemma} \ref{injective} :\\
+ 
+ \baStar
+ &&\bold{C}_{D} \bold{C}_{D}^{T} = \dsp\sum\limits_{\phi\in\mathfrak{A}_{ms,n}} P_{\phi}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi}\\ 
+ &=& \small  \frac{(n-1)!}{(n-ms)!}\left(
+    \begin{array}{ccccc}
+    \tr(f_{\pi}^{T} f_{\pi})                                    \\
+      & \tr(f_{\pi}^{T} f_{\pi})               &   & \textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms}) }}{n-1}$  }\\
+      &               & \ddots               \\
+      &\textbf{\Large $\frac{\tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms}) }}{n-1}$  }&   & \tr(f_{\pi}^{T} f_{\pi})               \\
+      &               &   &   & \tr(f_{\pi}^{T} f_{\pi})   
+    \end{array}
+    \right)
+     \eaStar
+    
+    By using the \textbf{lemma} \ref{eigenvalue}, $\lambda_{1} = \frac{(n-1)!}{(n-ms)!}\tr(f_{\pi}^{T} f_{\pi}) -\frac{(n-2)!}{(n-ms)!} \tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms}) }     $ and \\$\lambda_{2} = \frac{(n-1)!}{(n-ms)!}\tr(f_{\pi}^{T} f_{\pi})+\frac{(n-2)!}{(n-ms)!}\tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms}) } $ are the eigenvalues of $\bold{C}_{D} \bold{C}_{D}^{T} $.\\
+    Hence, $\lambda_{min}( \bold{C}_{D} \bold{C}_{D}^{T} ) = \frac{(n-1)!}{(n-ms)!}\tr(f_{\pi}^{T} f_{\pi}) -\frac{(n-2)!}{(n-ms)!}\tr\pare{D f_{\pi}^{T} f_{\pi} D (J-I_{n}) }.$\\
+    
+    Now denote by $1_{m} = \underbrace{\pare{1,\dots,1}}_{m \;\text{times}\; 1}$.\\
+    One observes that  $f_{\pi} = \pare{f_{1}1_{m}, f_{2}1_{m}, \dots, f_{s}1_{m}}.$\\
+    
+    
+Then :\\
+$f_{\pi}^{T} f_{\pi} = \pare{1_{m}^{T}f_{i}^{T}f_{j}1_{m}}_{i,j=1,\dots,s} =    \left(
+    \begin{array}{ccccc}
+    1_{m}^{T}1_{m}                                   \\
+      & 1_{m}^{T}1_{m}              &   & \text{\huge0}\\
+      &               & \ddots               \\
+      & \text{\huge0} &   & 1_{m}^{T}1_{m}            \\
+      &               &   &   & 1_{m}^{T}1_{m} 
+    \end{array}
+    \right) = \left(
+    \begin{array}{ccccc}
+    J_{m}                                 \\
+      & J_{m}              &   & \text{\huge0}\\
+      &               & \ddots               \\
+      & \text{\huge0} &   & J_{m}          \\
+      &               &   &   & J_{m}
+    \end{array}
+    \right).$
+    
+    When we use the \textbf{lemma} \ref{eigenvalue} on $J_{m}$, we obtain that $0$ and $m$ are the eigenvalues of $J_{m}$, with $0$ of multiplicity $m-1$.\\
+Then :\\
+$\lambda_{max}(f_{\pi}^{T}f_{\pi}) = m$ and $\tr(f_{\pi}^{T} f_{\pi}) = s \tr(J_{m}) = s\, m $.\\
+
+Right now we have that :\\
+
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \pare{ (n-1)!sm - (n-2)! \tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms})}    }  }{ n! \,m\, \lambda_{max}(A) }. $\\
+
+By Cauchy-Schwarz inequality, $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms})} \leq  \sqrt{\tr\pare{D f_{\pi}^{T} f_{\pi} D^{2} f_{\pi}^{T} f_{\pi} D } }\sqrt{ \tr\pare{J_{ms}-I_{ms}}^{2}}$.\\
+Then : $ \tr\pare{D f_{\pi}^{T} f_{\pi} D (J_{ms}-I_{ms})} \leq  \sqrt{\tr\pare{ f_{\pi}^{T} f_{\pi} f_{\pi}^{T} f_{\pi} } } \sqrt{(sm)^{2}-sm}\leq \sqrt{s m^{2}}\sqrt{(sm)^{2}-sm} = sm\sqrt{m(sm-1)}$.\\
+Therefore :\\
+$\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq  \frac{\lambda_{min}(A) sm(n-1)!\pare{ 1 -  \frac{\sqrt{m(sm-1)}}{n-1}   }  }{ n! \,m\, \lambda_{max}(A) } =\frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{m(sm-1)}}{n-1}} $.\\\\
+
+We finally finish the proof thanks to the concavity of the function $\lambda_{min}$ :\\
+  $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{\sqrt{m(sm-1)}}{n-1}} \qed$\\\\
+
+ 
+ 
+
+
+
+ \rem
+ \begin{itemize}
+ \item
+ For $D = I_{n}$, 
+ \baStar
+ \dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) &\geq& \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! \tr\pare{ f_{\pi}^{T} f_{\pi}  (J-I_{n})}    }  }{ n! \,m\, \lambda_{max}(A) }\\
+  &=&  \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! (sm^{2}-n)   }  }{ n! \,m\, \lambda_{max}(A) }\\
+  &=&  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{n}{s(n-1)}}\\ 
+  &\geq&  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} 
+  \eaStar
+  And then the convergence rate would be better if we could dodge $D$.
+  \item 
+  $\\$
+ 
+ Let $\phi: \{1,\ldots, n\} \rightarrow \{1,\ldots, n\}$ be a permutation, selected uniformly at random from all the $n!$ possible permutations. Define by $\mathfrak{S}_{n}$ the set of all permutation functions on $\acco{1,\dots,n}.$\\
  Let $s\in \N$ be an integer that divides $n$, that is, there exists $m \in \N$ such that $n = ms.$\\
 
 % We can also define a subsampled Spashu by considering $m \in \N$ as a free parameter such that $m \leq \lfloor \frac{n}{s} \rfloor.$\\\\
@@ -364,7 +533,7 @@ Denote by $\pare{e_{i}}_{i=1,\dots,n}$ a canonical basis of $\R^{n}$  and $\pare
  We define the \emph{Spashu} (Sparse Shuffling) $s\times n$ sketch matrix $S \in \R^{n \times s}$  when
  \[S := \dsp\sum_{i=1}^s f_i \sum_{j=1+m(i-1)}^{mi} \epsilon(j)e_{\phi(j)}^\top.\]
  Note that there are at most $n$ non-zeros elements in $S$ ($m s$), with exactly $m$ non-zero elements in each row of $S$.
- \rob{To include subsampling, we will either have to re-define $\phi: C \rightarrow \{1,\ldots, ms\}$ where $C \subset \{1,\ldots, n\}$ and $|C| = ms$, or re-define the $\epsilon$ function to return $\{-1,1,0\}$.}
+ %\rob{To include subsampling, we will either have to re-define $\phi: C \rightarrow \{1,\ldots, ms\}$ where $C \subset \{1,\ldots, n\}$ and $|C| = ms$, or re-define the $\epsilon$ function to return $\{-1,1,0\}$.}
 
  
  
@@ -388,58 +557,12 @@ Denote by $\bold{C}_{D} = \pare{P_{\phi_{1}}^{T} D f_{\pi}^{T},\dots,P_{\phi_{n!
 
 Recall that $Z = A S^{T} (S A S^{T})^{-1} S A$, where $S$ is our sparse shuffling random matrix, and that the convergence rate is  $\rho = 1 - \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12}  )$.\\
 
- \ecag{16}{blue}{19}{
-\begin{lemma} \label{permutation}
-$\\\\$
-Let $M$ be a  matrix and $\mathfrak{S}_{n}$ be the set of all permutations of $\acco{1,\dots,n}$.\\
-Then :\\
-$\dsp\sum\limits_{\phi\in\mathfrak{S}_{n}} P_{\phi}^{T} M P_{\phi} = \small  (n-1)!\left(
-    \begin{array}{ccccc}
-    \tr(M)                                    \\
-      & \tr(M)               &   & \textbf{\Large $\frac{\tr\pare{M (J-I_{n}) }}{n-1}$  }\\
-      &               & \ddots               \\
-      &\textbf{\Large $\frac{\tr\pare{M (J-I_{n}) }}{n-1}$  }&   & \tr(M)               \\
-      &               &   &   & \tr(M)   
-    \end{array}
-    \right)$
-   
-\end{lemma}
-}
-
-\pr
-
-Denote by $Q = \dsp\sum\limits_{k=1}^{n!} P_{\phi_{k}}^{T} M P_{\phi_{k}} = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}}P_{\phi}^{T} M P_{\phi} = \dsp\sum\limits_{\phi^{-1} \in \mathfrak{S}_{n}}P_{\phi}^{T} M P_{\phi}.$\\
-Since $P_{\phi}^{T} = P_{\phi^{-1}}$, then : $Q = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}}P_{\phi} M P_{\phi}^{T}$.\\
-Let $i,j,i^{\prime},j^{\prime} \in \acco{1,\dots,n}$ such that $i = j$ if and only if $i^{\prime} = j^{\prime}$, let $\phi$ be a permutation of $n$ elements.\\
-$P_{\phi} M P_{\phi}^{T} = \begin{pmatrix} e_{\phi(1)}^{T} \\ \vdots \\ e_{\phi(n)}^{T} \end{pmatrix} \begin{pmatrix} M e_{\phi(1)}  \hdots M e_{\phi(n)} \end{pmatrix} $, and then : $P_{\phi} M P_{\phi}^{T} (i,j) = M\pare{\phi(i),\phi(j)}.$\\
-Then : $Q(i,j) =\dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} M(\phi(i),\phi(j)).$\\s
-Let $\sigma$ be a permutation matrix such that $\sigma(i) = i^{\prime}$ and $\sigma(j) = j^{\prime}$.\\
-Notice that such a $\sigma$ exists since $i = j$ if and only if $i^{\prime} = j^{\prime}$.\\
-When $\phi$ covers $\mathfrak{S}_{n}$, $\phi \circ \sigma$ also covers $\mathfrak{S}_{n}$. Then :\\
-$Q(i,j) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} M(\phi(i),\phi(j)) =\dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} M(\phi\circ\sigma(i),\phi\circ\sigma(j)) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} M(\phi(i^{\prime}),\phi(j^{\prime})) = Q(i^{\prime},j^{\prime}).$\\
-Hence we obtain that for all $i,j,i^{\prime},j^{\prime} \in \acco{1,\dots,n}$ such that $i \neq j$ and $i^{\prime} \neq j^{\prime}$, $Q(i,i) = Q(j,j)$ and $Q(i,j) = Q(i^{\prime},j^{\prime})$.\\
-Then for all $i,j\in \acco{1,\dots,n}$ such that $i\neq j$, $Q(i,i) = \dsp\frac{1}{n} \tr(Q)$ and \\$n(n-1)Q(i,j) = \dsp\sum_{k\neq l} Q(k,l) = \tr(QJ_{n})-\tr(Q)$, where $J_{n}$ is the one-all matrix of size $n$.\\
-Plus, $\tr(Q) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \tr(P_{\phi} M P_{\phi}^{T} ) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \tr( P_{\phi}^{T} P_{\phi} M) =\dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \tr(M) = n! \tr(M)$,
-and \\
-$\tr(QJ_{n}) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \tr(P_{\phi} M P_{\phi}^{T} J_{n}) = \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}}\dsp\sum_{i,j=1}^{n} M(\phi(i),\phi(j)) =\dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \dsp\sum_{i,j=1}^{n} M(i,j) $, because $\phi$ is a permutation.\\
-Then : $\tr(QJ_{n})  =  \dsp\sum\limits_{\phi \in \mathfrak{S}_{n}} \tr(M J_{n}) = n! \tr(MJ_{n})$.\\
-Hence we obtain that :\\
- for all $i,j\in \acco{1,\dots,n}$ such that $i\neq j$, $Q(i,i) = (n-1)! \tr(M)$ and \\$n(n-1)Q(i,j) =\tr(QJ_{n})-\tr(Q) = n!\tr\pare{M(J_{n}-I_{n})}$, and then $Q(i,j) = (n-2)!\tr\pare{M(J_{n}-I_{n})} \qed$
-
-
- \ecag{15}{green}{19}{
-\begin{corollary} \label{shuffle}
-$\\\\$
-$\dsp \lambda_{min}(A^{-\frac12}E[Z]A^{-\frac12} )  \geq  \dsp  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}$ and then :\\
-
-$\dsp \rho \leq 1 -  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}}$
-
-\end{corollary}
-}
-
-\pr
-
-The \textbf{lemma}\ref{general lemma} gives us that :\\ 
+ 
+ 
+ 
+ 
+ 
+ The \textbf{lemma}\ref{general lemma} gives us that :\\ 
 $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} ) \geq \dsp  \frac{\lambda_{min}(A) \lambda_{min}(\bold{C}_{D} \bold{C}_{D}^{T})}{ \lambda_{max}(A)} \min_{k} \frac{p_{k}}{\lambda_{max}( P_{\phi_{k}}^{T} D f_{\pi}^{T} f_{\pi} D P_{\phi_{k}} )}.$\\
 For all $k = 1,\dots,n!$, $p_{k} = \frac{1}{n!}$ and $P_{\phi_{k}}$ is an orthogonal matrix ( $i.e.$ $P_{\phi_{k}} P_{\phi_{k}}^{T} = I_{n}$). Therefore one obtains that :\\
 
@@ -509,20 +632,10 @@ We finally finish the proof thanks to the concavity of the function $\lambda_{mi
   $\dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) \geq E_{D}\croc{\lambda_{min}(A^{-\frac12}E\croc{Z|D}A^{-\frac12} )} \geq \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} \qed$\\\\
 
  
- \rem
- \begin{itemize}
- \item
- For $D = I_{n}$, 
- \baStar
- \dsp \lambda_{min}(A^{-\frac12}E\croc{Z}A^{-\frac12} ) &\geq& \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! \tr\pare{ f_{\pi}^{T} f_{\pi}  (J-I_{n})}    }  }{ n! \,m\, \lambda_{max}(A) }\\
-  &=&  \dsp  \frac{\lambda_{min}(A) \pare{ n! - (n-2)! (sm^{2}-n)   }  }{ n! \,m\, \lambda_{max}(A) }\\
-  &=&  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\frac{n}{s(n-1)}}\\ 
-  &\geq&  \frac{s}{n} \frac{\lambda_{min}(A)}{\lambda_{max}(A)}\pare{1-\sqrt{\frac{n}{s(n-1)}}} 
-  \eaStar
-  And then the convergence rate would be better if we could dodge $D$.
-  \item 
-  $\\$
- \cheikh{Still trying to have some results about the subsampling case, I am currently using $\phi$ as injective functions from $\acco{1,\dots,ms}$ to $\acco{1,\dots,n}$. Will write it down tomorrow normally.}
+
+
+
+
   \end{itemize}
  
  
