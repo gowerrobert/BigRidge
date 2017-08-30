@@ -1,18 +1,13 @@
 
 function boot_countmin(prob::Prob,options::MyOptions)
-flopsperiter = (options.sketchsize)^3; # Re-think this
+flopsperiter = (options.sketchsize)^3; # Re-think this, I believe SA costs nnz(A), so the total number of flops should be around  nnz(A) + s^3.
 name = "countmin";
 stepmethod = step_countmin;
     s = options.sketchsize;
 
-
      SA = zeros(prob.n,s); # saving space for sketched matrix AS (that is AS here and not SA)
     SAS = zeros(prob.n+s,s); # here we use this yield to store S instead of SAS
     # S = SAS[1:prob.n,:]   and 'SAS' = SAS[prob.n+1:end,:]
-    
-  # SAS = zeros(prob.n,s); # here we use this yield to store S instead of SAS
-
-
     Sb = zeros(1,s);
     ind = sample(1:s, prob.n); # sample n items from [s] with replacement
 
@@ -30,12 +25,9 @@ end
 function step_countmin(prob::Prob, x::Array{Float64}, options::MyOptions, method::SketchMethod )
 
 s = options.sketchsize;
- sample!(1:s, method.ind); # sample n items from [s] with replacement
+sample!(1:s, method.ind); # sample n items from [s] with replacement
 #sgn = reshape(sample(1:2,prob.n) * 2 - 3,prob.n,1); # one half are +1 and the rest are −1
     
-    
-    
-
 
 for j=1:prob.n
         

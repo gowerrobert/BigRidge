@@ -56,7 +56,7 @@ function step_rademacher(prob::Prob, x::Array{Float64}, options::MyOptions, meth
     sample!(1:prob.n, method.ind ; replace=false)  # get a sample of rows 
     method.ind =reshape(method.ind, s,rho);
     for i =1:s
-           method.SA[i,:] = sum(prob.A[method.ind[i,:],:],1);
+           method.SA[i,:] = sum(prob.A[method.ind[i,:],:],1); # Is it method.ind[i,:] or method.ind[i] ?
            method.Sb[i] = sum(prob.b[method.ind[i,:]])
     end
      for i =1:s
