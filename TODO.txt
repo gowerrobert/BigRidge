@@ -1,16 +1,14 @@
-****1st phase - imediate priorities*****
-1)  Make sure you read and understand chapters 1 and 2 of my thesis! Chapter 3 will also be good for you, but you can gradually read this over time.
-2) (DONE) Figure out how to compute SA quickly for fast Hadamard tranform
-3) See count-sketch and understand how to implement.
-4) Learn Julia! Take 3 days to go through tutorials, and please learn how to write efficient code in Julia. This would be very useful!
-5) Implement all the above methods and the conjugate gradients algorithms and compare to the two sketching algorithms. See my code for Conjugate gradients which is also implemented in my package RandomLinearLab
+****Implementations in BigRidge *****
+--> Why is countmin sketch much slower than all other methods? Double check implementation
+--> find and test efficient way of flipping signs in rows of A for countmin sketch and radamacher. Does flipping the signs help?
+--> Compare the new theoretical bounds on batching converges rate with the imperical convergence rate.
+--> Try and implement a new sparse sketch as detailed in: papers/sparse_sketches.pdf
+--> Think about using a stochastic estimate of the inverse matrix, see Chapter 3 in my thesis.
 
-http://www.di.ens.fr/~rgower/software/RandomLinearLab-0.0.tar.gz
 
-*****2nd phase (To do after implementating and testing)****
--> Understand or bound from above the convergence rate (2.32) in thesis for when S is a ROS or countmin sketch. Remeber we are using a variant of the "randomized Newton method" since A is positive definite in the ridge regression problem. Thus the expression for the rate is now given by:
-
-\rho = 1- \lambda_{\min} \E{ A^{1/2} A (S^TAS)^{-1}S^T A^{1/2}}.		(I)
-
-It is very similar to the rate given for the "randomized Newton method" in equation 2.26. For the Hadamard sketch, you will probably have to bound (I) from above by using the same trick I used for Gaussian sketches, see Lemma 20. For the countmin sketch, you maybe able to analysis (I) directly.
-
+****Rapport*****
+--> Start filling the report with more words, and increasing legibility so we can start improving the writing.
+--> Please write all the steps of the proof/computation of corollary 4.3.1, including lemma on eigenvalues of cI+vv^T (constand times identity + symmetric rank 1 matrix)
+--> Try and tighten corollary 4.3.1 by considering D =I. Find out what are the most "lax" steps or inequalities. 
+--> Try and extend  corollary 4.3.1 to subsampled sparse shuffling sketching. 
+ 
