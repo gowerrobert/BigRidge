@@ -77,7 +77,7 @@ include("grad.jl")
 include("CD.jl")
 include("CG.jl")
 include("Hadamard.jl")
-include("rademacher.jl")
+include("shuffle.jl")
 include("countmin.jl")
 #Including utilities, plotting, data analysis
 include("plot_outputs_Plots.jl")
